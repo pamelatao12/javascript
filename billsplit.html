@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Tip Calculator</title>
+    <link rel="stylesheet" type="text/css" href="styles/billstyles.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <script type="text/javascript" src="js/billsplit.js"></script>
+</head>
+
+
+<body>
+    <div id="tipcontent">
+        <h1>Split the bill</h1>
+        <div id="itemcalculator">
+            <form id="left">
+                <p>Receipt items</p>
+                <input type="text" class="itemname" id="item" name="item" placeholder="Item" tabindex="1">
+                <!-- add + button to add another row when clicked -->
+            </form>
+            <form id="right">
+                <p>&nbsp;&nbsp;&nbsp;Price</p>
+                <span id="text">$ </span><input type="text" class="itemAmount" id="itemAmt" name="itemAmt" placeholder="Amount" tabindex="1">
+                <!-- add + button to add another row when clicked -->
+            </form>
+            <button type="button" id="addbtn" tabindex="100" onclick="addListItem()">+ Item</button>
+            <form id="total">
+                <p>How much was the total bill pre-tax and tip?</p>
+                <span id="text">$ </span><input type="text" id="preAmt" name="preAmt" placeholder="Pre-tax & tip Amount" tabindex="100">
+               
+                <p>How much was the total bill post-tax and tip?</p>
+                <span id="text">$ </span><input type="text" id="postAmt" name="postAmt" placeholder="Final Amount" tabindex="100">
+            </form>
+
+            <button type="button" id="totalbtn" tabindex="100" onclick="enterReceipt()">Done</button>
+        </div> 
+        <!-- close itemcalculator div -->
+        <div id="mycalculator">
+            <form id="finalitems">
+                <p>Name</p>
+                <input type="text" id="name" name="name" tabindex="100" placeholder="Name">
+               
+                <p>What did they order?</p>
+                <label id="fooditem" class="container">
+                    <input id="foodprice" type="checkbox" name="item1">
+                    <span class="checkmark"></span>
+                    <p id="foodname">food item</p>
+                </label>
+            </form>
+
+            <button type="button" id="totalbtn" onclick="calculatePP()">Add</button>
+        </div> 
+        <!-- close mycalculator div -->
+
+        <table id="splitAmtHead">
+            <tr>
+                <th>Name</th>
+                <th>Total</th> 
+            </tr>
+        </table>
+
+        <table id="splitAmt">
+            <!-- hide table onload until a person is added -->
+              <tr id="person" class="person">
+                <td id="personName">Grand Total</td>
+                <td id="totalPP">0</td>
+                <!-- remember to adjust if another person added ordered same thing (means they sharing) -->
+              </tr>
+              <!-- add more rows as more people are added by user -->
+        </table>
+    </div>
+    <!-- close tipcontent div -->
+</body>
+</html>
+
+

@@ -1,0 +1,250 @@
+class EventEmitter {
+    constructor() {
+        this._events = {};
+    }
+    // for adding event handler
+    on(event, listener) {
+        (this._events[event] || (this._events[event] = [])).push(listener);
+        return this;
+    }
+    // for calling event handlers for specified event
+    emit(event, arg) {
+        (this._events[event] || []).slice().forEach(lsn => lsn(arg));
+    }
+}
+
+
+/**
+ * The Model - stores data, notifies observers about changes
+ */
+class Model extends EventEmitter {
+
+    constructor() {
+        super();
+        this.array = [];
+        // this.length = 0;
+        this.elemIndex;
+    }
+
+    add(object, index) {
+        this.array[index] = object;
+        this.emit('elementAdded');
+    }
+
+    remove(object) {
+        // arraylist animation to only shift subsequent elements over one at a time
+        this.elemIndex = this.getIndex(object);
+        this.array[this.elemIndex] = undefined;
+        this.emit('elementRemoved');
+    }
+
+    set(object, replaceObjectWith) {
+        this.elemIndex = this.getIndex(object);
+        this.array[this.elemIndex] = replaceObjectWith;
+        this.emit('elementReplaced');
+    }
+
+    getIndex(object) {
+        for (var i = 0; i < this.array.length; i++) {
+            if (this.array[i] == object) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    getArray() {
+        return this.array;
+    }
+
+    getSize() {
+        return this.array.length;
+    }
+
+    getElemIndex() {
+    	return this.elemIndex;
+    }
+}
+
+class Controller {
+    constructor(model, view) {
+        this._model = model;
+        this._view = view;
+        view.on("createButtonClicked", () => this.createArray());
+        view.on("addButtonClicked", () => this.addElement());
+        view.on("replaceButtonClicked", () => this.replaceElement());
+        view.on("removeButtonClicked", () => this.removeElement());
+
+        // view.on("startButtonClicked", () => this.startGame());
+        // view.on("autoButtonClicked", () => this.automateGame());
+        // view.on("pauseButtonClicked", () => this.restartGame());
+    }
+
+    createArray() {
+        this._view.drawArray();
+    }
+
+    addElement() {
+        var element = this._view.getAddedElement();
+        var index = this._view.getAddedIndex();
+        this._model.add(element, index);
+    }
+
+    replaceElement() {
+    	var element = this._view.getReplacedElement();
+    	var newElement = this._view.getNewElement();
+    	this._model.set(element, newElement);
+    }
+
+    removeElement() {
+    	var element = this._view.getRemovedElement();
+    	this._model.remove(element);
+    }
+
+
+    // changeDirection(key) {
+    // 	this._model.automateOff();
+    // 	this._model.changeDirection(key);
+    // }
+
+    // restartGame() {
+    // 	this._model.pausePressed();
+    // }
+
+    // startGame() {
+    // 	this.gameStarted = true;
+    // 	if (this._model.lostGame()) {
+    // 		this._model.restart();
+    // 		this._model.automateOff();
+    // 		return;
+    // 	}
+    // 	if (this._model.isAuto()) {
+    // 		this._model.automateGame();
+    // 	}
+
+    // 	if (this._model.didGamePause()) {
+    // 		this._model.gamePaused();
+    // 		return;
+    // 	}
+
+    // 	setTimeout(this.onTick, this._model.getSpeed(), this._model, this._view, this);
+    // }
+
+    // onTick(model, view, controller) {
+    // 	this._view = view;
+    // 	this._model = model;
+    // 	this._controller = controller;
+    // 	this._view.drawFood();
+    // 	this._model.moveSnake();
+    // 	this._controller.startGame();
+    // }
+
+}
+
+
+class View extends EventEmitter {
+
+    constructor(model, elements) {
+        super();
+        this._model = model;
+        this._elements = elements;
+
+        model.on('elementAdded', () => this.fillArray());
+        model.on('elementReplaced', () => this.fillArray());
+        model.on('elementRemoved', () => this.fillArray());
+
+        elements.createButton.addEventListener("click", () => this.emit("createButtonClicked"));
+        elements.addButton.addEventListener("click", () => this.emit("addButtonClicked"));
+        elements.removeButton.addEventListener("click", () => this.emit("removeButtonClicked"));
+        elements.replaceButton.addEventListener("click", () => this.emit("replaceButtonClicked"));
+
+        // document.addEventListener("keydown", key => this.emit('keyPressed', key));
+    }
+
+    getAddedElement() {
+        return this._elements.add.value;
+    }
+
+    getAddedIndex() {
+    	return document.getElementById("enterIndex").value;
+    }
+
+    fillArray() {
+    	var array = this._model.getArray();
+    	for (var i = 0; i < this._model.getSize(); i++) {
+    		var elemId = "index" + i;
+    		if (array[i] == undefined) {
+    			document.getElementById(elemId).innerHTML = "";
+    		} else {
+    			document.getElementById(elemId).innerHTML = array[i];
+    		}
+    	}
+        // var index = this.getAddedIndex();
+        // var elemId = "index" + index;
+        // document.getElementById(elemId).innerHTML = this.getAddedElement();
+    }
+
+    getReplacedElement() {
+    	return document.getElementById("replace").value;
+    }
+
+    getNewElement() {
+    	return document.getElementById("replaceWith").value;
+    }
+
+    getRemovedElement() {
+    	return document.getElementById("remove").value;
+    }
+
+    // replaceArray() {
+    // 	var index = this._model.getElemIndex();
+    // 	var element = this.getReplacedElement();
+    // 	var elemId = "index" + index;
+    //     document.getElementById(elemId).innerHTML = this.getNewElement();
+    // }
+
+    drawArray() {
+        var size = Number(this._elements.size.value);
+        this._elements.arrayElem.style.display = "inline-block";
+        // for (var i = 0; i < size; i++) {
+        // 	if ((100 * i + 100) > this._elements.dsCanvas.width) {
+        // 		this._elements.dsCanvas.width *= 2;
+        // 	}
+        //     this._elements.context.fillStyle = "#fff5e6";
+        //     this._elements.context.strokeStyle = "brown";
+        //     this._elements.context.fillRect(0 + (100 * i), 0, 100, 80);
+        //     this._elements.context.strokeRect(0 + (100 * i), 0, 100, 80);
+        // }
+        for (var i = 1; i < size; i++) {
+        	var newElem = this._elements.arrayElem.cloneNode(true);
+        	var newId = "index" + i;
+        	newElem.id = newId;
+        	this._elements.allElements.appendChild(newElem);
+        }
+    }
+
+    // clearCanvas() {
+    // 	this._elements.context.fillStyle = "#fff5e6";
+    // 	this._elements.context.strokeStyle = "brown";
+    // 	this._elements.context.fillRect(0, 0, this._elements.gameCanvas.width, this._elements.gameCanvas.height);
+    // 	this._elements.context.strokeRect(0, 0, this._elements.gameCanvas.width, this._elements.gameCanvas.height);
+    // }
+
+}
+
+window.onload = function() {
+    const model = new Model(['node.js', 'react']);
+    const view = new View(model, {
+        'createButton': document.getElementById("create"),
+        'size': document.getElementById("size"),
+        // 'dsCanvas': document.getElementById("dsCanvas"),
+        // 'context': document.getElementById("dsCanvas").getContext("2d"),
+        'addButton': document.getElementById("addBtn"),
+        'add': document.getElementById("add"),
+        'removeButton': document.getElementById("removeBtn"),
+        'replaceButton': document.getElementById("replaceBtn"),
+        'arrayElem' : document.getElementById("index0"),
+        'allElements' : document.getElementById("elements")
+    });
+    const controller = new Controller(model, view);
+}

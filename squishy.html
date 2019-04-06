@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Squishy Snake</title>
+	<link rel="stylesheet" type="text/css" href="styles/snake.css">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet"> -->
+</head>
+<body>
+	<div id="container">
+		<button type="button" id="squishyStartBtn">
+			<img id="playBtn" src="playBtn.svg">
+		</button>
+		<div id="scoreBox">
+			<h1>Score:</h1>
+			<p id="score">0</p>
+		</div>
+		<button type="button" id="autoBtn">Autoplay
+		</button>
+		<button type="button" id="pauseBtn">button?
+		</button>
+		<canvas id="gameCanvas" width="600" height="600"></canvas>
+		<img id="squishyImg" src="squishy.png" style="display: none">
+		<img id="acornImg" src="acorn.png" style="display: none">
+	</div>
+	<script type="text/javascript" src="js/squishyModel.js"></script>
+</body>
+</html>

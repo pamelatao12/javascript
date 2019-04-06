@@ -1,0 +1,18 @@
+#dsCanvas {
+	padding: 20px;
+}
+
+#elements {
+	display: flex;
+}
+
+.elems {
+	border: 1px solid brown;
+	background-color: #fff5e6;
+	padding: 20px;
+	font-size: 20px;
+}
+
+#index0 {
+	display: none;
+}

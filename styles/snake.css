@@ -1,0 +1,110 @@
+body {
+	text-align: center;
+}
+
+h1, p {
+	font-family: 'Quicksand', sans-serif;
+	font-weight: lighter;
+	font-size: 20px;
+}
+
+h1 {
+	font-weight: bolder;
+}
+
+p {
+	margin-top: 10px;
+}
+
+#scoreBox {
+	border: solid;
+	border-color: dimgray;
+	background-color: snow;
+	width: 120px;
+	margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    position: absolute;
+    left: 620px;
+    top: 20px;
+}
+
+#container {
+	display: inline-block;
+	position: relative;
+}
+
+#startBtn {
+	position: absolute;
+    background: none;
+    border: none;
+    left: 100px;
+    top: 100px;
+	opacity: 0.8;
+    cursor: pointer;
+}
+
+#startBtn:hover {
+	opacity: 1.0;
+}
+
+img {
+	height: 92px;
+}
+
+#squishyStartBtn {
+	position: absolute;
+    background: none;
+    border: none;
+    left: 250px;
+    top: 250px;
+	opacity: 0.8;
+    cursor: pointer;
+}
+
+#autoBtn {
+	display: block;
+	background-color: lightgray;
+	border: none;
+	color: black;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	font-family: 'Quicksand', sans-serif;
+	cursor: pointer;
+	margin: auto;
+	margin-bottom: 20px;
+    position: absolute;
+    left: 620px;
+    top: 150px;
+}
+
+#autoBtn:hover {
+	color: white;
+	background-color: dimgray;
+}
+
+#pauseBtn {
+	display: block;
+	background-color: lightgray;
+	border: none;
+	color: black;
+	padding: 15px 40.5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	font-family: 'Quicksand', sans-serif;
+	cursor: pointer;
+	margin: auto;
+	margin-bottom: 20px;
+    position: absolute;
+    left: 620px;
+    top: 220px;
+}
+
+#pauseBtn:hover {
+	color: white;
+	background-color: dimgray;
+}
+

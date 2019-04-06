@@ -1,0 +1,105 @@
+body {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5%;
+}
+
+h1 {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 40px;
+	font-weight: lighter;
+	margin-bottom: 20px;
+}
+
+p, #text {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 14px;
+	font-weight: lighter;
+}
+
+#clockcontent {
+	margin: 20px;
+}
+
+#clock {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 100px;
+	background-color: lightgray;
+	padding: 20px;
+	border-radius: 25px;
+	width: 600px;
+	display: inline-block;
+}
+
+#calculator {
+	padding: 20px;
+	background-color: #FFF0F5;
+	width: 50vw;
+	display: inline-block;
+	border-radius: 10%;
+}
+
+input, select {
+	width: 50%; /* Full width */
+	height: 40px;
+	padding: 12px; /* Some padding */  
+	border: 1px solid darkgray; /* Gray border */
+	border-radius: 4px; /* Rounded borders */
+	box-sizing: border-box; /* Make sure that padding and width stays in place */
+	margin-top: 6px; /* Add a top margin */
+	margin-bottom: 16px; /* Bottom margin */
+	resize: vertical
+}
+
+#calculatebtn {
+	padding: 10px;
+	background-color: lightgray;
+	cursor: pointer;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+#calculatebtn:hover {
+	background-color: darkgray;
+	color: white;
+}
+
+#results {
+	display: none;
+	padding: 20px;
+	background-color: #FFF0F5;
+	width: 50vw;
+	display: inline-block;
+	border-radius: 0% 0% 10% 10%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 60px;
+}
+
+#results > span {
+	display: none;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 14px;
+	font-weight: lighter;
+}
+
+#results > p {
+	font-weight: bolder;
+}
+
+#totalTip, #totalBill, #amtEach {
+	width: 50%; /* Full width */
+	border: 1px solid darkgray; /* Gray border */
+	border-radius: 4px; /* Rounded borders */
+	box-sizing: border-box; /* Make sure that padding and width stays in place */
+	margin-top: 6px; /* Add a top margin */
+	margin-bottom: 16px; /* Bottom margin */
+	margin-left: auto;
+	margin-right: auto;
+	background-color: snow;
+}
+
+
+

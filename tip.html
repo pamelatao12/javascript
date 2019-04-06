@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Tip Calculator</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <script type="text/javascript" src="js/tip.js"></script>
+</head>
+
+
+<body>
+    <div id=tipcontent>
+        <h1>Tip Calculator</h1>
+        <div id=calculator>
+            <form>
+                <p>How much was your bill (post-tax)?</p>
+                <span id="text">$ </span><input type="text" id="billAmt" name="billAmt" placeholder="Bill Amount">
+
+                <p>How was your service?</p>
+                <select id="service">
+                <option disabled selected value="0">Choose An Option</option>
+                <option value="0.30">30% - Outstanding</option>
+                <option value="0.20">20% - Above Average</option>
+                <option value="0.15">15% - Average</option>
+                <option value="0.10">10% - Below Average</option>
+                <option value="0.05">5% - Terrible</option>
+                </select>
+               
+                <p>If splitting the bill, how many people are there?</p>
+                <input type="text" id="people" name="people" placeholder="Number of People">
+            </form>
+
+            <button type="button" id="calculatebtn" onclick="calculateTip()">Calculate!</button>
+        </div> 
+        <!-- close calculator div -->
+        <div id="results">
+            <div id="totalTip">
+                <p>Tip Amount:</p>
+                <p>$<span id="tip">0.00</span></p>
+            </div>
+            <div id="totalBill">
+                <p>Total Bill:</p>
+                <p>$<span id="bill">0.00</span></p>
+            </div>
+            <div id="amtEach">
+                <p>Amount per person:</p>
+                <p>$<span id="each">0.00</span></p>
+            </div>
+        </div>
+        <!-- close results div -->
+    </div>
+    <!-- close tipcontent div -->
+</body>
+</html>
+
+
