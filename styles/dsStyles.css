@@ -1,18 +1,142 @@
-#dsCanvas {
-	padding: 20px;
+body {
+	padding-left: 20px;
+}
+
+h1 {
+	font-family: 'Open Sans', sans-serif;
+}
+
+h2 {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: lighter;
+	font-size: 18px;
+}
+
+.actionNavs {
+	display: inline-block;
+	font-family: 'Open Sans', sans-serif;
+	width: 100px;
+	border-color: black;
+}
+
+.actionNavs:hover {
+	color: black;
+}
+
+#navbtn {
+	font-family: 'Open Sans', sans-serif;
+	top: 260px;
+    position: absolute;
+}
+
+.sidenav {
+    height: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    background-color: #fbf4f6;
+    overflow-x: hidden;
+    transition: 0.5s;
+    /*padding-top: 50px;*/
+  }
+
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-family: 'Quicksand', sans-serif;
+    color: dimgray;
+    font-size: 18px;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .sidenav a:hover {
+    color: black;
+  }
+
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+#createNew {
+	padding-bottom: 60px;
 }
 
 #elements {
 	display: flex;
+	overflow-x: scroll;
+	width: 50%;
+	min-width: 50%;
+
+	position: absolute;
+    /*left: 400px;*/
+    top: 310px;
+    /*right: 20px;*/
 }
 
 .elems {
-	border: 1px solid brown;
-	background-color: #fff5e6;
+	border: 1px solid #DB7093;
+	border-left: none;
+	background-color: #f2f2f2;
 	padding: 20px;
 	font-size: 20px;
+	width: 50px;
+	min-width: 50px;
+	text-align: center;
 }
 
 #index0 {
+	display: none;
+	border-left: 1px solid brown;
+}
+
+#error, #positionError {
+	color: red;
+}
+
+input {
+	width: 80px; /* Full width */
+	height: 35px;
+	padding: 12px; /* Some padding */  
+	border: 1px solid darkgray; /* Gray border */
+	border-radius: 4px; /* Rounded borders */
+	box-sizing: border-box; /* Make sure that padding and width stays in place */
+	margin-top: 6px; /* Add a top margin */
+	margin-bottom: 16px; /* Bottom margin */
+	resize: vertical
+}
+
+p {
+	font-family: 'Open Sans', sans-serif;
+	display: inline-block;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+button {
+	padding: 5px;
+	border-radius: 4px;
+	width: 270px;
+	background-color: lightgray;
+	cursor: pointer;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	/*margin-left: 40px;*/
+	display: block;
+	margin-bottom: 40px;
+	margin-top: 10px;
+}
+
+button:hover {
+	background-color: snow;
+}
+
+#error {
 	display: none;
 }

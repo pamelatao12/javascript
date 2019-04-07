@@ -85,9 +85,14 @@ class Controller {
     }
 
     addElement() {
-        var element = this._view.getAddedElement();
-        var index = this._view.getAddedIndex();
-        this._model.add(element, index);
+	    var element = this._view.getAddedElement();
+	    var index = this._view.getAddedIndex();
+	    if (index == "" || index > this._model.getSize()) {
+	    	this._view.showPositionError();
+	    } else {
+	    	this._view.hidePositionError();
+	    	this._model.add(element, index);
+	    }
     }
 
     replaceElement() {
@@ -158,7 +163,55 @@ class View extends EventEmitter {
         elements.removeButton.addEventListener("click", () => this.emit("removeButtonClicked"));
         elements.replaceButton.addEventListener("click", () => this.emit("replaceButtonClicked"));
 
+
+        elements.addNav.addEventListener("click", () => this.addNavStyle())
+        elements.removeNav.addEventListener("click", () => this.removeNavStyle());
+        elements.replaceNav.addEventListener("click", () => this.replaceNavStyle());
+        
+
         // document.addEventListener("keydown", key => this.emit('keyPressed', key));
+    }
+
+    addNavStyle() {
+    	this._elements.addAction.style.display = "block";
+    	this._elements.removeAction.style.display = "none";
+    	this._elements.replaceAction.style.display = "none";
+
+    	this._elements.addNav.style.backgroundColor = "snow";
+    	this._elements.addNav.style.color = "black";
+
+    	this._elements.removeNav.style.backgroundColor = "slategray";
+    	this._elements.removeNav.style.color = "white";
+    	this._elements.replaceNav.style.backgroundColor = "slategray";
+    	this._elements.replaceNav.style.color = "white";
+    }
+
+    removeNavStyle() {
+		this._elements.addAction.style.display = "none";
+    	this._elements.removeAction.style.display = "block";
+    	this._elements.replaceAction.style.display = "none";
+
+    	this._elements.removeNav.style.backgroundColor = "snow";
+    	this._elements.removeNav.style.color = "black";
+
+    	this._elements.addNav.style.backgroundColor = "slategray";
+    	this._elements.addNav.style.color = "white";
+    	this._elements.replaceNav.style.backgroundColor = "slategray";
+    	this._elements.replaceNav.style.color = "white";
+    }
+
+    replaceNavStyle() {
+    	this._elements.addAction.style.display = "none";
+    	this._elements.removeAction.style.display = "none";
+    	this._elements.replaceAction.style.display = "block";
+
+    	this._elements.replaceNav.style.backgroundColor = "snow";
+    	this._elements.replaceNav.style.color = "black";
+
+    	this._elements.addNav.style.backgroundColor = "slategray";
+    	this._elements.addNav.style.color = "white";
+    	this._elements.removeNav.style.backgroundColor = "slategray";
+    	this._elements.removeNav.style.color = "white";
     }
 
     getAddedElement() {
@@ -204,24 +257,42 @@ class View extends EventEmitter {
     // }
 
     drawArray() {
+    	//clear elems first
+    	const elements = document.getElementsByClassName("elems");
+		while (elements.length > 1) elements[1].remove();
+
         var size = Number(this._elements.size.value);
-        this._elements.arrayElem.style.display = "inline-block";
-        // for (var i = 0; i < size; i++) {
-        // 	if ((100 * i + 100) > this._elements.dsCanvas.width) {
-        // 		this._elements.dsCanvas.width *= 2;
-        // 	}
-        //     this._elements.context.fillStyle = "#fff5e6";
-        //     this._elements.context.strokeStyle = "brown";
-        //     this._elements.context.fillRect(0 + (100 * i), 0, 100, 80);
-        //     this._elements.context.strokeRect(0 + (100 * i), 0, 100, 80);
-        // }
-        for (var i = 1; i < size; i++) {
-        	var newElem = this._elements.arrayElem.cloneNode(true);
-        	var newId = "index" + i;
-        	newElem.id = newId;
-        	this._elements.allElements.appendChild(newElem);
-        }
+        if (size == 0) {
+        	this.showError();
+        } else {
+        	this.hideError();
+        	this._elements.arrayElem.style.display = "inline-block";
+	        for (var i = 1; i < size; i++) {
+	        	var newElem = this._elements.arrayElem.cloneNode(true);
+	        	var newId = "index" + i;
+	        	newElem.id = newId;
+	        	this._elements.allElements.appendChild(newElem);
+	        }
+	    }
     }
+
+    showError() {
+    	this._elements.error.style.display = "inline-block";
+    }
+
+    hideError() {
+    	this._elements.error.style.display = "none";
+    }
+
+    showPositionError() {
+    	this._elements.positionError.style.display = "inline-block";
+    }
+
+    hidePositionError() {
+    	this._elements.positionError.style.display = "none";
+    }
+
+
 
     // clearCanvas() {
     // 	this._elements.context.fillStyle = "#fff5e6";
@@ -237,6 +308,8 @@ window.onload = function() {
     const view = new View(model, {
         'createButton': document.getElementById("create"),
         'size': document.getElementById("size"),
+        'error' : document.getElementById("error"),
+        'positionError' : document.getElementById("positionError"),
         // 'dsCanvas': document.getElementById("dsCanvas"),
         // 'context': document.getElementById("dsCanvas").getContext("2d"),
         'addButton': document.getElementById("addBtn"),
@@ -244,6 +317,12 @@ window.onload = function() {
         'removeButton': document.getElementById("removeBtn"),
         'replaceButton': document.getElementById("replaceBtn"),
         'arrayElem' : document.getElementById("index0"),
+        'addNav' : document.getElementById("addNav"),
+        'removeNav' : document.getElementById("removeNav"),
+        'replaceNav' : document.getElementById("replaceNav"),
+        'addAction' : document.getElementById("addAction"),
+        'removeAction' : document.getElementById("removeAction"),
+        'replaceAction' : document.getElementById("replaceAction"),
         'allElements' : document.getElementById("elements")
     });
     const controller = new Controller(model, view);

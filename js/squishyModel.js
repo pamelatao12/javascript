@@ -331,6 +331,7 @@ class Controller {
 	}
 
 	changeDirection(key) {
+		this._view.autoButtonUnstyle();
 		this._model.automateOff();
 		this._model.changeDirection(key);
 	}
@@ -368,6 +369,7 @@ class Controller {
 	}
 
 	automateGame() {
+		this._view.autoButtonStyle();
 		this._model.automateOn();
 		if (this.gameStarted == false) {
 			this.startGame();
@@ -444,6 +446,16 @@ class View extends EventEmitter {
 
 	setScore() {
 		this._elements.score.innerHTML = this._model.getScore();
+	}
+
+	autoButtonStyle() {
+		this._elements.autoButton.style.color = "white";
+		this._elements.autoButton.style.backgroundColor = "dimgray";
+	}
+
+	autoButtonUnstyle() {
+		this._elements.autoButton.style.color = "black";
+		this._elements.autoButton.style.backgroundColor = "lightgray";
 	}
 }
 

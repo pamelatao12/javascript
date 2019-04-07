@@ -5,30 +5,75 @@
 	<title>Data Structures</title>
 	<link rel="stylesheet" type="text/css" href="styles/dsStyles.css">
 	<script type="text/javascript" src="js/dsArray.js"></script>
+	<script src="js/sidenav.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 <body>
 	<div id="container">
+		<h1>Data Structure: Array</h1>
+		<h2>Please enter the size of the array:</h2>
 		<!-- <div id="bracket">[</div>
 		<div id="space">_</div>
 		<div id="bracket">]</div> -->
+		<div id="createNew">
+			<p>Size:</p>
+	            <input type="text" class="size" id="size" name="size" placeholder="Size"><p id="error">&nbsp;*Please enter a valid number</p>
+			<button id="create">Create New Array</button>
+		</div>
 
-		<button id="create">Create New Array</button>
+		<div id="navbtn">
+		<span style="font-size:20px;color:dimgray;cursor:pointer;" onclick="openNav()">&#9776; Modify Array</span>
+		</div>
 
-		<div id="arrayActions">
-            <p>Size:</p>
-            <input type="text" class="size" id="size" name="size" placeholder="Size">
+		<div id="mySidenav" class="sidenav">
+		  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+			<button id="addNav" class="actionNavs" style="background-color:snow;color:black;">Add</button>
+			<button id="removeNav" class="actionNavs" style="background-color: slategray;color: white;">Remove</button>
+			<button id="replaceNav" class="actionNavs" style="background-color: slategray;color: white;">Replace</button>
+
+			<div id="addAction">
+			  	<h2>Add an element to the array at the specified position:</h2>
+		        <p>Add:</p>
+		        <input type="text" class="add" id="add" name="add" placeholder="">
+		        <p>Position:</p>
+		        <input type="text" class="enterIndex" id="enterIndex" name="enterIndex" placeholder="">
+		        <p id="positionError" style="display:none"> *Please enter a valid index position</p>
+		        <button id="addBtn">Add Element</button>
+	    	</div>
+
+	    	<div id="removeAction" style="display:none">
+		        <h2>Remove an element in the array:</h2>
+		        <p>Remove:</p>
+		        <input type="text" class="remove" id="remove" name="remove" placeholder="">
+		        <button id="removeBtn">Remove Element</button>
+		    </div>
+
+		    <div id="replaceAction" style="display:none">
+		        <h2>Replace an element in the array:</h2>
+		        <p>Replace:</p>
+		        <input type="text" class="replace" id="replace" name="replace" placeholder=""> with <input type="text" class="replaceWith" id="replaceWith" name="replaceWith" placeholder="">
+		        <button id="replaceBtn">Replace Element</button>
+		    </div>
+		</div>
+
+		<!-- <div id="arrayActions">
+			<h2>Add an element to the array at the specified position:</h2>
             <p>Add:</p>
             <input type="text" class="add" id="add" name="add" placeholder="">
             <p>Position:</p>
             <input type="text" class="enterIndex" id="enterIndex" name="enterIndex" placeholder="">
-            <p>Remove:</p>
             <button id="addBtn">Add Element</button>
+            <h2>Remove an element in the array:</h2>
+            <p>Remove:</p>
             <input type="text" class="remove" id="remove" name="remove" placeholder="">
             <button id="removeBtn">Remove Element</button>
+            <h2>Replace an element in the array:</h2>
             <p>Replace:</p>
             <input type="text" class="replace" id="replace" name="replace" placeholder=""> with <input type="text" class="replaceWith" id="replaceWith" name="replaceWith" placeholder="">
             <button id="replaceBtn">Replace Element</button>
-        </div>
+        </div> -->
 
         <div id="elements">
         	<div id="index0" class="elems">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
