@@ -86,8 +86,9 @@ class Controller {
 
     addElement() {
 	    var element = this._view.getAddedElement();
-	    var index = this._view.getAddedIndex();
-	    if (index == "" || index > this._model.getSize()) {
+	    var index = Number(this._view.getAddedIndex());
+
+	    if (index == undefined || index >= this._view.getSizeInput()) {
 	    	this._view.showPositionError();
 	    } else {
 	    	this._view.hidePositionError();
@@ -230,6 +231,7 @@ class View extends EventEmitter {
     			document.getElementById(elemId).innerHTML = "";
     		} else {
     			document.getElementById(elemId).innerHTML = array[i];
+    			document.getElementById(elemId).style.color = "black";
     		}
     	}
         // var index = this.getAddedIndex();
@@ -249,6 +251,13 @@ class View extends EventEmitter {
     	return document.getElementById("remove").value;
     }
 
+    getSizeInput() {
+    	if (this._elements.size.value == "") {
+    		return undefined;
+    	}
+    	return Number(this._elements.size.value);
+    }
+
     // replaceArray() {
     // 	var index = this._model.getElemIndex();
     // 	var element = this.getReplacedElement();
@@ -260,9 +269,10 @@ class View extends EventEmitter {
     	//clear elems first
     	const elements = document.getElementsByClassName("elems");
 		while (elements.length > 1) elements[1].remove();
+		this._elements.arrayElem.innerHTML = "";
 
-        var size = Number(this._elements.size.value);
-        if (size == 0) {
+        var size = this.getSizeInput();
+        if (size == undefined || size == 0) {
         	this.showError();
         } else {
         	this.hideError();
