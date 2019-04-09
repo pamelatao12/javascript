@@ -100,7 +100,7 @@ h2 {
 	border-left: 1px solid brown;
 }
 
-#error, #positionError {
+#error, #positionError, #removeError {
 	color: red;
 }
 
