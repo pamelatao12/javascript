@@ -37,7 +37,7 @@ class Model extends EventEmitter {
         }
         this.array[index] = object;
         this.size++;
-        this.emit('elementInserted');
+        this.emit('elementInserted', index);
         this.emit('updateSize', this.size);
     }
 
@@ -49,7 +49,7 @@ class Model extends EventEmitter {
 
         this.array[this.size] = object;
         this.size++;
-        this.emit('elementAdded');
+        this.emit('elementAdded', this.size);
         this.emit('updateSize', this.size);
     }
 
@@ -103,7 +103,7 @@ class Model extends EventEmitter {
     }
 
     getElemIndex() {
-    	return this.elemIndex;
+        return this.elemIndex;
     }
 }
 
@@ -126,23 +126,23 @@ class Controller {
     }
 
     addElement() {
-	    var element = this._view.getAddedElement();
-	    var index = this._view.getAddedIndex();
+        var element = this._view.getAddedElement();
+        var index = this._view.getAddedIndex();
 
-	    if (Number(index) > this._model.size) {
-	    	this._view.showPositionError();
-	    } else if (index == "") {
+        if (Number(index) > this._model.size) {
+            this._view.showPositionError();
+        } else if (index == "") {
             this._view.hidePositionError();
             this._model.add(element);
         } else {
-	    	this._view.hidePositionError();
-	    	this._model.addIndex(element, Number(index));
-	    }
+            this._view.hidePositionError();
+            this._model.addIndex(element, Number(index));
+        }
     }
 
     replaceElement() {
-    	var index = this._view.getReplacedIndex();
-    	var newElement = this._view.getNewElement();
+        var index = this._view.getReplacedIndex();
+        var newElement = this._view.getNewElement();
         if (index >= this._model.size || index == "") {
             this._view.setError();
             return;
@@ -153,7 +153,7 @@ class Controller {
             return;
         }
         this._view.hideSetError();
-    	this._model.set(index, newElement);
+        this._model.set(index, newElement);
     }
 
     removeElement() {
@@ -180,7 +180,7 @@ class Controller {
            removeIndex = this._model.getIndex(element);
         }
         this._view.hideRemoveError();
-    	this._model.remove(Number(removeIndex));
+        this._model.remove(Number(removeIndex));
     }
 
     containsElement() {
@@ -221,15 +221,14 @@ class View extends EventEmitter {
         this._model = model;
         this._elements = elements;
 
-        model.on('elementAdded', () => this.fillArray());
-        model.on('elementInserted', () => this.insertArray());
+        model.on('elementAdded', () => this.drawNode());
+        model.on('elementInserted', index => this.insertNode(index));
         model.on('elementReplaced', () => this.fillArray());
         model.on('elementRemoved', () => this.fillArray());
         model.on('elementGot', element => this.getResultElement(element));
         model.on('updateSize', size => this.changeSize(size));
         model.on('listCleared', () => this.fillArray());
 
-        elements.createButton.addEventListener("click", () => this.emit("createButtonClicked"));
         elements.addButton.addEventListener("click", () => this.emit("addButtonClicked"));
         elements.removeButton.addEventListener("click", () => this.emit("removeButtonClicked"));
         elements.containsButton.addEventListener("click", () => this.emit("containsButtonClicked"));
@@ -248,6 +247,27 @@ class View extends EventEmitter {
         elements.sizeNav.addEventListener("click", () => this.sizeNavStyle());
         elements.clearNav.addEventListener("click", () => this.clearNavStyle());
         
+
+    }
+
+    drawNode() {
+        var array = this._model.array;
+        var i = this._model.size;
+        if (i == 1) {
+            this._elements.arrayElem.style.display = "inline-block";
+            this._elements.arrayElem.innerHTML = array[0];
+            this._elements.arrayElem.style.color = "black";
+        } else {
+            var newElem = this._elements.arrayElem.cloneNode(true);
+            var newId = "index" + (i - 1);
+            newElem.id = newId;
+            this._elements.allElements.appendChild(newElem);
+            document.getElementById(newId).innerHTML = array[i - 1];
+            document.getElementById(newId).style.color = "black";
+        }
+    }
+
+    insertNode(index) {
 
     }
 
@@ -273,16 +293,16 @@ class View extends EventEmitter {
 
     removeNavStyle() {
         this.defaultNavStyles();
-    	this._elements.removeAction.style.display = "block";
-    	this._elements.removeNav.style.backgroundColor = "snow";
-    	this._elements.removeNav.style.color = "black";
+        this._elements.removeAction.style.display = "block";
+        this._elements.removeNav.style.backgroundColor = "snow";
+        this._elements.removeNav.style.color = "black";
     }
 
     replaceNavStyle() {
-    	this.defaultNavStyles();
-    	this._elements.setAction.style.display = "block";
-    	this._elements.replaceNav.style.backgroundColor = "snow";
-    	this._elements.replaceNav.style.color = "black";
+        this.defaultNavStyles();
+        this._elements.setAction.style.display = "block";
+        this._elements.replaceNav.style.backgroundColor = "snow";
+        this._elements.replaceNav.style.color = "black";
     }
 
     containsNavStyle() {
@@ -327,20 +347,20 @@ class View extends EventEmitter {
     }
 
     getAddedIndex() {
-    	return document.getElementById("enterIndex").value;
+        return document.getElementById("enterIndex").value;
     }
 
     fillArray() {
-    	var array = this._model.getArray();
-    	for (var i = 0; i < this._model.getLength(); i++) {
-    		var elemId = "index" + i;
-    		if (array[i] == undefined) {
-    			document.getElementById(elemId).innerHTML = "";
-    		} else {
-    			document.getElementById(elemId).innerHTML = array[i];
-    			document.getElementById(elemId).style.color = "black";
-    		}
-    	}
+        var array = this._model.getArray();
+        for (var i = 0; i < this._model.getLength(); i++) {
+            var elemId = "index" + i;
+            if (array[i] == undefined) {
+                document.getElementById(elemId).innerHTML = "";
+            } else {
+                document.getElementById(elemId).innerHTML = array[i];
+                document.getElementById(elemId).style.color = "black";
+            }
+        }
     }
 
     insertArray() {
@@ -373,15 +393,15 @@ class View extends EventEmitter {
     }
 
     getReplacedIndex() {
-    	return document.getElementById("set").value;
+        return document.getElementById("set").value;
     }
 
     getNewElement() {
-    	return document.getElementById("replaceWith").value;
+        return document.getElementById("replaceWith").value;
     }
 
     getRemovedElement() {
-    	return document.getElementById("remove").value;
+        return document.getElementById("remove").value;
     }
 
     getRemovedIndex() {
@@ -436,10 +456,10 @@ class View extends EventEmitter {
 
 
     getSizeInput() {
-    	if (this._elements.size.value == "") {
-    		return undefined;
-    	}
-    	return Number(this._elements.size.value);
+        if (this._elements.size.value == "") {
+            return undefined;
+        }
+        return Number(this._elements.size.value);
     }
 
     changeSize(size) {
@@ -447,14 +467,14 @@ class View extends EventEmitter {
     }
 
     drawArray() {
-    	//clear elems first
-    	const elements = document.getElementsByClassName("elems");
-		while (elements.length > 1) elements[1].remove();
-		this._elements.arrayElem.innerHTML = "";
+        //clear elems first
+        const elements = document.getElementsByClassName("elems");
+        while (elements.length > 1) elements[1].remove();
+        this._elements.arrayElem.innerHTML = "";
 
         var size = this.getSizeInput();
         if (size == 0) {
-        	this.showError();
+            this.showError();
         } else if (size == undefined) {
             this.hideError();
             this._elements.arrayElem.style.display = "inline-block";
@@ -465,15 +485,15 @@ class View extends EventEmitter {
                 this._elements.allElements.appendChild(newElem);
             }
         } else {
-        	this.hideError();
-        	this._elements.arrayElem.style.display = "inline-block";
-	        for (var i = 1; i < size; i++) {
-	        	var newElem = this._elements.arrayElem.cloneNode(true);
-	        	var newId = "index" + i;
-	        	newElem.id = newId;
-	        	this._elements.allElements.appendChild(newElem);
-	        }
-	    }
+            this.hideError();
+            this._elements.arrayElem.style.display = "inline-block";
+            for (var i = 1; i < size; i++) {
+                var newElem = this._elements.arrayElem.cloneNode(true);
+                var newId = "index" + i;
+                newElem.id = newId;
+                this._elements.allElements.appendChild(newElem);
+            }
+        }
     }
 
     removeError() {
@@ -496,19 +516,19 @@ class View extends EventEmitter {
     }
 
     showError() {
-    	this._elements.error.style.display = "inline-block";
+        this._elements.error.style.display = "inline-block";
     }
 
     hideError() {
-    	this._elements.error.style.display = "none";
+        this._elements.error.style.display = "none";
     }
 
     showPositionError() {
-    	this._elements.positionError.style.display = "inline-block";
+        this._elements.positionError.style.display = "inline-block";
     }
 
     hidePositionError() {
-    	this._elements.positionError.style.display = "none";
+        this._elements.positionError.style.display = "none";
     }
 
     setError() {
@@ -533,7 +553,6 @@ class View extends EventEmitter {
 window.onload = function() {
     const model = new Model(['node.js', 'react']);
     const view = new View(model, {
-        'createButton': document.getElementById("create"),
         'size': document.getElementById("size"),
         'error' : document.getElementById("error"),
         'positionError' : document.getElementById("positionError"),

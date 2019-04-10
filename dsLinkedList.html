@@ -3,24 +3,19 @@
 <head>
 	<title>Data Structures</title>
 	<link rel="stylesheet" type="text/css" href="styles/dsStyles.css">
-	<script type="text/javascript" src="js/dsArrayList.js"></script>
+	<script type="text/javascript" src="js/dsLinkedList.js"></script>
 	<script src="js/sidenav.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 <body>
 	<div id="container">
-		<h1>Data Structure: ArrayList</h1>
-		<h2>Enter size of list:</h2>
-		<p id="note">(Note: size of list is default 10 if no size is specified)</p>
-		<!-- construct empty list with initial capactiy of ten, or specify initial capacity -->
+		<h1>Data Structure: LinkedList</h1>
 		<div id="createNew">
-			<p>Initial Capacity:</p>
-	            <input type="text" class="size" id="size" name="size" placeholder="Size"><p id="error">&nbsp;*Please enter a valid number</p>
-			<button id="create">Create New ArrayList</button>
+			<button id="create" onclick="openNav()">Create New LinkedList</button>
 		</div>
 
-		<div id="navbtn">
+		<div id="navbtn" style="top:150px;">
 		<span style="font-size:20px;color:dimgray;cursor:pointer;" onclick="openNav()">&#9776; Modify ArrayList</span>
 		</div>
 
@@ -100,7 +95,7 @@
 
 		</div> <!-- close mySideNav div -->
 
-        <div id="elements">
+        <div id="elements" style="top:200px;">
         	<div id="index0" class="elems">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         </div>
 
