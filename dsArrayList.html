@@ -11,7 +11,8 @@
 <body>
 	<div id="container">
 		<h1>Data Structure: ArrayList</h1>
-		<h2>Please enter the size of the list:</h2>
+		<h2>Enter size of list:</h2>
+		<p id="note">(Note: size of list is default 10 if no size is specified)</p>
 		<!-- construct empty list with initial capactiy of ten, or specify initial capacity -->
 		<div id="createNew">
 			<p>Initial Capacity:</p>
@@ -81,9 +82,9 @@
 		    </div>
 
 		    <div id="setAction" class="methods" style="display:none">
-		        <h2>Replaces an element at the specified position in this list with the specified element:</h2>
+		        <h2>Replaces an element at the specified <span style="font-weight:bold;border:1px solid darkgray;border-radius: 4px;padding:5px;">position</span> in this list <span style="font-weight:bold;">with</span> the specified <span style="font-weight:bold;border:1px solid darkgray;border-radius: 4px;padding:5px">element</span>:</h2>
 		        <p>Replace element at index:</p>
-		        <input type="text" class="set" id="set" name="set" placeholder=""> with <input type="text" class="replaceWith" id="replaceWith" name="replaceWith" placeholder="">
+		        <input type="text" class="set" id="set" name="set" placeholder=""> with <input type="text" class="replaceWith" id="replaceWith" name="replaceWith" placeholder=""><p id="setError" style="display:none"> *Please enter a valid index position</p>
 		        <button id="replaceBtn">Replace Element</button>
 		    </div>
 
@@ -93,7 +94,7 @@
 		    </div>
 
 		    <div id="clearAction" class="methods" style="display:none">
-		        <h2>Removes all elements from this list</h2>
+		        <h2>Removes all elements from this list:</h2>
 		        <button id="clearBtn">Clear List</button>
 		    </div>
 

@@ -25,7 +25,7 @@ h2 {
 
 #navbtn {
 	font-family: 'Open Sans', sans-serif;
-	top: 260px;
+	top: 280px;
     position: absolute;
 }
 
@@ -76,7 +76,7 @@ h2 {
 
 	position: absolute;
     /*left: 400px;*/
-    top: 310px;
+    top: 325px;
     /*right: 20px;*/
 }
 
@@ -104,6 +104,14 @@ h2 {
 	color: red;
 }
 
+#sizeDisplay {
+	font-weight: bold;
+	color: slategray;
+	font-size: 50px;
+	margin-left: 80px;
+    margin-top: 10px;
+}
+
 input {
 	width: 80px; /* Full width */
 	height: 35px;
@@ -121,6 +129,11 @@ p {
 	display: inline-block;
 	margin-right: 5px;
 	margin-left: 5px;
+}
+
+#note {
+	margin-top: 0px;
+    font-size: 12px;
 }
 
 button {

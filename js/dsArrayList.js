@@ -66,9 +66,8 @@ class Model extends EventEmitter {
         this.emit('updateSize', this.size);
     }
 
-    set(object, replaceObjectWith) {
-        this.elemIndex = this.getIndex(object);
-        this.array[this.elemIndex] = replaceObjectWith;
+    set(index, replaceObjectWith) {
+        this.array[Number(index)] = replaceObjectWith;
         this.emit('elementReplaced');
     }
 
@@ -142,20 +141,40 @@ class Controller {
     }
 
     replaceElement() {
-    	var element = this._view.getReplacedElement();
+    	var index = this._view.getReplacedIndex();
     	var newElement = this._view.getNewElement();
-    	this._model.set(element, newElement);
+        if (index >= this._model.size || index == "") {
+            this._view.setError();
+            return;
+        } 
+
+        if (newElement == "") {
+            this._view.setElementError();
+            return;
+        }
+        this._view.hideSetError();
+    	this._model.set(index, newElement);
     }
 
     removeElement() {
         var removeIndex = this._view.getRemovedIndex();
         var element = this._view.getRemovedElement();
-        if ((removeIndex != "" && element != "") || 
-            (removeIndex == "" && element == "") ||
+        if ((removeIndex != "" && element != "")) {
+            this._view.removeBothError();
+            return;
+        }
+
+        if ((removeIndex == "" && element == "") ||
             (removeIndex >= this._model.size)) {
             this._view.removeError();
             return;
         } 
+        
+
+        if (this._model.getIndex(element) == -1) {
+            this._view.removeInvalidElement();
+            return;
+        }
 
         if (element != "") {
            removeIndex = this._model.getIndex(element);
@@ -217,8 +236,6 @@ class View extends EventEmitter {
         elements.getButton.addEventListener("click", () => this.emit("getButtonClicked"));
         elements.indexButton.addEventListener("click", () => this.emit("indexOfButtonClicked"));
         elements.clearButton.addEventListener("click", () => this.emit("clearButtonClicked"));
-
-
         elements.replaceButton.addEventListener("click", () => this.emit("replaceButtonClicked"));
 
 
@@ -355,8 +372,8 @@ class View extends EventEmitter {
         
     }
 
-    getReplacedElement() {
-    	return document.getElementById("replace").value;
+    getReplacedIndex() {
+    	return document.getElementById("set").value;
     }
 
     getNewElement() {
@@ -377,10 +394,12 @@ class View extends EventEmitter {
 
     elementDoesNotExist() {
         document.getElementById("result").innerHTML = "False!";
+        document.getElementById("result").style.fontWeight = "bolder";
     }
 
     elementExists() {
         document.getElementById("result").innerHTML = "True!";
+        document.getElementById("result").style.fontWeight = "bolder";
     }
 
     resetElementResult() {
@@ -393,9 +412,12 @@ class View extends EventEmitter {
 
     getResultElement(element) {
         if (element == undefined) {
-            document.getElementById("getResult").innerHTML = "No element at specified index";
+            document.getElementById("getResult").innerHTML = "*No element at specified index";
+            document.getElementById("getResult").style.color = "red";
         } else {
-            document.getElementById("getResult").innerHTML = element;
+            document.getElementById("getResult").style.color = "black";
+            document.getElementById("getResult").innerHTML = "Element: " + element;
+            document.getElementById("getResult").style.fontWeight = "bolder";
         }
     }
 
@@ -408,7 +430,8 @@ class View extends EventEmitter {
     }
 
     returnIndexOf(index) {
-        document.getElementById("indexOfResult").innerHTML = index;
+        document.getElementById("indexOfResult").innerHTML = "Index of element: " + index;
+        document.getElementById("indexOfResult").style.fontWeight = "bolder";
     }
 
 
@@ -454,11 +477,22 @@ class View extends EventEmitter {
     }
 
     removeError() {
+        document.getElementById("removeError").innerHTML = "*Please enter a valid index position";
         document.getElementById("removeError").style.display = "inline-block";
     }
 
     hideRemoveError() {
         document.getElementById("removeError").style.display = "none";
+    }
+
+    removeBothError() {
+        document.getElementById("removeError").innerHTML = "*Only one input allowed";
+        document.getElementById("removeError").style.display = "inline-block";
+    }
+
+    removeInvalidElement() {
+        document.getElementById("removeError").innerHTML = "*Element not in list";
+        document.getElementById("removeError").style.display = "inline-block";
     }
 
     showError() {
@@ -475,6 +509,23 @@ class View extends EventEmitter {
 
     hidePositionError() {
     	this._elements.positionError.style.display = "none";
+    }
+
+    setError() {
+        document.getElementById("setError").style.color = "red";
+        document.getElementById("setError").innerHTML = " *Please enter a valid index position";
+        document.getElementById("setError").style.display = "inline-block";
+    }
+
+    setElementError() {
+        document.getElementById("setError").style.color = "red";
+        document.getElementById("setError").innerHTML = " *Please enter a valid element";
+        document.getElementById("setError").style.display = "inline-block";
+    
+    }
+
+    hideSetError() {
+        document.getElementById("setError").style.display = "none";
     }
 
 }
