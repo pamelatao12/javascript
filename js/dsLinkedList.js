@@ -62,13 +62,13 @@ class Model extends EventEmitter {
             this.array[i] = this.array[i + 1];
         }
         this.size--;
-        this.emit('elementRemoved');
+        this.emit('elementRemoved', index);
         this.emit('updateSize', this.size);
     }
 
     set(index, replaceObjectWith) {
         this.array[Number(index)] = replaceObjectWith;
-        this.emit('elementReplaced');
+        this.emit('elementReplaced', Number(index));
     }
 
     getIndex(object) {
@@ -111,7 +111,6 @@ class Controller {
     constructor(model, view) {
         this._model = model;
         this._view = view;
-        view.on("createButtonClicked", () => this.createArray());
         view.on("addButtonClicked", () => this.addElement());
         view.on("replaceButtonClicked", () => this.replaceElement());
         view.on("removeButtonClicked", () => this.removeElement());
@@ -121,16 +120,14 @@ class Controller {
         view.on("clearButtonClicked", () => this.clearList());
     }
 
-    createArray() {
-        this._view.drawArray();
-    }
-
     addElement() {
         var element = this._view.getAddedElement();
         var index = this._view.getAddedIndex();
 
         if (Number(index) > this._model.size) {
             this._view.showPositionError();
+        } else if (element == "") {
+            this._view.showInvalidElement();
         } else if (index == "") {
             this._view.hidePositionError();
             this._model.add(element);
@@ -221,13 +218,13 @@ class View extends EventEmitter {
         this._model = model;
         this._elements = elements;
 
-        model.on('elementAdded', () => this.drawNode());
+        model.on('elementAdded', size => this.drawNode(size));
         model.on('elementInserted', index => this.insertNode(index));
-        model.on('elementReplaced', () => this.fillArray());
-        model.on('elementRemoved', () => this.fillArray());
+        model.on('elementReplaced', index => this.replaceLL(index));
+        model.on('elementRemoved', index => this.removeNode(index));
         model.on('elementGot', element => this.getResultElement(element));
         model.on('updateSize', size => this.changeSize(size));
-        model.on('listCleared', () => this.fillArray());
+        model.on('listCleared', () => this.clearLL());
 
         elements.addButton.addEventListener("click", () => this.emit("addButtonClicked"));
         elements.removeButton.addEventListener("click", () => this.emit("removeButtonClicked"));
@@ -250,25 +247,64 @@ class View extends EventEmitter {
 
     }
 
-    drawNode() {
+    drawNode(size) {
         var array = this._model.array;
-        var i = this._model.size;
-        if (i == 1) {
+        var i = size;
+        if (this._model.size == 1) {
             this._elements.arrayElem.style.display = "inline-block";
             this._elements.arrayElem.innerHTML = array[0];
             this._elements.arrayElem.style.color = "black";
         } else {
+            var newArrow = this._elements.arrow.cloneNode(true);
+            newArrow.style = "opacity:1;display:inline-block";
+            this._elements.allElements.appendChild(newArrow);
             var newElem = this._elements.arrayElem.cloneNode(true);
-            var newId = "index" + (i - 1);
-            newElem.id = newId;
+            newElem.innerHTML = this.getAddedElement();
             this._elements.allElements.appendChild(newElem);
-            document.getElementById(newId).innerHTML = array[i - 1];
-            document.getElementById(newId).style.color = "black";
         }
     }
 
     insertNode(index) {
+        const elems = document.getElementById("elements");
+        const elements = document.getElementsByClassName("LLelems");
+        const arrows = document.getElementsByClassName("arrow");
+        var newArrow = this._elements.arrow.cloneNode(true);
+        newArrow.style = "opacity:1;display:inline-block";
+        var newElem = this._elements.arrayElem.cloneNode(true);
+        newElem.innerHTML = this.getAddedElement();
+        elems.insertBefore(newElem, elements[index]);
+        elems.insertBefore(newArrow, elements[index + 1]);
+    }
 
+    removeNode(index) {
+        if (index == 0) {
+            const arrows = document.getElementsByClassName("LLarrow");
+            arrows[1].remove();
+        } else {
+            const arrows = document.getElementsByClassName("LLarrow");
+        arrows[index].remove();
+        }
+        const elements = document.getElementsByClassName("LLelems");
+        elements[index].remove();
+    }
+
+    clearLL() {
+        const elements = document.getElementsByClassName("LLelems");
+        elements[0].style.display = "none";
+        while (elements.length > 1) elements[1].remove();
+
+        const arrows = document.getElementsByClassName("LLarrow");
+        while (arrows.length > 1) arrows[1].remove();
+    }
+
+    replaceLL(index) {
+        const arrows = document.getElementsByClassName("LLarrow");
+        const elements = document.getElementsByClassName("LLelems");
+        elements[index].remove();
+        const elems = document.getElementById("elements");
+        var newElem = this._elements.arrayElem.cloneNode(true);
+        newElem.innerHTML = this.getNewElement();
+        elems.insertBefore(newElem, arrows[index + 1]);
     }
 
     //style nav bar buttons
@@ -350,48 +386,6 @@ class View extends EventEmitter {
         return document.getElementById("enterIndex").value;
     }
 
-    fillArray() {
-        var array = this._model.getArray();
-        for (var i = 0; i < this._model.getLength(); i++) {
-            var elemId = "index" + i;
-            if (array[i] == undefined) {
-                document.getElementById(elemId).innerHTML = "";
-            } else {
-                document.getElementById(elemId).innerHTML = array[i];
-                document.getElementById(elemId).style.color = "black";
-            }
-        }
-    }
-
-    insertArray() {
-        if (this.getAddedIndex() != "") {
-            var array = this._model.getArray();
-            var i = this._model.size - 1;
-            this.insertTimeout(i);
-
-            var elemId = "index" + this.getAddedIndex();
-            document.getElementById(elemId).innerHTML = array[this.getAddedIndex()];
-            document.getElementById(elemId).style.color = "black";
-        }
-    }
-
-    insertTimeout(i) {
-        // BB HELP HELP HELP ON SETTIMEOUT
-        if (i > this.getAddedIndex()) {
-        
-            var array = this._model.getArray();
-            var elemId = "index" + i;
-            var pastElemId = "index" + (i - 1);
-            
-            document.getElementById(elemId).innerHTML = array[i];
-            document.getElementById(elemId).style.color = "black";
-            document.getElementById(pastElemId).innerHTML = "";
-            i--;
-            setTimeout(this.insertTimeout(i), 5000);
-        }
-        
-    }
-
     getReplacedIndex() {
         return document.getElementById("set").value;
     }
@@ -454,7 +448,6 @@ class View extends EventEmitter {
         document.getElementById("indexOfResult").style.fontWeight = "bolder";
     }
 
-
     getSizeInput() {
         if (this._elements.size.value == "") {
             return undefined;
@@ -464,36 +457,6 @@ class View extends EventEmitter {
 
     changeSize(size) {
         document.getElementById("sizeDisplay").innerHTML = size;
-    }
-
-    drawArray() {
-        //clear elems first
-        const elements = document.getElementsByClassName("elems");
-        while (elements.length > 1) elements[1].remove();
-        this._elements.arrayElem.innerHTML = "";
-
-        var size = this.getSizeInput();
-        if (size == 0) {
-            this.showError();
-        } else if (size == undefined) {
-            this.hideError();
-            this._elements.arrayElem.style.display = "inline-block";
-            for (var i = 1; i < 10; i++) {
-                var newElem = this._elements.arrayElem.cloneNode(true);
-                var newId = "index" + i;
-                newElem.id = newId;
-                this._elements.allElements.appendChild(newElem);
-            }
-        } else {
-            this.hideError();
-            this._elements.arrayElem.style.display = "inline-block";
-            for (var i = 1; i < size; i++) {
-                var newElem = this._elements.arrayElem.cloneNode(true);
-                var newId = "index" + i;
-                newElem.id = newId;
-                this._elements.allElements.appendChild(newElem);
-            }
-        }
     }
 
     removeError() {
@@ -524,11 +487,17 @@ class View extends EventEmitter {
     }
 
     showPositionError() {
+        this._elements.positionError.innerHTML = "*Please enter a valid index position";
         this._elements.positionError.style.display = "inline-block";
     }
 
     hidePositionError() {
         this._elements.positionError.style.display = "none";
+    }
+
+    showInvalidElement() {
+        this._elements.positionError.style.display = "inline-block";
+        this._elements.positionError.innerHTML = "*Please enter a valid element";
     }
 
     setError() {
@@ -574,6 +543,7 @@ window.onload = function() {
         'replaceButton': document.getElementById("replaceBtn"),
         'clearButton' : document.getElementById("clearBtn"),
         'arrayElem' : document.getElementById("index0"),
+        'arrow' : document.getElementById("arrow0"),
         
         'addAction' : document.getElementById("addAction"),
         'removeAction' : document.getElementById("removeAction"),

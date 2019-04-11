@@ -95,6 +95,28 @@ h2 {
     transition: color 2s ease 0s;
 }
 
+.LLelems {
+	height: 80px;
+	width: 80px;
+	background-color: #f2f2f2;
+	border: 1px solid #DB7093;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 78px;
+	font-size: 20px;
+	font-family: 'Open Sans', sans-serif;
+	color: #f2f2f2;
+}
+
+.LLarrow {
+	display: inline-block;
+    margin-top: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 30px;
+    transition: opacity 3s;
+}
+
 #index0 {
 	display: none;
 	border-left: 1px solid brown;
