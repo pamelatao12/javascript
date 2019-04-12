@@ -27,6 +27,11 @@ class Model extends EventEmitter {
     }
 
     addIndex(object, index) {
+        // expand list if array.length is filled
+        if (this.array.size + 1 == this.array.length) {
+            this.array.length *= 2;
+        }
+
         for (var i = this.size - 1; i >= index; i--) {
             this.array[i + 1] = this.array[i];
         }
@@ -37,6 +42,11 @@ class Model extends EventEmitter {
     }
 
     add(object) {
+        // expand list if array.length is filled
+        if (this.array.size + 1 == this.array.length) {
+            this.array.length *= 2;
+        }
+
         this.array[this.size] = object;
         this.size++;
         this.emit('elementAdded', this.size);
@@ -82,6 +92,18 @@ class Model extends EventEmitter {
         this.size = 0;
         this.emit('listCleared');
         this.emit('updateSize', this.size);
+    }
+
+    getArray() {
+        return this.array;
+    }
+
+    getLength() {
+        return this.array.length;
+    }
+
+    getElemIndex() {
+        return this.elemIndex;
     }
 }
 
@@ -454,6 +476,14 @@ class View extends EventEmitter {
     removeInvalidElement() {
         document.getElementById("removeError").innerHTML = "*Element not in list";
         document.getElementById("removeError").style.display = "inline-block";
+    }
+
+    showError() {
+        this._elements.error.style.display = "inline-block";
+    }
+
+    hideError() {
+        this._elements.error.style.display = "none";
     }
 
     showPositionError() {

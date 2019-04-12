@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Data Structures</title>
+	<link rel="stylesheet" type="text/css" href="styles/dsStyles.css">
+	<script type="text/javascript" src="js/dsLinkedList.js"></script>
+	<script src="js/sidenav.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+<body>
+	<div id="container">
+		<h1>Data Structure: Stack</h1>
+		<div id="createNew">
+			<button id="create" onclick="openNav()">Create New Stack</button>
+		</div>
+
+		<div id="navbtn" style="top:150px;">
+		<span style="font-size:20px;color:dimgray;cursor:pointer;" onclick="openNav()">&#9776; Modify Stack</span>
+		</div>
+
+		<div id="mySidenav" class="sidenav">
+		  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+			<button id="addNav" class="actionNavs" style="background-color:snow;color:black;">Push</button>
+			<button id="removeNav" class="actionNavs" style="background-color: slategray;color: white;">Pop</button>
+			<button id="containsNav" class="actionNavs" style="background-color: slategray;color: white;">Peek</button>
+			<button id="indexNav" class="actionNavs" style="background-color: slategray;color: white;">Search</button>
+			<button id="sizeNav" class="actionNavs" style="background-color: slategray;color: white;">Size</button>
+			<button id="clearNav" class="actionNavs" style="background-color: slategray;color: white;">Clear</button>
+
+			<div id="addAction" class="methods">
+				<!-- 1. append element to end of list
+				2. insert element at position in list 
+				3. show indexes in list visual? -->
+			  	<h2>Pushes an item onto the top of this stack:</h2>
+		        <p>Push:</p>
+		        <input type="text" class="add" id="add" name="add" placeholder="">
+		        <button id="addBtn">Push Element</button>
+	    	</div>
+
+	    	<div id="removeAction" class="methods" style="display:none">
+		        <h2>Removes the object at the top of this stack:</h2>
+		        <button id="removeBtn">Pop Element</button>
+		    </div>
+
+		    <div id="containsAction" class="methods" style="display:none">
+		        <h2>Looks at the object at the top of this stack without removing it from the stack:</h2>
+		        <button id="peekBtn">Peek</button>
+		    </div>
+
+		    <div id="indexAction" class="methods" style="display:none">
+		        <h2>Returns the 1-based position from the top of the stack where the object is located; the return value -1 indicates that the object is not on the stack:</h2>
+		        <p>Search:</p>
+		        <input type="text" class="indexOf" id="indexOf" name="indexOf" placeholder=""><p id="indexOfResult"></p>
+		        <button id="indexBtn">Get Position</button>
+		    </div>
+
+		    <div id="sizeAction" class="methods" style="display:none">
+		        <h2>Total number of elements in this stack:</h2>
+		        <p id="sizeDisplay">0</p>
+		    </div>
+
+		    <div id="clearAction" class="methods" style="display:none">
+		        <h2>Removes all elements from this stack:</h2>
+		        <button id="clearBtn">Clear Stack</button>
+		    </div>
+
+		</div> <!-- close mySideNav div -->
+
+        <div id="stackElements" style="top:200px;">
+        	<div id="stackIndex" class="stackElems">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        </div>
+
+        <!-- <canvas id="dsCanvas" width="600" height="300"></canvas> -->
+	</div>
+</body>
+</html>
