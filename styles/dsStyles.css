@@ -1,5 +1,6 @@
 body {
 	padding-left: 20px;
+	overflow-x: hidden;
 }
 
 h1 {
@@ -89,6 +90,8 @@ h2 {
 	position: absolute;
     right: -40px;
     top: 100px;
+
+    overflow-x: hidden;
 }
 
 .elems {
@@ -165,6 +168,26 @@ h2 {
   		background-color: #f2f2f2;}
 }
 
+@-webkit-keyframes slide {
+    100% { float: right; }
+}
+
+@keyframes slide {
+    100% { right: -600px; }
+}
+
+/*#slide {
+    position: absolute;
+    right: -200px;
+    width: 600px;
+    height: 370px;
+    background: blue;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 2s;
+    animation: slide 0.5s forwards;
+    animation-delay: 1s;
+}*/
+
 #index0 {
 	display: none;
 	border-left: 1px solid brown;
@@ -173,10 +196,17 @@ h2 {
 }
 
 #stackIndex {
+	/*position: absolute;*/
+    /*right: 200px;*/
 	display: none;
-	border-left: 1px solid brown;
-	animation-name: flash;
-	animation-duration: 1s;
+	/*border-left: 1px solid brown;*/
+	/*-webkit-animation: slide 0.5s backwards;
+    -webkit-animation-delay: 2s;*/
+    /*animation: slide 0.5s backwards;*/
+    /*animation: slide 0.5s forwards;*/
+    /*animation-delay: 1s;*/
+	/*animation-name: flash;
+	animation-duration: 1s;*/
 }
 
 #error, #positionError, #removeError {

@@ -145,6 +145,9 @@ class View extends EventEmitter {
             this._elements.arrayElem.style.display = "block";
             this._elements.arrayElem.style.borderBottom = "1px solid #DB7093";
             this._elements.arrayElem.innerHTML = this.getAddedElement();
+            // setTimeout(function(elements) {
+            //     elements.arrayElem.style.right = "600px";
+            // }, 500, this._elements);
         } else {
             const elems = document.getElementById("stackElements");
             const elements = document.getElementsByClassName("stackElems");
@@ -157,8 +160,44 @@ class View extends EventEmitter {
     }
 
     removeNode() {
-        const elements = document.getElementsByClassName("stackElems");
-        elements[0].remove();
+        if (this._model.size == 0) {
+            this._elements.arrayElem.style.position = "none";
+            this._elements.arrayElem.style.right = "";
+            this._elements.arrayElem.style.animation = "none";
+            this._elements.arrayElem.style.opacity = "";
+            this._elements.arrayElem.style.transition = "none";
+
+            this._elements.arrayElem.style.position = "relative";
+            this._elements.arrayElem.style.right = "0px";
+            this._elements.arrayElem.style.animation = "slide 2s forwards";
+            this._elements.arrayElem.style.opacity = "0";
+            this._elements.arrayElem.style.transition = "opacity 1s ease-in-out";
+
+            setTimeout(function (elements) {
+                elements.arrayElem.style.display = "none";
+                elements.arrayElem.style.position = "";
+                elements.arrayElem.style.right = "";
+                elements.arrayElem.style.animation = "none";
+                elements.arrayElem.style.opacity = "";
+                elements.arrayElem.style.transition = "none";
+            }, 1000, this._elements);
+        } else {
+            const elements = document.getElementsByClassName("stackElems");
+            elements[0].style.position = "none";
+            elements[0].style.right = "";
+            elements[0].style.animation = "none";
+            elements[0].style.opacity = "";
+            elements[0].style.transition = "none";
+
+            elements[0].style.position = "relative";
+            elements[0].style.right = "0px";
+            elements[0].style.animation = "slide 2s forwards";
+            elements[0].style.opacity = "0";
+            elements[0].style.transition = "opacity 1s ease-in-out";
+            setTimeout(function(elements) {
+                    elements[0].remove();
+                }, 1000, elements);
+        }
     }
 
     clearLL() {
