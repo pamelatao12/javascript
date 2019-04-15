@@ -145,9 +145,12 @@ class View extends EventEmitter {
             this._elements.arrayElem.style.display = "block";
             this._elements.arrayElem.style.borderBottom = "1px solid #DB7093";
             this._elements.arrayElem.innerHTML = this.getAddedElement();
-            // setTimeout(function(elements) {
-            //     elements.arrayElem.style.right = "600px";
-            // }, 500, this._elements);
+
+            this._elements.arrayElem.style.animationName = "none";
+            this._elements.arrayElem.style.animationDuration = "";
+
+            this._elements.arrayElem.style.animationName = "flash";
+            this._elements.arrayElem.style.animationDuration = "1s";
         } else {
             const elems = document.getElementById("stackElements");
             const elements = document.getElementsByClassName("stackElems");
@@ -155,6 +158,11 @@ class View extends EventEmitter {
             newElem.style.display = "block";
             newElem.style.borderBottom = "none";
             newElem.innerHTML = this.getAddedElement();
+            newElem.style.animationName = "none";
+            newElem.style.animationDuration = "";
+
+            newElem.style.animationName = "flash";
+            newElem.style.animationDuration = "1s";
             elems.insertBefore(newElem, elements[0]);
         }
     }
@@ -171,7 +179,7 @@ class View extends EventEmitter {
             this._elements.arrayElem.style.right = "0px";
             this._elements.arrayElem.style.animation = "slide 2s forwards";
             this._elements.arrayElem.style.opacity = "0";
-            this._elements.arrayElem.style.transition = "opacity 1s ease-in-out";
+            this._elements.arrayElem.style.transition = "opacity 2s ease-in-out";
 
             setTimeout(function (elements) {
                 elements.arrayElem.style.display = "none";
@@ -193,10 +201,10 @@ class View extends EventEmitter {
             elements[0].style.right = "0px";
             elements[0].style.animation = "slide 2s forwards";
             elements[0].style.opacity = "0";
-            elements[0].style.transition = "opacity 1s ease-in-out";
+            elements[0].style.transition = "opacity 1.5s ease-in-out";
             setTimeout(function(elements) {
                     elements[0].remove();
-                }, 1000, elements);
+                }, 2000, elements);
         }
     }
 
