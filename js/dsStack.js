@@ -169,51 +169,38 @@ class View extends EventEmitter {
 
     removeNode() {
         if (this._model.size == 0) {
-            this._elements.arrayElem.style.position = "none";
-            this._elements.arrayElem.style.right = "";
-            this._elements.arrayElem.style.animation = "none";
-            this._elements.arrayElem.style.opacity = "";
-            this._elements.arrayElem.style.transition = "none";
-
-            this._elements.arrayElem.style.position = "relative";
-            this._elements.arrayElem.style.right = "0px";
-            this._elements.arrayElem.style.animation = "slide 2s forwards";
-            this._elements.arrayElem.style.opacity = "0";
-            this._elements.arrayElem.style.transition = "opacity 2s ease-in-out";
-
-            setTimeout(function (elements) {
+            this.resetElemStyles(this._elements.arrayElem);
+            this.setSlideAnimation(this._elements.arrayElem);
+            
+            setTimeout(function (elements, view) {
                 elements.arrayElem.style.display = "none";
-                elements.arrayElem.style.position = "";
-                elements.arrayElem.style.right = "";
-                elements.arrayElem.style.animation = "none";
-                elements.arrayElem.style.opacity = "";
-                elements.arrayElem.style.transition = "none";
-            }, 1000, this._elements);
+                view.resetElemStyles(elements.arrayElem);
+            }, 1000, this._elements, this);
         } else {
             const elements = document.getElementsByClassName("stackElems");
-            elements[0].style.position = "none";
-            elements[0].style.right = "";
-            elements[0].style.animation = "none";
-            elements[0].style.opacity = "";
-            elements[0].style.transition = "none";
+            this.resetElemStyles(elements[0]);
+            this.setSlideAnimation(elements[0]);
 
-            elements[0].style.position = "relative";
-            elements[0].style.right = "0px";
-            elements[0].style.animation = "slide 2s forwards";
-            elements[0].style.opacity = "0";
-            elements[0].style.transition = "opacity 1.5s ease-in-out";
             setTimeout(function(elements) {
                     elements[0].remove();
-                }, 2000, elements);
+                }, 1000, elements);
         }
     }
 
     clearLL() {
         const elements = document.getElementsByClassName("stackElems");
-        elements[elements.length - 1].style.display = "none";
-        while (elements.length > 1) {
-            elements[0].remove();
-        }
+        const stack = document.getElementById("stackElements");
+
+        stack.style.opacity = "0";
+        stack.style.transition = "opacity 1s ease-in-out";
+
+        setTimeout(function (elements, stack, view) {
+            elements[elements.length - 1].style.display = "none";
+            view.resetElemStyles(stack);
+            while (elements.length > 1) {
+                elements[0].remove();
+            }
+        }, 1000, elements, stack, this);
     }
 
     highlightElement() {
@@ -224,6 +211,22 @@ class View extends EventEmitter {
             elements[0].style.animationName = "none";
         }, 1000);
         // flash and then return to normal style
+    }
+
+    resetElemStyles(element) {
+        element.style.position = "";
+        element.style.right = "";
+        element.style.animation = "none";
+        element.style.opacity = "";
+        element.style.transition = "none";
+    }
+
+    setSlideAnimation(element) {
+        element.style.position = "relative";
+        element.style.right = "0px";
+        element.style.animation = "slide 2s forwards";
+        element.style.opacity = "0";
+        element.style.transition = "opacity 1s ease-in-out";
     }
 
     //style nav bar buttons
