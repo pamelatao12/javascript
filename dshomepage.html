@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Data Structures</title>
+	<link rel="stylesheet" type="text/css" href="styles/dsStyles.css">
+	<script type="text/javascript" src="js/dsArray.js"></script>
+	<script type="text/javascript" src="js/dsArrayList.js"></script>
+	<script type="text/javascript" src="js/dsLinkedList.js"></script>
+	<script type="text/javascript" src="js/dsStack.js"></script>
+	<script src="js/sidenav.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+<body>
+	<div id="dataStructuresNav">
+		<button id="ds">Array</button>
+		<button id="ds">ArrayList</button>
+		<button id="ds">LinkedList</button>
+		<button id="ds">Stack</button>
+	</div>
+
+
+	<div id="arrayContainer">
+		<h1>Data Structure: Array</h1>
+		<h2>Please enter the size of the array:</h2>
+		<!-- <div id="bracket">[</div>
+		<div id="space">_</div>
+		<div id="bracket">]</div> -->
+		<div id="createNew">
+			<p>Size:</p>
+	            <input type="text" class="size" id="size" name="size" placeholder="Size"><p id="error">&nbsp;*Please enter a valid number</p>
+			<button id="create">Create New Array</button>
+		</div>
+
+		<div id="navbtn">
+		<span style="font-size:20px;color:dimgray;cursor:pointer;" onclick="openNav()">&#9776; Modify Array</span>
+		</div>
+
+		<div id="mySidenav" class="sidenav">
+		  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+			<button id="addNav" class="actionNavs" style="background-color:snow;color:black;">Add</button>
+			<button id="removeNav" class="actionNavs" style="background-color: slategray;color: white;">Remove</button>
+			<button id="replaceNav" class="actionNavs" style="background-color: slategray;color: white;">Replace</button>
+
+			<div id="addAction">
+			  	<h2>Add an element to the array at the specified position:</h2>
+		        <p>Add:</p>
+		        <input type="text" class="add" id="add" name="add" placeholder="">
+		        <p>Position:</p>
+		        <input type="text" class="enterIndex" id="enterIndex" name="enterIndex" placeholder="">
+		        <p id="positionError" style="display:none"> *Please enter a valid index position</p>
+		        <button id="addBtn">Add Element</button>
+	    	</div>
+
+	    	<div id="removeAction" style="display:none">
+		        <h2>Remove an element in the array:</h2>
+		        <p>Remove:</p>
+		        <input type="text" class="remove" id="remove" name="remove" placeholder="">
+		        <button id="removeBtn">Remove Element</button>
+		    </div>
+
+		    <div id="replaceAction" style="display:none">
+		        <h2>Replace an element in the array:</h2>
+		        <p>Replace:</p>
+		        <input type="text" class="replace" id="replace" name="replace" placeholder=""> with <input type="text" class="replaceWith" id="replaceWith" name="replaceWith" placeholder="">
+		        <button id="replaceBtn">Replace Element</button>
+		    </div>
+		</div>
+
+        <div id="elements">
+        	<div id="index0" class="elems">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        </div>
+
+	</div> <!-- close ArrayContainer div -->
+
+	<div id="arrayListContainer">
+		<h1>Data Structure: ArrayList</h1>
+		<h2>Enter size of list:</h2>
+		<p id="note">(Note: size of list is default 10 if no size is specified)</p>
+		<!-- construct empty list with initial capactiy of ten, or specify initial capacity -->
+		<div id="createNew">
+			<p>Initial Capacity:</p>
+	            <input type="text" class="size" id="size" name="size" placeholder="Size"><p id="error">&nbsp;*Please enter a valid number</p>
+			<button id="create">Create New ArrayList</button>
+		</div>
+
+		<div id="navbtn">
+		<span style="font-size:20px;color:dimgray;cursor:pointer;" onclick="openNav()">&#9776; Modify ArrayList</span>
+		</div>
+
+		<div id="mySidenav" class="sidenav">
+		  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+			<button id="addNav" class="actionNavs" style="background-color:snow;color:black;">Add</button>
+			<button id="removeNav" class="actionNavs" style="background-color: slategray;color: white;">Remove</button>
+			<button id="containsNav" class="actionNavs" style="background-color: slategray;color: white;">Contains</button>
+			<button id="getNav" class="actionNavs" style="background-color: slategray;color: white;">Get</button>
+			<button id="indexNav" class="actionNavs" style="background-color: slategray;color: white;">IndexOf</button>
+			<button id="replaceNav" class="actionNavs" style="background-color: slategray;color: white;">Set</button>
+			<button id="sizeNav" class="actionNavs" style="background-color: slategray;color: white;">Size</button>
+			<button id="clearNav" class="actionNavs" style="background-color: slategray;color: white;">Clear</button>
+
+			<div id="addAction" class="methods">
+				<!-- 1. append element to end of list
+				2. insert element at position in list 
+				3. show indexes in list visual? -->
+			  	<h2>Insert an element at the specified position in this list. If no position is specified, then element is appended to the end of this list:</h2>
+		        <p>Add:</p>
+		        <input type="text" class="add" id="add" name="add" placeholder="">
+		        <p>Position/Index:</p>
+		        <input type="text" class="enterIndex" id="enterIndex" name="enterIndex" placeholder="">
+		        <p id="positionError" style="display:none"> *Please enter a valid index position</p>
+		        <button id="addBtn">Add Element</button>
+	    	</div>
+
+	    	<div id="removeAction" class="methods" style="display:none">
+		        <h2>Remove an element at the specified position in this list, or remove the first occurrence of the specified element from this list, if present:</h2>
+		        <p>Position/Index:</p>
+		        <input type="text" class="removeIndex" id="removeIndex" name="enterIndex" placeholder="">
+		        <p>Remove Element:</p>
+		        <input type="text" class="remove" id="remove" name="remove" placeholder="">
+		        <p id="removeError" style="display:none"> *Please enter a valid index position</p>
+		        <button id="removeBtn">Remove Element</button>
+		    </div>
+
+		    <div id="containsAction" class="methods" style="display:none">
+		        <h2>Returns true if this list contains the specified element:</h2>
+		        <p>List contains:</p>
+		        <input type="text" class="contains" id="contains" name="contains" placeholder=""><p id="result"></p>
+		        <button id="containsBtn">Check</button>
+		    </div>
+
+		    <div id="getAction" class="methods" style="display:none">
+		        <h2>Get the element at the specified position in this list:</h2>
+		        <p>Position/Index:</p>
+		        <input type="text" class="getIndex" id="getIndex" name="getIndex" placeholder=""><p id=getResult></p>
+		        <p id="positionError" style="display:none"> *Please enter a valid index position</p>
+		        <button id="getBtn">Get Element</button>
+		    </div>
+
+		    <div id="indexAction" class="methods" style="display:none">
+		        <h2>Returns the index of the first occurrence of the specified element in this list (-1 if list does not contain the element):</h2>
+		        <p>Get index of:</p>
+		        <input type="text" class="indexOf" id="indexOf" name="indexOf" placeholder=""><p id="indexOfResult"></p>
+		        <button id="indexBtn">Get Index</button>
+		    </div>
+
+		    <div id="setAction" class="methods" style="display:none">
+		        <h2>Replaces an element at the specified <span style="font-weight:bold;border:1px solid darkgray;border-radius: 4px;padding:5px;">position</span> in this list <span style="font-weight:bold;">with</span> the specified <span style="font-weight:bold;border:1px solid darkgray;border-radius: 4px;padding:5px">element</span>:</h2>
+		        <p>Replace element at index:</p>
+		        <input type="text" class="set" id="set" name="set" placeholder=""> with <input type="text" class="replaceWith" id="replaceWith" name="replaceWith" placeholder=""><p id="setError" style="display:none"></p>
+		        <button id="replaceBtn">Replace Element</button>
+		    </div>
+
+		    <div id="sizeAction" class="methods" style="display:none">
+		        <h2>Total number of elements in this list:</h2>
+		        <p id="sizeDisplay">0</p>
+		    </div>
+
+		    <div id="clearAction" class="methods" style="display:none">
+		        <h2>Removes all elements from this list:</h2>
+		        <button id="clearBtn">Clear List</button>
+		    </div>
+
+		</div> <!-- close mySideNav div -->
+
+        <div id="elements">
+        	<div id="index0" class="elems">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        </div>
+
+	</div> <!-- close ArrayListContainer div -->
+
+	<div id="LLcontainer">
+		<h1>Data Structure: LinkedList</h1>
+		<div id="createNew">
+			<button id="create" onclick="openNav()">Create New LinkedList</button>
+		</div>
+
+		<div id="navbtn" style="top:150px;">
+		<span style="font-size:20px;color:dimgray;cursor:pointer;" onclick="openNav()">&#9776; Modify LinkedList</span>
+		</div>
+
+		<div id="mySidenav" class="sidenav">
+		  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+			<button id="addNav" class="actionNavs" style="background-color:snow;color:black;">Add</button>
+			<button id="removeNav" class="actionNavs" style="background-color: slategray;color: white;">Remove</button>
+			<button id="containsNav" class="actionNavs" style="background-color: slategray;color: white;">Contains</button>
+			<button id="getNav" class="actionNavs" style="background-color: slategray;color: white;">Get</button>
+			<button id="indexNav" class="actionNavs" style="background-color: slategray;color: white;">IndexOf</button>
+			<button id="replaceNav" class="actionNavs" style="background-color: slategray;color: white;">Set</button>
+			<button id="sizeNav" class="actionNavs" style="background-color: slategray;color: white;">Size</button>
+			<button id="clearNav" class="actionNavs" style="background-color: slategray;color: white;">Clear</button>
+
+			<div id="addAction" class="methods">
+				<!-- 1. append element to end of list
+				2. insert element at position in list 
+				3. show indexes in list visual? -->
+			  	<h2>Insert an element at the specified position in this list. If no position is specified, then element is appended to the end of this list:</h2>
+		        <p>Add:</p>
+		        <input type="text" class="add" id="add" name="add" placeholder="">
+		        <p>Position/Index:</p>
+		        <input type="text" class="enterIndex" id="enterIndex" name="enterIndex" placeholder="">
+		        <p id="positionError" style="display:none"> *Please enter a valid index position</p>
+		        <button id="addBtn">Add Element</button>
+	    	</div>
+
+	    	<div id="removeAction" class="methods" style="display:none">
+		        <h2>Remove an element at the specified position in this list, or remove the first occurrence of the specified element from this list, if present:</h2>
+		        <p>Position/Index:</p>
+		        <input type="text" class="removeIndex" id="removeIndex" name="enterIndex" placeholder="">
+		        <p>Remove Element:</p>
+		        <input type="text" class="remove" id="remove" name="remove" placeholder="">
+		        <p id="removeError" style="display:none"> *Please enter a valid index position</p>
+		        <button id="removeBtn">Remove Element</button>
+		    </div>
+
+		    <div id="containsAction" class="methods" style="display:none">
+		        <h2>Returns true if this list contains the specified element:</h2>
+		        <p>List contains:</p>
+		        <input type="text" class="contains" id="contains" name="contains" placeholder=""><p id="result"></p>
+		        <button id="containsBtn">Check</button>
+		    </div>
+
+		    <div id="getAction" class="methods" style="display:none">
+		        <h2>Get the element at the specified position in this list:</h2>
+		        <p>Position/Index:</p>
+		        <input type="text" class="getIndex" id="getIndex" name="getIndex" placeholder=""><p id=getResult></p>
+		        <p id="positionError" style="display:none"> *Please enter a valid index position</p>
+		        <button id="getBtn">Get Element</button>
+		    </div>
+
+		    <div id="indexAction" class="methods" style="display:none">
+		        <h2>Returns the index of the first occurrence of the specified element in this list (-1 if list does not contain the element):</h2>
+		        <p>Get index of:</p>
+		        <input type="text" class="indexOf" id="indexOf" name="indexOf" placeholder=""><p id="indexOfResult"></p>
+		        <button id="indexBtn">Get Index</button>
+		    </div>
+
+		    <div id="setAction" class="methods" style="display:none">
+		        <h2>Replaces an element at the specified <span style="font-weight:bold;border:1px solid darkgray;border-radius: 4px;padding:5px;">position</span> in this list <span style="font-weight:bold;">with</span> the specified <span style="font-weight:bold;border:1px solid darkgray;border-radius: 4px;padding:5px">element</span>:</h2>
+		        <p>Replace element at index:</p>
+		        <input type="text" class="set" id="set" name="set" placeholder=""> with <input type="text" class="replaceWith" id="replaceWith" name="replaceWith" placeholder=""><p id="setError" style="display:none"></p>
+		        <button id="replaceBtn">Replace Element</button>
+		    </div>
+
+		    <div id="sizeAction" class="methods" style="display:none">
+		        <h2>Total number of elements in this list:</h2>
+		        <p id="sizeDisplay">0</p>
+		    </div>
+
+		    <div id="clearAction" class="methods" style="display:none">
+		        <h2>Removes all elements from this list:</h2>
+		        <button id="clearBtn">Clear List</button>
+		    </div>
+
+		</div> <!-- close mySideNav div -->
+
+        <div id="elements" style="top:200px;">
+        	<div id="arrow0" class="LLarrow" style="display:none;opacity:0">&rArr;</div>
+        	<div id="index0" class="LLelems">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        </div>
+
+	</div> <!-- close LLcontainer div -->
+
+	<div id="stackContainer">
+		<h1>Data Structure: Stack</h1>
+		<div id="createNew">
+			<button id="create" onclick="openNav()">Create New Stack</button>
+		</div>
+
+		<div id="navbtn" style="top:150px;">
+		<span style="font-size:20px;color:dimgray;cursor:pointer;" onclick="openNav()">&#9776; Modify Stack</span>
+		</div>
+
+		<div id="mySidenav" class="sidenav">
+		  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+			<button id="addNav" class="actionNavs" style="background-color:snow;color:black;">Push</button>
+			<button id="removeNav" class="actionNavs" style="background-color: slategray;color: white;">Pop</button>
+			<button id="containsNav" class="actionNavs" style="background-color: slategray;color: white;">Peek</button>
+			<button id="indexNav" class="actionNavs" style="background-color: slategray;color: white;">Search</button>
+			<button id="sizeNav" class="actionNavs" style="background-color: slategray;color: white;">Size</button>
+			<button id="clearNav" class="actionNavs" style="background-color: slategray;color: white;">Clear</button>
+
+			<div id="addAction" class="methods">
+				<!-- 1. append element to end of list
+				2. insert element at position in list 
+				3. show indexes in list visual? -->
+			  	<h2>Pushes an item onto the top of this stack:</h2>
+		        <p>Push:</p>
+		        <input type="text" class="add" id="add" name="add" placeholder=""> <p id="positionError"></p>
+		        <button id="addBtn">Push Element</button>
+	    	</div>
+
+	    	<div id="removeAction" class="methods" style="display:none">
+		        <h2>Removes the object at the top of this stack:</h2>
+		        <button id="removeBtn">Pop Element</button>
+		    </div>
+
+		    <div id="containsAction" class="methods" style="display:none">
+		        <h2>Looks at the object at the top of this stack without removing it from the stack:</h2>
+		        <button id="peekBtn">Peek</button>
+		    </div>
+
+		    <div id="indexAction" class="methods" style="display:none">
+		        <h2>Returns the 1-based position from the top of the stack where the object is located; the return value -1 indicates that the object is not on the stack:</h2>
+		        <p>Search:</p>
+		        <input type="text" class="indexOf" id="indexOf" name="indexOf" placeholder=""><p id="indexOfResult"></p>
+		        <button id="indexBtn">Get Position</button>
+		    </div>
+
+		    <div id="sizeAction" class="methods" style="display:none">
+		        <h2>Total number of elements in this stack:</h2>
+		        <p id="sizeDisplay">0</p>
+		    </div>
+
+		    <div id="clearAction" class="methods" style="display:none">
+		        <h2>Removes all elements from this stack:</h2>
+		        <button id="clearBtn">Clear Stack</button>
+		    </div>
+
+		</div> <!-- close mySideNav div -->
+
+        <div id="stackElements">
+        	<div id="stackIndex" class="stackElems">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        </div>
+
+	</div>
+	
+</body>
+</html>
