@@ -312,28 +312,3 @@ class ArrayView extends EventEmitter {
     // }
 
 }
-
-window.onload = function() {
-    const model = new ArrayModel(['node.js', 'react']);
-    const view = new ArrayView(model, {
-        'createButton': document.getElementById("create"),
-        'size': document.getElementById("size"),
-        'error' : document.getElementById("error"),
-        'positionError' : document.getElementById("positionError"),
-        // 'dsCanvas': document.getElementById("dsCanvas"),
-        // 'context': document.getElementById("dsCanvas").getContext("2d"),
-        'addButton': document.getElementById("addBtn"),
-        'add': document.getElementById("add"),
-        'removeButton': document.getElementById("removeBtn"),
-        'replaceButton': document.getElementById("replaceBtn"),
-        'arrayElem' : document.getElementById("index0"),
-        'addNav' : document.getElementById("addNav"),
-        'removeNav' : document.getElementById("removeNav"),
-        'replaceNav' : document.getElementById("replaceNav"),
-        'addAction' : document.getElementById("addAction"),
-        'removeAction' : document.getElementById("removeAction"),
-        'replaceAction' : document.getElementById("replaceAction"),
-        'allElements' : document.getElementById("elements")
-    });
-    const controller = new ArrayController(model, view);
-}

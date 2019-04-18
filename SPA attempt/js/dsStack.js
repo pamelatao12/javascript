@@ -1,17 +1,17 @@
-class EventEmitter {
-    constructor() {
-        this._events = {};
-    }
-    // for adding event handler
-    on(event, listener) {
-        (this._events[event] || (this._events[event] = [])).push(listener);
-        return this;
-    }
-    // for calling event handlers for specified event
-    emit(event, arg) {
-        (this._events[event] || []).slice().forEach(lsn => lsn(arg));
-    }
-}
+// class EventEmitter {
+//     constructor() {
+//         this._events = {};
+//     }
+//     // for adding event handler
+//     on(event, listener) {
+//         (this._events[event] || (this._events[event] = [])).push(listener);
+//         return this;
+//     }
+//     // for calling event handlers for specified event
+//     emit(event, arg) {
+//         (this._events[event] || []).slice().forEach(lsn => lsn(arg));
+//     }
+// }
 
 
 /**
@@ -316,36 +316,3 @@ class StackView extends EventEmitter {
     }
 }
 
-window.onload = function() {
-    const model = new StackModel(['node.js', 'react']);
-    const view = new StackView(model, {
-        'size': document.getElementById("size"),
-        'error' : document.getElementById("error"),
-        'positionError' : document.getElementById("positionError"),
-        'addNav' : document.getElementById("addNav"),
-        'removeNav' : document.getElementById("removeNav"),
-        'containsNav' : document.getElementById("containsNav"),
-        'indexNav' : document.getElementById("indexNav"),
-        'sizeNav' : document.getElementById("sizeNav"),
-        'clearNav' : document.getElementById("clearNav"),
-
-        'addButton': document.getElementById("addBtn"),
-        'add': document.getElementById("add"),
-        'removeButton': document.getElementById("removeBtn"),
-        'peekButton' : document.getElementById("peekBtn"),
-        'indexButton' : document.getElementById("indexBtn"),
-        'clearButton' : document.getElementById("clearBtn"),
-        'arrayElem' : document.getElementById("stackIndex"),
-        
-        'addAction' : document.getElementById("addAction"),
-        'removeAction' : document.getElementById("removeAction"),
-        'containsAction' : document.getElementById("containsAction"),
-        'indexAction' : document.getElementById("indexAction"),
-        'sizeAction' : document.getElementById("sizeAction"),
-        'clearAction' : document.getElementById("clearAction"),
-        
-
-        'allElements' : document.getElementById("stackElements")
-    });
-    const controller = new StackController(model, view);
-}

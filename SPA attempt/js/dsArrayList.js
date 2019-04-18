@@ -1,17 +1,17 @@
-class EventEmitter {
-    constructor() {
-        this._events = {};
-    }
-    // for adding event handler
-    on(event, listener) {
-        (this._events[event] || (this._events[event] = [])).push(listener);
-        return this;
-    }
-    // for calling event handlers for specified event
-    emit(event, arg) {
-        (this._events[event] || []).slice().forEach(lsn => lsn(arg));
-    }
-}
+// class EventEmitter {
+//     constructor() {
+//         this._events = {};
+//     }
+//     // for adding event handler
+//     on(event, listener) {
+//         (this._events[event] || (this._events[event] = [])).push(listener);
+//         return this;
+//     }
+//     // for calling event handlers for specified event
+//     emit(event, arg) {
+//         (this._events[event] || []).slice().forEach(lsn => lsn(arg));
+//     }
+// }
 
 
 /**
@@ -528,45 +528,4 @@ class ArrayListView extends EventEmitter {
         document.getElementById("setError").style.display = "none";
     }
 
-}
-
-window.onload = function() {
-    const model = new ArrayListModel(['node.js', 'react']);
-    const view = new ArrayListView(model, {
-        'createButton': document.getElementById("create"),
-        'size': document.getElementById("size"),
-        'error' : document.getElementById("error"),
-        'positionError' : document.getElementById("positionError"),
-        'addNav' : document.getElementById("addNav"),
-        'removeNav' : document.getElementById("removeNav"),
-        'replaceNav' : document.getElementById("replaceNav"),
-        'containsNav' : document.getElementById("containsNav"),
-        'getNav' : document.getElementById("getNav"),
-        'indexNav' : document.getElementById("indexNav"),
-        'sizeNav' : document.getElementById("sizeNav"),
-        'clearNav' : document.getElementById("clearNav"),
-
-        'addButton': document.getElementById("addBtn"),
-        'add': document.getElementById("add"),
-        'removeButton': document.getElementById("removeBtn"),
-        'containsButton' : document.getElementById("containsBtn"),
-        'getButton' : document.getElementById("getBtn"),
-        'indexButton' : document.getElementById("indexBtn"),
-        'replaceButton': document.getElementById("replaceBtn"),
-        'clearButton' : document.getElementById("clearBtn"),
-        'arrayElem' : document.getElementById("index0"),
-        
-        'addAction' : document.getElementById("addAction"),
-        'removeAction' : document.getElementById("removeAction"),
-        'containsAction' : document.getElementById("containsAction"),
-        'getAction' : document.getElementById("getAction"),
-        'indexAction' : document.getElementById("indexAction"),
-        'setAction' : document.getElementById("setAction"),
-        'sizeAction' : document.getElementById("sizeAction"),
-        'clearAction' : document.getElementById("clearAction"),
-        
-
-        'allElements' : document.getElementById("elements")
-    });
-    const controller = new ArrayListController(model, view);
 }

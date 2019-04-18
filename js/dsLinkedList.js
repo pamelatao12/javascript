@@ -17,7 +17,7 @@ class EventEmitter {
 /**
  * The Model - stores data, notifies observers about changes
  */
-class Model extends EventEmitter {
+class LLModel extends EventEmitter {
 
     constructor() {
         super();
@@ -85,7 +85,7 @@ class Model extends EventEmitter {
     }
 }
 
-class Controller {
+class LLController {
     constructor(model, view) {
         this._model = model;
         this._view = view;
@@ -189,7 +189,7 @@ class Controller {
 }
 
 
-class View extends EventEmitter {
+class LLView extends EventEmitter {
 
     constructor(model, elements) {
         super();
@@ -490,8 +490,8 @@ class View extends EventEmitter {
 }
 
 window.onload = function() {
-    const model = new Model(['node.js', 'react']);
-    const view = new View(model, {
+    const model = new LLModel(['node.js', 'react']);
+    const view = new LLView(model, {
         'size': document.getElementById("size"),
         'error' : document.getElementById("error"),
         'positionError' : document.getElementById("positionError"),
@@ -527,5 +527,5 @@ window.onload = function() {
 
         'allElements' : document.getElementById("elements")
     });
-    const controller = new Controller(model, view);
+    const controller = new LLController(model, view);
 }

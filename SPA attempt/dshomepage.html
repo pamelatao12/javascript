@@ -3,20 +3,22 @@
 <head>
 	<title>Data Structures</title>
 	<link rel="stylesheet" type="text/css" href="styles/dsStyles.css">
+	<script type="text/javascript" src="js/homepage.js"></script>
+	<script type="text/javascript" src="js/dsMVC.js"></script>
 	<script type="text/javascript" src="js/dsArray.js"></script>
 	<script type="text/javascript" src="js/dsArrayList.js"></script>
 	<script type="text/javascript" src="js/dsLinkedList.js"></script>
 	<script type="text/javascript" src="js/dsStack.js"></script>
-	<script src="js/sidenav.js"></script>
+	<script type="text/javascript" src="js/sidenav.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 <body>
 	<div id="dataStructuresNav">
-		<button id="ds">Array</button>
-		<button id="ds">ArrayList</button>
-		<button id="ds">LinkedList</button>
-		<button id="ds">Stack</button>
+		<button id="dsArray" onclick="showArray()">Array</button>
+		<button id="dsArrayList" onclick="showArrayList()">ArrayList</button>
+		<button id="dsLinkedList" onclick="showLL()">LinkedList</button>
+		<button id="dsStack" onclick="showStack()">Stack</button>
 	</div>
 
 
@@ -171,7 +173,7 @@
 
 	</div> <!-- close ArrayListContainer div -->
 
-	<div id="LLcontainer">
+	<div id="LLContainer">
 		<h1>Data Structure: LinkedList</h1>
 		<div id="createNew">
 			<button id="create" onclick="openNav()">Create New LinkedList</button>
