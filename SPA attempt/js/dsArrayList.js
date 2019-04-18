@@ -462,6 +462,7 @@ class ArrayListView extends EventEmitter {
                 var newElem = this._elements.arrayElem.cloneNode(true);
                 var newId = "ALindex" + i;
                 newElem.id = newId;
+                newElem.style.borderLeft = "none";
                 this._elements.allElements.appendChild(newElem);
             }
         } else {

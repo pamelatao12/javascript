@@ -1,4 +1,3 @@
-
 function showArray() {
 	this.reset();
 	document.getElementById("arrayContainer").style.display = "initial";

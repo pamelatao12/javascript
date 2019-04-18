@@ -38,7 +38,7 @@ function LLJS() {
     const view = new LLView(model, {
         'LLsize': document.getElementById("LLsize"),
         'LLerror' : document.getElementById("LLerror"),
-        'positionError' : document.getElementById("LLpositionError"),
+        'LLpositionError' : document.getElementById("LLpositionError"),
         'LLaddNav' : document.getElementById("LLaddNav"),
         'LLremoveNav' : document.getElementById("LLremoveNav"),
         'LLreplaceNav' : document.getElementById("LLreplaceNav"),
