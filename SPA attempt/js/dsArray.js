@@ -74,10 +74,6 @@ class ArrayController {
         view.on("addButtonClicked", () => this.addElement());
         view.on("replaceButtonClicked", () => this.replaceElement());
         view.on("removeButtonClicked", () => this.removeElement());
-
-        // view.on("startButtonClicked", () => this.startGame());
-        // view.on("autoButtonClicked", () => this.automateGame());
-        // view.on("pauseButtonClicked", () => this.restartGame());
     }
 
     createArray() {
@@ -86,13 +82,13 @@ class ArrayController {
 
     addElement() {
 	    var element = this._view.getAddedElement();
-	    var index = Number(this._view.getAddedIndex());
+	    var index = this._view.getAddedIndex();
 
-	    if (index == undefined || index >= this._view.getSizeInput()) {
+	    if (index == "" || index >= this._view.getSizeInput()) {
 	    	this._view.showPositionError();
 	    } else {
 	    	this._view.hidePositionError();
-	    	this._model.add(element, index);
+	    	this._model.add(element, Number(index));
 	    }
     }
 
@@ -106,44 +102,6 @@ class ArrayController {
     	var element = this._view.getRemovedElement();
     	this._model.remove(element);
     }
-
-
-    // changeDirection(key) {
-    // 	this._model.automateOff();
-    // 	this._model.changeDirection(key);
-    // }
-
-    // restartGame() {
-    // 	this._model.pausePressed();
-    // }
-
-    // startGame() {
-    // 	this.gameStarted = true;
-    // 	if (this._model.lostGame()) {
-    // 		this._model.restart();
-    // 		this._model.automateOff();
-    // 		return;
-    // 	}
-    // 	if (this._model.isAuto()) {
-    // 		this._model.automateGame();
-    // 	}
-
-    // 	if (this._model.didGamePause()) {
-    // 		this._model.gamePaused();
-    // 		return;
-    // 	}
-
-    // 	setTimeout(this.onTick, this._model.getSpeed(), this._model, this._view, this);
-    // }
-
-    // onTick(model, view, controller) {
-    // 	this._view = view;
-    // 	this._model = model;
-    // 	this._controller = controller;
-    // 	this._view.drawFood();
-    // 	this._model.moveSnake();
-    // 	this._controller.startGame();
-    // }
 
 }
 
@@ -170,7 +128,6 @@ class ArrayView extends EventEmitter {
         elements.replaceNav.addEventListener("click", () => this.replaceNavStyle());
         
 
-        // document.addEventListener("keydown", key => this.emit('keyPressed', key));
     }
 
     addNavStyle() {
@@ -220,13 +177,13 @@ class ArrayView extends EventEmitter {
     }
 
     getAddedIndex() {
-    	return document.getElementById("enterIndex").value;
+    	return document.getElementById("AenterIndex").value;
     }
 
     fillArray() {
     	var array = this._model.getArray();
     	for (var i = 0; i < this._model.getSize(); i++) {
-    		var elemId = "index" + i;
+    		var elemId = "Aindex" + i;
     		if (array[i] == undefined) {
     			document.getElementById(elemId).innerHTML = "";
     		} else {
@@ -234,21 +191,19 @@ class ArrayView extends EventEmitter {
     			document.getElementById(elemId).style.color = "black";
     		}
     	}
-        // var index = this.getAddedIndex();
-        // var elemId = "index" + index;
-        // document.getElementById(elemId).innerHTML = this.getAddedElement();
+        
     }
 
     getReplacedElement() {
-    	return document.getElementById("replace").value;
+    	return document.getElementById("Areplace").value;
     }
 
     getNewElement() {
-    	return document.getElementById("replaceWith").value;
+    	return document.getElementById("AreplaceWith").value;
     }
 
     getRemovedElement() {
-    	return document.getElementById("remove").value;
+    	return document.getElementById("Aremove").value;
     }
 
     getSizeInput() {
@@ -257,13 +212,6 @@ class ArrayView extends EventEmitter {
     	}
     	return Number(this._elements.size.value);
     }
-
-    // replaceArray() {
-    // 	var index = this._model.getElemIndex();
-    // 	var element = this.getReplacedElement();
-    // 	var elemId = "index" + index;
-    //     document.getElementById(elemId).innerHTML = this.getNewElement();
-    // }
 
     drawArray() {
     	//clear elems first
@@ -279,7 +227,7 @@ class ArrayView extends EventEmitter {
         	this._elements.arrayElem.style.display = "inline-block";
 	        for (var i = 1; i < size; i++) {
 	        	var newElem = this._elements.arrayElem.cloneNode(true);
-	        	var newId = "index" + i;
+	        	var newId = "Aindex" + i;
 	        	newElem.id = newId;
 	        	this._elements.allElements.appendChild(newElem);
 	        }
@@ -301,14 +249,4 @@ class ArrayView extends EventEmitter {
     hidePositionError() {
     	this._elements.positionError.style.display = "none";
     }
-
-
-
-    // clearCanvas() {
-    // 	this._elements.context.fillStyle = "#fff5e6";
-    // 	this._elements.context.strokeStyle = "brown";
-    // 	this._elements.context.fillRect(0, 0, this._elements.gameCanvas.width, this._elements.gameCanvas.height);
-    // 	this._elements.context.strokeRect(0, 0, this._elements.gameCanvas.width, this._elements.gameCanvas.height);
-    // }
-
 }

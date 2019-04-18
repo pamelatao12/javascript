@@ -126,35 +126,35 @@ class StackView extends EventEmitter {
         model.on('updateSize', size => this.changeSize(size));
         model.on('listCleared', () => this.clearLL());
 
-        elements.addButton.addEventListener("click", () => this.emit("addButtonClicked"));
-        elements.removeButton.addEventListener("click", () => this.emit("removeButtonClicked"));
-        elements.peekButton.addEventListener("click", () => this.emit("peekButtonClicked"));
-        elements.indexButton.addEventListener("click", () => this.emit("indexOfButtonClicked"));
-        elements.clearButton.addEventListener("click", () => this.emit("clearButtonClicked"));
+        elements.SaddButton.addEventListener("click", () => this.emit("addButtonClicked"));
+        elements.SremoveButton.addEventListener("click", () => this.emit("removeButtonClicked"));
+        elements.SpeekButton.addEventListener("click", () => this.emit("peekButtonClicked"));
+        elements.SindexButton.addEventListener("click", () => this.emit("indexOfButtonClicked"));
+        elements.SclearButton.addEventListener("click", () => this.emit("clearButtonClicked"));
 
-        elements.addNav.addEventListener("click", () => this.addNavStyle())
-        elements.removeNav.addEventListener("click", () => this.removeNavStyle());
-        elements.containsNav.addEventListener("click", () => this.containsNavStyle());
-        elements.indexNav.addEventListener("click", () => this.indexNavStyle());
-        elements.sizeNav.addEventListener("click", () => this.sizeNavStyle());
-        elements.clearNav.addEventListener("click", () => this.clearNavStyle());
+        elements.SaddNav.addEventListener("click", () => this.addNavStyle())
+        elements.SremoveNav.addEventListener("click", () => this.removeNavStyle());
+        elements.ScontainsNav.addEventListener("click", () => this.containsNavStyle());
+        elements.SindexNav.addEventListener("click", () => this.indexNavStyle());
+        elements.SsizeNav.addEventListener("click", () => this.sizeNavStyle());
+        elements.SclearNav.addEventListener("click", () => this.clearNavStyle());
     }
 
     insertNode() {
         if (this._model.size == 1) {
-            this._elements.arrayElem.style.display = "block";
-            this._elements.arrayElem.style.borderBottom = "1px solid #DB7093";
-            this._elements.arrayElem.innerHTML = this.getAddedElement();
+            this._elements.SarrayElem.style.display = "block";
+            this._elements.SarrayElem.style.borderBottom = "1px solid #DB7093";
+            this._elements.SarrayElem.innerHTML = this.getAddedElement();
 
-            this._elements.arrayElem.style.animationName = "none";
-            this._elements.arrayElem.style.animationDuration = "";
+            this._elements.SarrayElem.style.animationName = "none";
+            this._elements.SarrayElem.style.animationDuration = "";
 
-            this._elements.arrayElem.style.animationName = "flash";
-            this._elements.arrayElem.style.animationDuration = "1s";
+            this._elements.SarrayElem.style.animationName = "flash";
+            this._elements.SarrayElem.style.animationDuration = "1s";
         } else {
-            const elems = document.getElementById("stackElements");
-            const elements = document.getElementsByClassName("stackElems");
-            var newElem = this._elements.arrayElem.cloneNode(true);
+            const elems = document.getElementById("SstackElements");
+            const elements = document.getElementsByClassName("SstackElems");
+            var newElem = this._elements.SarrayElem.cloneNode(true);
             newElem.style.display = "block";
             newElem.style.borderBottom = "none";
             newElem.innerHTML = this.getAddedElement();
@@ -169,15 +169,15 @@ class StackView extends EventEmitter {
 
     removeNode() {
         if (this._model.size == 0) {
-            this.resetElemStyles(this._elements.arrayElem);
-            this.setSlideAnimation(this._elements.arrayElem);
+            this.resetElemStyles(this._elements.SarrayElem);
+            this.setSlideAnimation(this._elements.SarrayElem);
             
             setTimeout(function (elements, view) {
-                elements.arrayElem.style.display = "none";
-                view.resetElemStyles(elements.arrayElem);
+                elements.SarrayElem.style.display = "none";
+                view.resetElemStyles(elements.SarrayElem);
             }, 1000, this._elements, this);
         } else {
-            const elements = document.getElementsByClassName("stackElems");
+            const elements = document.getElementsByClassName("SstackElems");
             this.resetElemStyles(elements[0]);
             this.setSlideAnimation(elements[0]);
 
@@ -188,8 +188,8 @@ class StackView extends EventEmitter {
     }
 
     clearLL() {
-        const elements = document.getElementsByClassName("stackElems");
-        const stack = document.getElementById("stackElements");
+        const elements = document.getElementsByClassName("SstackElems");
+        const stack = document.getElementById("SstackElements");
 
         stack.style.opacity = "0";
         stack.style.transition = "opacity 1s ease-in-out";
@@ -204,7 +204,7 @@ class StackView extends EventEmitter {
     }
 
     highlightElement() {
-        const elements = document.getElementsByClassName("stackElems");
+        const elements = document.getElementsByClassName("SstackElems");
         elements[0].style.animationName = "peek";
         elements[0].style.animationDuration = "1s";
         setTimeout(function () {
@@ -231,12 +231,12 @@ class StackView extends EventEmitter {
 
     //style nav bar buttons
     defaultNavStyles() {
-        const btnElements = document.getElementsByClassName("actionNavs");
+        const btnElements = document.getElementsByClassName("SactionNavs");
         Array.prototype.forEach.call(btnElements, function (element) {
             element.style.backgroundColor = "slategray";
             element.style.color = "white";
         });
-        const actionElements = document.getElementsByClassName("methods");
+        const actionElements = document.getElementsByClassName("Smethods");
         Array.prototype.forEach.call(actionElements, function (action) {
             action.style.display = "none";
         });
@@ -244,75 +244,75 @@ class StackView extends EventEmitter {
 
     addNavStyle() {
         this.defaultNavStyles();
-        this._elements.addAction.style.display = "block";
-        this._elements.addNav.style.backgroundColor = "snow";
-        this._elements.addNav.style.color = "black";
+        this._elements.SaddAction.style.display = "block";
+        this._elements.SaddNav.style.backgroundColor = "snow";
+        this._elements.SaddNav.style.color = "black";
     }
 
     removeNavStyle() {
         this.defaultNavStyles();
-        this._elements.removeAction.style.display = "block";
-        this._elements.removeNav.style.backgroundColor = "snow";
-        this._elements.removeNav.style.color = "black";
+        this._elements.SremoveAction.style.display = "block";
+        this._elements.SremoveNav.style.backgroundColor = "snow";
+        this._elements.SremoveNav.style.color = "black";
     }
 
     containsNavStyle() {
         this.defaultNavStyles();
-        this._elements.containsAction.style.display = "block";
-        this._elements.containsNav.style.backgroundColor = "snow";
-        this._elements.containsNav.style.color = "black";
+        this._elements.ScontainsAction.style.display = "block";
+        this._elements.ScontainsNav.style.backgroundColor = "snow";
+        this._elements.ScontainsNav.style.color = "black";
     }
 
     indexNavStyle() {
         this.defaultNavStyles();
-        this._elements.indexAction.style.display = "block";
-        this._elements.indexNav.style.backgroundColor = "snow";
-        this._elements.indexNav.style.color = "black";
+        this._elements.SindexAction.style.display = "block";
+        this._elements.SindexNav.style.backgroundColor = "snow";
+        this._elements.SindexNav.style.color = "black";
     }
 
     sizeNavStyle() {
         this.defaultNavStyles();
-        this._elements.sizeAction.style.display = "block";
-        this._elements.sizeNav.style.backgroundColor = "snow";
-        this._elements.sizeNav.style.color = "black";
+        this._elements.SsizeAction.style.display = "block";
+        this._elements.SsizeNav.style.backgroundColor = "snow";
+        this._elements.SsizeNav.style.color = "black";
     }
 
     clearNavStyle() {
         this.defaultNavStyles();
-        this._elements.clearAction.style.display = "block";
-        this._elements.clearNav.style.backgroundColor = "snow";
-        this._elements.clearNav.style.color = "black";
+        this._elements.SclearAction.style.display = "block";
+        this._elements.SclearNav.style.backgroundColor = "snow";
+        this._elements.SclearNav.style.color = "black";
     }
     // end style nav bar buttons
 
 
     getAddedElement() {
-        return this._elements.add.value;
+        return this._elements.Sadd.value;
     }
 
     getIndexOfElement() {
-        return document.getElementById("indexOf").value;
+        return document.getElementById("SindexOf").value;
     }
 
     returnIndexOf(index) {
-        document.getElementById("indexOfResult").innerHTML = "Index of element: " + index;
-        document.getElementById("indexOfResult").style.fontWeight = "bolder";
+        document.getElementById("SindexOfResult").innerHTML = "Index of element: " + index;
+        document.getElementById("SindexOfResult").style.fontWeight = "bolder";
     }
 
     getSizeInput() {
-        if (this._elements.size.value == "") {
+        if (this._elements.Ssize.value == "") {
             return undefined;
         }
-        return Number(this._elements.size.value);
+        return Number(this._elements.Ssize.value);
     }
 
     changeSize(size) {
-        document.getElementById("sizeDisplay").innerHTML = size;
+        document.getElementById("SsizeDisplay").innerHTML = size;
     }
 
     showInvalidElement() {
-        this._elements.positionError.style.display = "inline-block";
-        this._elements.positionError.innerHTML = "*Please enter a valid element";
+        this._elements.SpositionError.style.display = "inline-block";
+        this._elements.SpositionError.innerHTML = "*Please enter a valid element";
     }
 }
 

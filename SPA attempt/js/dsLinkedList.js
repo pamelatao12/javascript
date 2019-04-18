@@ -204,23 +204,23 @@ class LLView extends EventEmitter {
         model.on('updateSize', size => this.changeSize(size));
         model.on('listCleared', () => this.clearLL());
 
-        elements.addButton.addEventListener("click", () => this.emit("addButtonClicked"));
-        elements.removeButton.addEventListener("click", () => this.emit("removeButtonClicked"));
-        elements.containsButton.addEventListener("click", () => this.emit("containsButtonClicked"));
-        elements.getButton.addEventListener("click", () => this.emit("getButtonClicked"));
-        elements.indexButton.addEventListener("click", () => this.emit("indexOfButtonClicked"));
-        elements.clearButton.addEventListener("click", () => this.emit("clearButtonClicked"));
-        elements.replaceButton.addEventListener("click", () => this.emit("replaceButtonClicked"));
+        elements.LLaddButton.addEventListener("click", () => this.emit("addButtonClicked"));
+        elements.LLremoveButton.addEventListener("click", () => this.emit("removeButtonClicked"));
+        elements.LLcontainsButton.addEventListener("click", () => this.emit("containsButtonClicked"));
+        elements.LLgetButton.addEventListener("click", () => this.emit("getButtonClicked"));
+        elements.LLindexButton.addEventListener("click", () => this.emit("indexOfButtonClicked"));
+        elements.LLclearButton.addEventListener("click", () => this.emit("clearButtonClicked"));
+        elements.LLreplaceButton.addEventListener("click", () => this.emit("replaceButtonClicked"));
 
 
-        elements.addNav.addEventListener("click", () => this.addNavStyle())
-        elements.removeNav.addEventListener("click", () => this.removeNavStyle());
-        elements.replaceNav.addEventListener("click", () => this.replaceNavStyle());
-        elements.containsNav.addEventListener("click", () => this.containsNavStyle());
-        elements.getNav.addEventListener("click", () => this.getNavStyle());
-        elements.indexNav.addEventListener("click", () => this.indexNavStyle());
-        elements.sizeNav.addEventListener("click", () => this.sizeNavStyle());
-        elements.clearNav.addEventListener("click", () => this.clearNavStyle());
+        elements.LLaddNav.addEventListener("click", () => this.addNavStyle())
+        elements.LLremoveNav.addEventListener("click", () => this.removeNavStyle());
+        elements.LLreplaceNav.addEventListener("click", () => this.replaceNavStyle());
+        elements.LLcontainsNav.addEventListener("click", () => this.containsNavStyle());
+        elements.LLgetNav.addEventListener("click", () => this.getNavStyle());
+        elements.LLindexNav.addEventListener("click", () => this.indexNavStyle());
+        elements.LLsizeNav.addEventListener("click", () => this.sizeNavStyle());
+        elements.LLclearNav.addEventListener("click", () => this.clearNavStyle());
         
 
     }
@@ -229,26 +229,26 @@ class LLView extends EventEmitter {
         var array = this._model.array;
         var i = size;
         if (this._model.size == 1) {
-            this._elements.arrayElem.style.display = "inline-block";
-            this._elements.arrayElem.innerHTML = array[0];
-            this._elements.arrayElem.style.color = "black";
+            this._elements.LLarrayElem.style.display = "inline-block";
+            this._elements.LLarrayElem.innerHTML = array[0];
+            this._elements.LLarrayElem.style.color = "black";
         } else {
-            var newArrow = this._elements.arrow.cloneNode(true);
+            var newArrow = this._elements.LLarrow.cloneNode(true);
             newArrow.style = "opacity:1;display:inline-block";
-            this._elements.allElements.appendChild(newArrow);
-            var newElem = this._elements.arrayElem.cloneNode(true);
+            this._elements.LLallElements.appendChild(newArrow);
+            var newElem = this._elements.LLarrayElem.cloneNode(true);
             newElem.innerHTML = this.getAddedElement();
-            this._elements.allElements.appendChild(newElem);
+            this._elements.LLallElements.appendChild(newElem);
         }
     }
 
     insertNode(index) {
-        const elems = document.getElementById("elements");
+        const elems = document.getElementById("LLelements");
         const elements = document.getElementsByClassName("LLelems");
-        const arrows = document.getElementsByClassName("arrow");
-        var newArrow = this._elements.arrow.cloneNode(true);
+        const arrows = document.getElementsByClassName("LLarrow");
+        var newArrow = this._elements.LLarrow.cloneNode(true);
         newArrow.style = "opacity:1;display:inline-block";
-        var newElem = this._elements.arrayElem.cloneNode(true);
+        var newElem = this._elements.LLarrayElem.cloneNode(true);
         newElem.innerHTML = this.getAddedElement();
         elems.insertBefore(newElem, elements[index]);
         elems.insertBefore(newArrow, elements[index + 1]);
@@ -279,20 +279,20 @@ class LLView extends EventEmitter {
         const arrows = document.getElementsByClassName("LLarrow");
         const elements = document.getElementsByClassName("LLelems");
         elements[index].remove();
-        const elems = document.getElementById("elements");
-        var newElem = this._elements.arrayElem.cloneNode(true);
+        const elems = document.getElementById("LLelements");
+        var newElem = this._elements.LLarrayElem.cloneNode(true);
         newElem.innerHTML = this.getNewElement();
         elems.insertBefore(newElem, arrows[index + 1]);
     }
 
     //style nav bar buttons
     defaultNavStyles() {
-        const btnElements = document.getElementsByClassName("actionNavs");
+        const btnElements = document.getElementsByClassName("LLactionNavs");
         Array.prototype.forEach.call(btnElements, function (element) {
             element.style.backgroundColor = "slategray";
             element.style.color = "white";
         });
-        const actionElements = document.getElementsByClassName("methods");
+        const actionElements = document.getElementsByClassName("LLmethods");
         Array.prototype.forEach.call(actionElements, function (action) {
             action.style.display = "none";
         });
@@ -300,191 +300,191 @@ class LLView extends EventEmitter {
 
     addNavStyle() {
         this.defaultNavStyles();
-        this._elements.addAction.style.display = "block";
-        this._elements.addNav.style.backgroundColor = "snow";
-        this._elements.addNav.style.color = "black";
+        this._elements.LLaddAction.style.display = "block";
+        this._elements.LLaddNav.style.backgroundColor = "snow";
+        this._elements.LLaddNav.style.color = "black";
     }
 
     removeNavStyle() {
         this.defaultNavStyles();
-        this._elements.removeAction.style.display = "block";
-        this._elements.removeNav.style.backgroundColor = "snow";
-        this._elements.removeNav.style.color = "black";
+        this._elements.LLremoveAction.style.display = "block";
+        this._elements.LLremoveNav.style.backgroundColor = "snow";
+        this._elements.LLremoveNav.style.color = "black";
     }
 
     replaceNavStyle() {
         this.defaultNavStyles();
-        this._elements.setAction.style.display = "block";
-        this._elements.replaceNav.style.backgroundColor = "snow";
-        this._elements.replaceNav.style.color = "black";
+        this._elements.LLsetAction.style.display = "block";
+        this._elements.LLreplaceNav.style.backgroundColor = "snow";
+        this._elements.LLreplaceNav.style.color = "black";
     }
 
     containsNavStyle() {
         this.defaultNavStyles();
-        this._elements.containsAction.style.display = "block";
-        this._elements.containsNav.style.backgroundColor = "snow";
-        this._elements.containsNav.style.color = "black";
+        this._elements.LLcontainsAction.style.display = "block";
+        this._elements.LLcontainsNav.style.backgroundColor = "snow";
+        this._elements.LLcontainsNav.style.color = "black";
     }
 
     getNavStyle() {
         this.defaultNavStyles();
-        this._elements.getAction.style.display = "block";
-        this._elements.getNav.style.backgroundColor = "snow";
-        this._elements.getNav.style.color = "black";
+        this._elements.LLgetAction.style.display = "block";
+        this._elements.LLgetNav.style.backgroundColor = "snow";
+        this._elements.LLgetNav.style.color = "black";
     }
 
     indexNavStyle() {
         this.defaultNavStyles();
-        this._elements.indexAction.style.display = "block";
-        this._elements.indexNav.style.backgroundColor = "snow";
-        this._elements.indexNav.style.color = "black";
+        this._elements.LLindexAction.style.display = "block";
+        this._elements.LLindexNav.style.backgroundColor = "snow";
+        this._elements.LLindexNav.style.color = "black";
     }
 
     sizeNavStyle() {
         this.defaultNavStyles();
-        this._elements.sizeAction.style.display = "block";
-        this._elements.sizeNav.style.backgroundColor = "snow";
-        this._elements.sizeNav.style.color = "black";
+        this._elements.LLsizeAction.style.display = "block";
+        this._elements.LLsizeNav.style.backgroundColor = "snow";
+        this._elements.LLsizeNav.style.color = "black";
     }
 
     clearNavStyle() {
         this.defaultNavStyles();
-        this._elements.clearAction.style.display = "block";
-        this._elements.clearNav.style.backgroundColor = "snow";
-        this._elements.clearNav.style.color = "black";
+        this._elements.LLclearAction.style.display = "block";
+        this._elements.LLclearNav.style.backgroundColor = "snow";
+        this._elements.LLclearNav.style.color = "black";
     }
     // end style nav bar buttons
 
 
     getAddedElement() {
-        return this._elements.add.value;
+        return this._elements.LLadd.value;
     }
 
     getAddedIndex() {
-        return document.getElementById("enterIndex").value;
+        return document.getElementById("LLenterIndex").value;
     }
 
     getReplacedIndex() {
-        return document.getElementById("set").value;
+        return document.getElementById("LLset").value;
     }
 
     getNewElement() {
-        return document.getElementById("replaceWith").value;
+        return document.getElementById("LLreplaceWith").value;
     }
 
     getRemovedElement() {
-        return document.getElementById("remove").value;
+        return document.getElementById("LLremove").value;
     }
 
     getRemovedIndex() {
-        return document.getElementById("removeIndex").value;
+        return document.getElementById("LLremoveIndex").value;
     }
 
     getContainsElement() {
-        return document.getElementById("contains").value;
+        return document.getElementById("LLcontains").value;
     }
 
     elementDoesNotExist() {
-        document.getElementById("result").innerHTML = "False!";
-        document.getElementById("result").style.fontWeight = "bolder";
+        document.getElementById("LLresult").innerHTML = "False!";
+        document.getElementById("LLresult").style.fontWeight = "bolder";
     }
 
     elementExists() {
-        document.getElementById("result").innerHTML = "True!";
-        document.getElementById("result").style.fontWeight = "bolder";
+        document.getElementById("LLresult").innerHTML = "True!";
+        document.getElementById("LLresult").style.fontWeight = "bolder";
     }
 
     resetElementResult() {
-        document.getElementById("result").innerHTML = "";
+        document.getElementById("LLresult").innerHTML = "";
     }
 
     getGetElement() {
-        return document.getElementById("getIndex").value;
+        return document.getElementById("LLgetIndex").value;
     }
 
     getResultElement(element) {
         if (element == undefined) {
-            document.getElementById("getResult").innerHTML = "*No element at specified index";
-            document.getElementById("getResult").style.color = "red";
+            document.getElementById("LLgetResult").innerHTML = "*No element at specified index";
+            document.getElementById("LLgetResult").style.color = "red";
         } else {
-            document.getElementById("getResult").style.color = "black";
-            document.getElementById("getResult").innerHTML = "Element: " + element;
-            document.getElementById("getResult").style.fontWeight = "bolder";
+            document.getElementById("LLgetResult").style.color = "black";
+            document.getElementById("LLgetResult").innerHTML = "Element: " + element;
+            document.getElementById("LLgetResult").style.fontWeight = "bolder";
         }
     }
 
     resetGet() {
-        document.getElementById("getResult").innerHTML = "";
+        document.getElementById("LLgetResult").innerHTML = "";
     }
 
     getIndexOfElement() {
-        return document.getElementById("indexOf").value;
+        return document.getElementById("LLindexOf").value;
     }
 
     returnIndexOf(index) {
-        document.getElementById("indexOfResult").innerHTML = "Index of element: " + index;
-        document.getElementById("indexOfResult").style.fontWeight = "bolder";
+        document.getElementById("LLindexOfResult").innerHTML = "Index of element: " + index;
+        document.getElementById("LLindexOfResult").style.fontWeight = "bolder";
     }
 
     getSizeInput() {
-        if (this._elements.size.value == "") {
+        if (this._elements.LLsize.value == "") {
             return undefined;
         }
-        return Number(this._elements.size.value);
+        return Number(this._elements.LLsize.value);
     }
 
     changeSize(size) {
-        document.getElementById("sizeDisplay").innerHTML = size;
+        document.getElementById("LLsizeDisplay").innerHTML = size;
     }
 
     removeError() {
-        document.getElementById("removeError").innerHTML = "*Please enter a valid index position";
-        document.getElementById("removeError").style.display = "inline-block";
+        document.getElementById("LLremoveError").innerHTML = "*Please enter a valid index position";
+        document.getElementById("LLremoveError").style.display = "inline-block";
     }
 
     hideRemoveError() {
-        document.getElementById("removeError").style.display = "none";
+        document.getElementById("LLremoveError").style.display = "none";
     }
 
     removeBothError() {
-        document.getElementById("removeError").innerHTML = "*Only one input allowed";
-        document.getElementById("removeError").style.display = "inline-block";
+        document.getElementById("LLremoveError").innerHTML = "*Only one input allowed";
+        document.getElementById("LLremoveError").style.display = "inline-block";
     }
 
     removeInvalidElement() {
-        document.getElementById("removeError").innerHTML = "*Element not in list";
-        document.getElementById("removeError").style.display = "inline-block";
+        document.getElementById("LLremoveError").innerHTML = "*Element not in list";
+        document.getElementById("LLremoveError").style.display = "inline-block";
     }
 
     showPositionError() {
-        this._elements.positionError.innerHTML = "*Please enter a valid index position";
-        this._elements.positionError.style.display = "inline-block";
+        this._elements.LLpositionError.innerHTML = "*Please enter a valid index position";
+        this._elements.LLpositionError.style.display = "inline-block";
     }
 
     hidePositionError() {
-        this._elements.positionError.style.display = "none";
+        this._elements.LLpositionError.style.display = "none";
     }
 
     showInvalidElement() {
-        this._elements.positionError.style.display = "inline-block";
-        this._elements.positionError.innerHTML = "*Please enter a valid element";
+        this._elements.LLpositionError.style.display = "inline-block";
+        this._elements.LLpositionError.innerHTML = "*Please enter a valid element";
     }
 
     setError() {
-        document.getElementById("setError").style.color = "red";
-        document.getElementById("setError").innerHTML = " *Please enter a valid index position";
-        document.getElementById("setError").style.display = "inline-block";
+        document.getElementById("LLsetError").style.color = "red";
+        document.getElementById("LLsetError").innerHTML = " *Please enter a valid index position";
+        document.getElementById("LLsetError").style.display = "inline-block";
     }
 
     setElementError() {
-        document.getElementById("setError").style.color = "red";
-        document.getElementById("setError").innerHTML = " *Please enter a valid element";
-        document.getElementById("setError").style.display = "inline-block";
+        document.getElementById("LLsetError").style.color = "red";
+        document.getElementById("LLsetError").innerHTML = " *Please enter a valid element";
+        document.getElementById("LLsetError").style.display = "inline-block";
     
     }
 
     hideSetError() {
-        document.getElementById("setError").style.display = "none";
+        document.getElementById("LLsetError").style.display = "none";
     }
 
 }

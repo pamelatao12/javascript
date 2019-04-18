@@ -1,46 +1,111 @@
 body {
-	padding-left: 20px;
-	overflow-x: hidden;
+  padding-left: 20px;
+  overflow-x: hidden;
 }
 
 #arrayContainer, #arrayListContainer, #LLContainer, #stackContainer {
-	display: none;
+  display: none;
 }
 
-#dsArray, #dsArrayList, #dsLinkedList, #dsStack {
-	display: inline;
+/*#dsArray, #dsArrayList, #dsLinkedList, #dsStack {
+  display: inline;
     width: 200px;
     margin: 0;
+}*/
+
+/* The container must be positioned relative: */
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  width: 200px;
+  float: right;
+  margin-right: 20px;
 }
 
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+
 h1 {
-	font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 h2 {
-	font-family: 'Open Sans', sans-serif;
-	font-weight: lighter;
-	font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: lighter;
+  font-size: 18px;
 }
 
-.actionNavs {
-	display: inline-block;
-	font-family: 'Open Sans', sans-serif;
-	width: 100px;
-	border-color: black;
+.AactionNavs, .ALactionNavs, .LLactionNavs, .SactionNavs {
+  display: inline-block;
+  font-family: 'Open Sans', sans-serif;
+  width: 100px;
+  border-color: black;
 }
 
-.actionNavs:hover {
-	color: black;
+.AactionNavs:hover, .ALactionNavs:hover, .LLactionNavs:hover, .SactionNavs:hover {
+  color: black;
 }
 
-#navbtn {
-	font-family: 'Open Sans', sans-serif;
-	top: 280px;
+#Anavbtn, #ALnavbtn, #LLnavbtn, #Snavbtn {
+  font-family: 'Open Sans', sans-serif;
+  top: 280px;
     position: absolute;
 }
 
-.sidenav {
+.Asidenav, .ALsidenav, .LLsidenav, .Ssidenav {
     height: 0;
     width: 100%;
     position: fixed;
@@ -53,7 +118,7 @@ h2 {
     /*padding-top: 50px;*/
   }
 
-  .sidenav a {
+  .Asidenav a, .ALsidenav a, .LLsidenav a, .Ssidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-family: 'Quicksand', sans-serif;
@@ -63,11 +128,11 @@ h2 {
     transition: 0.3s;
   }
 
-  .sidenav a:hover {
+  .Asidenav a:hover, .ALsidenav a:hover, .LLsidenav a:hover, .Ssidenav a:hover {
     color: black;
   }
 
-  .sidenav .closebtn {
+  .Asidenav .Aclosebtn, .ALsidenav .ALclosebtn, .LLsidenav .LLclosebtn, .Ssidenav .Sclosebtn {
     position: absolute;
     top: 0;
     right: 25px;
@@ -75,64 +140,64 @@ h2 {
     margin-left: 50px;
   }
 
-#createNew {
-	padding-bottom: 60px;
+#AcreateNew, #ALcreateNew, #LLcreateNew, #ScreateNew {
+  padding-bottom: 60px;
 }
 
-#elements {
-	display: flex;
-	overflow-x: scroll;
-	width: 50%;
-	min-width: 50%;
+#Aelements, #ALelements, #LLelements, #Selements {
+  display: flex;
+  overflow-x: scroll;
+  width: 50%;
+  min-width: 50%;
 
-	position: absolute;
+  position: absolute;
     /*left: 400px;*/
     top: 325px;
     /*right: 20px;*/
 }
 
-#stackElements {
-	overflow-y: scroll;
-	width: 50%;
-	min-width: 50%;
-	height: 50%;
+#SstackElements {
+  overflow-y: scroll;
+  width: 50%;
+  min-width: 50%;
+  height: 50%;
 
-	position: absolute;
+  position: absolute;
     right: -40px;
     top: 100px;
 
     overflow-x: hidden;
 }
 
-.elems {
-	border: 1px solid #DB7093;
-	background-color: #f2f2f2;
-	padding: 20px;
-	font-size: 20px;
-	width: 50px;
-	min-width: 50px;
-	min-height: 25px;
-	text-align: center;
-	font-family: 'Open Sans', sans-serif;
-	color: #f2f2f2;
+.Aelems, .ALelems {
+  border: 1px solid #DB7093;
+  background-color: #f2f2f2;
+  padding: 20px;
+  font-size: 20px;
+  width: 50px;
+  min-width: 50px;
+  min-height: 25px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  color: #f2f2f2;
     transition: color 2s ease 0s;
 }
 
 .LLelems {
-	height: 80px;
-	width: 80px;
-	background-color: #f2f2f2;
-	border: 1px solid #DB7093;
-	border-radius: 50%;
-	text-align: center;
-	line-height: 78px;
-	font-size: 20px;
-	font-family: 'Open Sans', sans-serif;
-	color: #f2f2f2;
+  height: 80px;
+  width: 80px;
+  background-color: #f2f2f2;
+  border: 1px solid #DB7093;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 78px;
+  font-size: 20px;
+  font-family: 'Open Sans', sans-serif;
+  color: #f2f2f2;
 }
 
 .LLarrow {
-	display: inline-block;
+  display: inline-block;
     margin-top: 20px;
     margin-left: 5px;
     margin-right: 5px;
@@ -140,8 +205,8 @@ h2 {
     transition: opacity 3s;
 }
 
-.stackElems {
-	border: 1px solid #DB7093;
+.SstackElems {
+  border: 1px solid #DB7093;
     background-color: #f2f2f2;
     padding: 20px;
     font-size: 20px;
@@ -156,26 +221,26 @@ h2 {
 
 @keyframes flash {
   /*0%   {background-color: red;
-  		border: 3px solid #800080;}*/
+      border: 3px solid #800080;}*/
   /*25%  {background-color: red;*/
-  		/*border: 3px solid #800080;}*/
+      /*border: 3px solid #800080;}*/
   50%  {/*border: 3px solid #800080;*/
-  		background-color: #404040;
-  		color: white;}
+      background-color: #404040;
+      color: white;}
   100% {/*border: 1px solid #DB7093;*/
-  		background-color: #f2f2f2;
-  		color: black;}
+      background-color: #f2f2f2;
+      color: black;}
 }
 
 @keyframes peek {
   /*0%   {background-color: red;
-  		border: 3px solid #800080;}*/
+      border: 3px solid #800080;}*/
   /*25%  {background-color: red;*/
-  		/*border: 3px solid #800080;}*/
+      /*border: 3px solid #800080;}*/
   50%  {/*border: 3px solid #800080;*/
-  		background-color: #DB7093;}
+      background-color: #DB7093;}
   100% {/*border: 1px solid #DB7093;*/
-  		background-color: #f2f2f2;}
+      background-color: #f2f2f2;}
 }
 
 @-webkit-keyframes slide {
@@ -198,81 +263,82 @@ h2 {
     animation-delay: 1s;
 }*/
 
-#index0 {
-	display: none;
-	border-left: 1px solid brown;
-	animation-name: flash;
-	animation-duration: 1s;
+#Aindex0, #ALindex0, #LLindex0, #Sindex0 {
+  display: none;
+  border-left: 1px solid brown;
+  animation-name: flash;
+  animation-duration: 1s;
 }
 
-#stackIndex {
-	/*position: absolute;*/
+#SstackIndex {
+  /*position: absolute;*/
     /*right: 200px;*/
-	display: none;
-	/*border-left: 1px solid brown;*/
-	/*-webkit-animation: slide 0.5s backwards;
+  display: none;
+  /*border-left: 1px solid brown;*/
+  /*-webkit-animation: slide 0.5s backwards;
     -webkit-animation-delay: 2s;*/
     /*animation: slide 0.5s backwards;*/
     /*animation: slide 0.5s forwards;*/
     /*animation-delay: 1s;*/
-	/*animation-name: flash;
-	animation-duration: 1s;*/
+  /*animation-name: flash;
+  animation-duration: 1s;*/
 }
 
-#error, #positionError, #removeError {
-	color: red;
+#ApositionError, #ALpositionError, #LLpositionError, #SpositionError, #ALremoveError, #LLremoveError {
+  color: red;
 }
 
-#sizeDisplay {
-	font-weight: bold;
-	color: slategray;
-	font-size: 50px;
-	margin-left: 80px;
+#ALsizeDisplay, #LLsizeDisplay, #SsizeDisplay {
+  font-weight: bold;
+  color: slategray;
+  font-size: 50px;
+  margin-left: 80px;
     margin-top: 10px;
 }
 
 input {
-	width: 80px; /* Full width */
-	height: 35px;
-	padding: 12px; /* Some padding */  
-	border: 1px solid darkgray; /* Gray border */
-	border-radius: 4px; /* Rounded borders */
-	box-sizing: border-box; /* Make sure that padding and width stays in place */
-	margin-top: 6px; /* Add a top margin */
-	margin-bottom: 16px; /* Bottom margin */
-	resize: vertical
+  width: 80px; /* Full width */
+  height: 35px;
+  padding: 12px; /* Some padding */  
+  border: 1px solid darkgray; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical
 }
 
 p {
-	font-family: 'Open Sans', sans-serif;
-	display: inline-block;
-	margin-right: 5px;
-	margin-left: 5px;
+  font-family: 'Open Sans', sans-serif;
+  display: inline-block;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
-#note {
-	margin-top: 0px;
+#ALnote {
+  margin-top: 0px;
     font-size: 12px;
 }
 
 button {
-	padding: 5px;
-	border-radius: 4px;
-	width: 270px;
-	background-color: lightgray;
-	cursor: pointer;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 14px;
-	/*margin-left: 40px;*/
-	display: block;
-	margin-bottom: 40px;
-	margin-top: 10px;
+  padding: 5px;
+  border-radius: 4px;
+  width: 270px;
+  background-color: lightgray;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  /*margin-left: 40px;*/
+  display: block;
+  margin-bottom: 40px;
+  margin-top: 10px;
 }
 
 button:hover {
-	background-color: snow;
+  background-color: snow;
 }
 
-#error {
-	display: none;
+#Aerror, #ALerror {
+  display: none;
+  color: red;
 }

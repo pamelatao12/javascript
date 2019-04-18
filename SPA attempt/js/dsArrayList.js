@@ -253,12 +253,12 @@ class ArrayListView extends EventEmitter {
 
     //style nav bar buttons
     defaultNavStyles() {
-        const btnElements = document.getElementsByClassName("actionNavs");
+        const btnElements = document.getElementsByClassName("ALactionNavs");
         Array.prototype.forEach.call(btnElements, function (element) {
             element.style.backgroundColor = "slategray";
             element.style.color = "white";
         });
-        const actionElements = document.getElementsByClassName("methods");
+        const actionElements = document.getElementsByClassName("ALmethods");
         Array.prototype.forEach.call(actionElements, function (action) {
             action.style.display = "none";
         });
@@ -327,13 +327,13 @@ class ArrayListView extends EventEmitter {
     }
 
     getAddedIndex() {
-    	return document.getElementById("enterIndex").value;
+    	return document.getElementById("ALenterIndex").value;
     }
 
     fillArray() {
     	var array = this._model.getArray();
     	for (var i = 0; i < this._model.getLength(); i++) {
-    		var elemId = "index" + i;
+    		var elemId = "ALindex" + i;
     		if (array[i] == undefined) {
     			document.getElementById(elemId).innerHTML = "";
     		} else {
@@ -349,7 +349,7 @@ class ArrayListView extends EventEmitter {
             var i = this._model.size - 1;
             this.insertTimeout(i);
 
-            var elemId = "index" + this.getAddedIndex();
+            var elemId = "ALindex" + this.getAddedIndex();
             document.getElementById(elemId).innerHTML = array[this.getAddedIndex()];
             document.getElementById(elemId).style.color = "black";
         }
@@ -360,8 +360,8 @@ class ArrayListView extends EventEmitter {
         if (i > this.getAddedIndex()) {
         
             var array = this._model.getArray();
-            var elemId = "index" + i;
-            var pastElemId = "index" + (i - 1);
+            var elemId = "ALindex" + i;
+            var pastElemId = "ALindex" + (i - 1);
             
             document.getElementById(elemId).innerHTML = array[i];
             document.getElementById(elemId).style.color = "black";
@@ -373,65 +373,65 @@ class ArrayListView extends EventEmitter {
     }
 
     getReplacedIndex() {
-    	return document.getElementById("set").value;
+    	return document.getElementById("ALset").value;
     }
 
     getNewElement() {
-    	return document.getElementById("replaceWith").value;
+    	return document.getElementById("ALreplaceWith").value;
     }
 
     getRemovedElement() {
-    	return document.getElementById("remove").value;
+    	return document.getElementById("ALremove").value;
     }
 
     getRemovedIndex() {
-        return document.getElementById("removeIndex").value;
+        return document.getElementById("ALremoveIndex").value;
     }
 
     getContainsElement() {
-        return document.getElementById("contains").value;
+        return document.getElementById("ALcontains").value;
     }
 
     elementDoesNotExist() {
-        document.getElementById("result").innerHTML = "False!";
-        document.getElementById("result").style.fontWeight = "bolder";
+        document.getElementById("ALresult").innerHTML = "False!";
+        document.getElementById("ALresult").style.fontWeight = "bolder";
     }
 
     elementExists() {
-        document.getElementById("result").innerHTML = "True!";
-        document.getElementById("result").style.fontWeight = "bolder";
+        document.getElementById("ALresult").innerHTML = "True!";
+        document.getElementById("ALresult").style.fontWeight = "bolder";
     }
 
     resetElementResult() {
-        document.getElementById("result").innerHTML = "";
+        document.getElementById("ALresult").innerHTML = "";
     }
 
     getGetElement() {
-        return document.getElementById("getIndex").value;
+        return document.getElementById("ALgetIndex").value;
     }
 
     getResultElement(element) {
         if (element == undefined) {
-            document.getElementById("getResult").innerHTML = "*No element at specified index";
-            document.getElementById("getResult").style.color = "red";
+            document.getElementById("ALgetResult").innerHTML = "*No element at specified index";
+            document.getElementById("ALgetResult").style.color = "red";
         } else {
-            document.getElementById("getResult").style.color = "black";
-            document.getElementById("getResult").innerHTML = "Element: " + element;
-            document.getElementById("getResult").style.fontWeight = "bolder";
+            document.getElementById("ALgetResult").style.color = "black";
+            document.getElementById("ALgetResult").innerHTML = "Element: " + element;
+            document.getElementById("ALgetResult").style.fontWeight = "bolder";
         }
     }
 
     resetGet() {
-        document.getElementById("getResult").innerHTML = "";
+        document.getElementById("ALgetResult").innerHTML = "";
     }
 
     getIndexOfElement() {
-        return document.getElementById("indexOf").value;
+        return document.getElementById("ALindexOf").value;
     }
 
     returnIndexOf(index) {
-        document.getElementById("indexOfResult").innerHTML = "Index of element: " + index;
-        document.getElementById("indexOfResult").style.fontWeight = "bolder";
+        document.getElementById("ALindexOfResult").innerHTML = "Index of element: " + index;
+        document.getElementById("ALindexOfResult").style.fontWeight = "bolder";
     }
 
 
@@ -443,12 +443,12 @@ class ArrayListView extends EventEmitter {
     }
 
     changeSize(size) {
-        document.getElementById("sizeDisplay").innerHTML = size;
+        document.getElementById("ALsizeDisplay").innerHTML = size;
     }
 
     drawArray() {
     	//clear elems first
-    	const elements = document.getElementsByClassName("elems");
+    	const elements = document.getElementsByClassName("ALelems");
 		while (elements.length > 1) elements[1].remove();
 		this._elements.arrayElem.innerHTML = "";
 
@@ -460,7 +460,7 @@ class ArrayListView extends EventEmitter {
             this._elements.arrayElem.style.display = "inline-block";
             for (var i = 1; i < 10; i++) {
                 var newElem = this._elements.arrayElem.cloneNode(true);
-                var newId = "index" + i;
+                var newId = "ALindex" + i;
                 newElem.id = newId;
                 this._elements.allElements.appendChild(newElem);
             }
@@ -469,7 +469,7 @@ class ArrayListView extends EventEmitter {
         	this._elements.arrayElem.style.display = "inline-block";
 	        for (var i = 1; i < size; i++) {
 	        	var newElem = this._elements.arrayElem.cloneNode(true);
-	        	var newId = "index" + i;
+	        	var newId = "ALindex" + i;
 	        	newElem.id = newId;
 	        	this._elements.allElements.appendChild(newElem);
 	        }
@@ -477,22 +477,22 @@ class ArrayListView extends EventEmitter {
     }
 
     removeError() {
-        document.getElementById("removeError").innerHTML = "*Please enter a valid index position";
-        document.getElementById("removeError").style.display = "inline-block";
+        document.getElementById("ALremoveError").innerHTML = "*Please enter a valid index position";
+        document.getElementById("ALremoveError").style.display = "inline-block";
     }
 
     hideRemoveError() {
-        document.getElementById("removeError").style.display = "none";
+        document.getElementById("ALremoveError").style.display = "none";
     }
 
     removeBothError() {
-        document.getElementById("removeError").innerHTML = "*Only one input allowed";
-        document.getElementById("removeError").style.display = "inline-block";
+        document.getElementById("ALremoveError").innerHTML = "*Only one input allowed";
+        document.getElementById("ALremoveError").style.display = "inline-block";
     }
 
     removeInvalidElement() {
-        document.getElementById("removeError").innerHTML = "*Element not in list";
-        document.getElementById("removeError").style.display = "inline-block";
+        document.getElementById("ALremoveError").innerHTML = "*Element not in list";
+        document.getElementById("ALremoveError").style.display = "inline-block";
     }
 
     showError() {
@@ -512,20 +512,20 @@ class ArrayListView extends EventEmitter {
     }
 
     setError() {
-        document.getElementById("setError").style.color = "red";
-        document.getElementById("setError").innerHTML = " *Please enter a valid index position";
-        document.getElementById("setError").style.display = "inline-block";
+        document.getElementById("ALsetError").style.color = "red";
+        document.getElementById("ALsetError").innerHTML = " *Please enter a valid index position";
+        document.getElementById("ALsetError").style.display = "inline-block";
     }
 
     setElementError() {
-        document.getElementById("setError").style.color = "red";
-        document.getElementById("setError").innerHTML = " *Please enter a valid element";
-        document.getElementById("setError").style.display = "inline-block";
+        document.getElementById("ALsetError").style.color = "red";
+        document.getElementById("ALsetError").innerHTML = " *Please enter a valid element";
+        document.getElementById("ALsetError").style.display = "inline-block";
     
     }
 
     hideSetError() {
-        document.getElementById("setError").style.display = "none";
+        document.getElementById("ALsetError").style.display = "none";
     }
 
 }

@@ -6,5 +6,6 @@ function openNav() {
 
 function closeNav() {
   document.getElementById("mySidenav").style.height = "0";
-  document.getElementById("mySidenav").style.paddingLeft = "0px"; 
+  document.getElementById("mySidenav").style.paddingLeft = "0px";  
+  document.getElementById(element).style.paddingTop = "0px";
 }
