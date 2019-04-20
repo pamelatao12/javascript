@@ -27,7 +27,7 @@ body {
 }
 
 .select-selected {
-  background-color: DodgerBlue;
+  background-color: #DB7093;
 }
 
 /* Style the arrow inside the select element: */
@@ -60,7 +60,7 @@ body {
 /* Style items (options): */
 .select-items {
   position: absolute;
-  background-color: DodgerBlue;
+  background-color: #DB7093;
   top: 100%;
   left: 0;
   right: 0;
@@ -73,7 +73,7 @@ body {
 }
 
 .select-items div:hover, .same-as-selected {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 
@@ -147,7 +147,7 @@ h2 {
 #Aelements, #ALelements, #LLelements, #Selements {
   display: flex;
   overflow-x: scroll;
-  width: 50%;
+  width: 90%;
   min-width: 50%;
 
   position: absolute;
@@ -273,6 +273,10 @@ h2 {
   animation-name: flash;
   animation-duration: 1s;
 }
+
+/*.AhoverIndex {
+  display: none;
+}*/
 
 #SstackIndex {
   /*position: absolute;*/

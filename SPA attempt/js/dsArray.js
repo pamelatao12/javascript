@@ -53,6 +53,10 @@ class ArrayModel extends EventEmitter {
         return -1;
     }
 
+    clearArray() {
+        this.array.length = 0;
+    }
+
     getArray() {
         return this.array;
     }
@@ -77,6 +81,7 @@ class ArrayController {
     }
 
     createArray() {
+        this._model.clearArray();
         this._view.drawArray();
     }
 
@@ -126,6 +131,8 @@ class ArrayView extends EventEmitter {
         elements.addNav.addEventListener("click", () => this.addNavStyle())
         elements.removeNav.addEventListener("click", () => this.removeNavStyle());
         elements.replaceNav.addEventListener("click", () => this.replaceNavStyle());
+
+
         
 
     }
@@ -187,7 +194,7 @@ class ArrayView extends EventEmitter {
     		if (array[i] == undefined) {
     			document.getElementById(elemId).innerHTML = "";
     		} else {
-    			document.getElementById(elemId).innerHTML = array[i];
+    			document.getElementById(elemId).innerHTML = "<span id='AhoverIndex" + i + "' style='display:none' onmouseover='mouseOver(" + elemId + ", AhoverIndex" + i + ")' onmouseout='mouseOut(AhoverIndex" + i + "," + elemId + ")'>Index " + i + "</span>" + array[i];
     			document.getElementById(elemId).style.color = "black";
     		}
     	}
@@ -215,7 +222,7 @@ class ArrayView extends EventEmitter {
 
     drawArray() {
     	//clear elems first
-    	const elements = document.getElementsByClassName("elems");
+    	const elements = document.getElementsByClassName("Aelems");
 		while (elements.length > 1) elements[1].remove();
 		this._elements.arrayElem.innerHTML = "";
 
