@@ -86,7 +86,7 @@
 		</div>
 
         <div id="Aelements">
-        	<div id="Aindex0" class="Aelems">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	<div id="Aindex0" class="Aelems" style="cursor:pointer;" onmouseover="mouseOver(this.id)" onmouseout="mouseOut(this.id)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         </div>
 
 	</div> <!-- close ArrayContainer div -->
@@ -151,7 +151,7 @@
 		    <div id="ALgetAction" class="ALmethods" style="display:none">
 		        <h2>Get the element at the specified position in this list:</h2>
 		        <p>Position/Index:</p>
-		        <input type="text" class="ALgetIndex" id="ALgetIndex" name="getIndex" placeholder=""><p id=getResult></p>
+		        <input type="text" class="ALgetIndex" id="ALgetIndex" name="getIndex" placeholder=""><p id=ALgetResult></p>
 		        <p id="ALpositionError" style="display:none"> *Please enter a valid index position</p>
 		        <button id="ALgetBtn">Get Element</button>
 		    </div>

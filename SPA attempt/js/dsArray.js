@@ -194,8 +194,11 @@ class ArrayView extends EventEmitter {
     		if (array[i] == undefined) {
     			document.getElementById(elemId).innerHTML = "";
     		} else {
-    			document.getElementById(elemId).innerHTML = "<span id='AhoverIndex" + i + "' style='display:none' onmouseover='mouseOver(" + elemId + ", AhoverIndex" + i + ")' onmouseout='mouseOut(AhoverIndex" + i + "," + elemId + ")'>Index " + i + "</span>" + array[i];
-    			document.getElementById(elemId).style.color = "black";
+    			document.getElementById(elemId).innerHTML = array[i];
+                // "<span id='AhoverIndex" + i + "' style='display:none;'>Index " + i + "</span>" + 
+    			
+                document.getElementById(elemId).style.transition = "color 2s ease 0s";
+                document.getElementById(elemId).style.color = "black";
     		}
     	}
         

@@ -105,6 +105,12 @@ class ArrayListModel extends EventEmitter {
     getElemIndex() {
     	return this.elemIndex;
     }
+
+    createNew() {
+        this.size = 0;
+        this.array = [];
+        this.emit('updateSize', this.size);
+    }
 }
 
 class ArrayListController {
@@ -122,6 +128,7 @@ class ArrayListController {
     }
 
     createArray() {
+        this._model.createNew();
         this._view.drawArray();
     }
 
@@ -227,7 +234,7 @@ class ArrayListView extends EventEmitter {
         model.on('elementRemoved', () => this.fillArray());
         model.on('elementGot', element => this.getResultElement(element));
         model.on('updateSize', size => this.changeSize(size));
-        model.on('listCleared', () => this.fillArray());
+        model.on('listCleared', () => this.clearArray());
 
         elements.createButton.addEventListener("click", () => this.emit("createButtonClicked"));
         elements.addButton.addEventListener("click", () => this.emit("addButtonClicked"));
@@ -332,7 +339,7 @@ class ArrayListView extends EventEmitter {
 
     fillArray() {
     	var array = this._model.getArray();
-    	for (var i = 0; i < this._model.getLength(); i++) {
+    	for (var i = 0; i < this._model.size; i++) {
     		var elemId = "ALindex" + i;
     		if (array[i] == undefined) {
     			document.getElementById(elemId).innerHTML = "";
@@ -343,11 +350,33 @@ class ArrayListView extends EventEmitter {
     	}
     }
 
+    clearArray() {
+        var array = this._model.getArray();
+        for (var i = 0; i < this._model.getLength(); i++) {
+            var elemId = "ALindex" + i;
+            if (array[i] == undefined) {
+                document.getElementById(elemId).innerHTML = "";
+            }
+        }
+    }
+
     insertArray() {
         if (this.getAddedIndex() != "") {
             var array = this._model.getArray();
             var i = this._model.size - 1;
-            this.insertTimeout(i);
+            // this.insertTimeout(i);
+
+            while (i > this.getAddedIndex()) {
+        
+                var array = this._model.getArray();
+                var elemId = "ALindex" + i;
+                var pastElemId = "ALindex" + (i - 1);
+                
+                document.getElementById(elemId).innerHTML = array[i];
+                document.getElementById(elemId).style.color = "black";
+                document.getElementById(pastElemId).innerHTML = "";
+                i--;
+            }
 
             var elemId = "ALindex" + this.getAddedIndex();
             document.getElementById(elemId).innerHTML = array[this.getAddedIndex()];
