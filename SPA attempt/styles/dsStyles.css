@@ -88,24 +88,24 @@ h2 {
   font-size: 18px;
 }
 
-.AactionNavs, .ALactionNavs, .LLactionNavs, .SactionNavs {
+.AactionNavs, .ALactionNavs, .LLactionNavs, .SactionNavs, .QactionNavs {
   display: inline-block;
   font-family: 'Open Sans', sans-serif;
   width: 100px;
   border-color: black;
 }
 
-.AactionNavs:hover, .ALactionNavs:hover, .LLactionNavs:hover, .SactionNavs:hover {
+.AactionNavs:hover, .ALactionNavs:hover, .LLactionNavs:hover, .SactionNavs:hover , .QactionNavs:hover {
   color: black;
 }
 
-#Anavbtn, #ALnavbtn, #LLnavbtn, #Snavbtn {
+#Anavbtn, #ALnavbtn, #LLnavbtn, #Snavbtn, #Qnavbtn {
   font-family: 'Open Sans', sans-serif;
   top: 280px;
     position: absolute;
 }
 
-.Asidenav, .ALsidenav, .LLsidenav, .Ssidenav {
+.Asidenav, .ALsidenav, .LLsidenav, .Ssidenav, .Qsidenav {
     height: 0;
     width: 100%;
     position: fixed;
@@ -118,7 +118,7 @@ h2 {
     /*padding-top: 50px;*/
   }
 
-  .Asidenav a, .ALsidenav a, .LLsidenav a, .Ssidenav a {
+  .Asidenav a, .ALsidenav a, .LLsidenav a, .Ssidenav a, .Qsidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-family: 'Quicksand', sans-serif;
@@ -128,11 +128,11 @@ h2 {
     transition: 0.3s;
   }
 
-  .Asidenav a:hover, .ALsidenav a:hover, .LLsidenav a:hover, .Ssidenav a:hover {
+  .Asidenav a:hover, .ALsidenav a:hover, .LLsidenav a:hover, .Ssidenav a:hover, .Qsidenav a:hover {
     color: black;
   }
 
-  .Asidenav .Aclosebtn, .ALsidenav .ALclosebtn, .LLsidenav .LLclosebtn, .Ssidenav .Sclosebtn {
+  .Asidenav .Aclosebtn, .ALsidenav .ALclosebtn, .LLsidenav .LLclosebtn, .Ssidenav .Sclosebtn, .Qsidenav .Qclosebtn {
     position: absolute;
     top: 0;
     right: 25px;
@@ -140,11 +140,11 @@ h2 {
     margin-left: 50px;
   }
 
-#AcreateNew, #ALcreateNew, #LLcreateNew, #ScreateNew {
+#AcreateNew, #ALcreateNew, #LLcreateNew, #ScreateNew, #QcreateNew {
   padding-bottom: 60px;
 }
 
-#Aelements, #ALelements, #LLelements, #Selements {
+#Aelements, #ALelements, #LLelements, #Qelements {
   display: flex;
   overflow-x: scroll;
   width: 90%;
@@ -169,7 +169,7 @@ h2 {
     overflow-x: hidden;
 }
 
-.Aelems, .ALelems {
+.Aelems, .ALelems, .QElems {
   border: 1px solid #DB7093;
   /*border-bottom: 1px solid #DB7093;
   border-right: 1px solid #DB7093;*/
@@ -264,7 +264,7 @@ h2 {
     animation: slide 0.5s forwards;
     animation-delay: 1s;
 }*/
-#Aindex0, #ALindex0 {
+#Aindex0, #ALindex0, #QIndex {
   display: none;
 }
 
@@ -296,7 +296,7 @@ h2 {
   color: red;
 }
 
-#ALsizeDisplay, #LLsizeDisplay, #SsizeDisplay {
+#ALsizeDisplay, #LLsizeDisplay, #SsizeDisplay, #QsizeDisplay {
   font-weight: bold;
   color: slategray;
   font-size: 50px;

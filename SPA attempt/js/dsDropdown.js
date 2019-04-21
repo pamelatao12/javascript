@@ -45,6 +45,8 @@ function setUpDropdown() {
             showLL();
           } else if (this.innerHTML == "Stack") {
             showStack();
+          } else if (this.innerHTML == "Queue") {
+            showQueue();
           }
       });
       b.appendChild(c);

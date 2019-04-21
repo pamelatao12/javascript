@@ -18,6 +18,11 @@ function showStack() {
 	document.getElementById("stackContainer").style.display = "initial";
 }
 
+function showQueue() {
+	this.reset();
+	document.getElementById("queueContainer").style.display = "initial";
+}
+
 function reset() {
 	document.getElementById("arrayContainer").style.display = "none";
 	document.getElementById("arrayListContainer").style.display = "none";

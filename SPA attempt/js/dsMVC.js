@@ -1,3 +1,35 @@
+function queueJS() {
+    const queueModel = new QueueModel(['node.js', 'react']);
+    const queueView = new QueueView(queueModel, {
+        'size': document.getElementById("Qsize"),
+        'error' : document.getElementById("Qerror"),
+        'positionError' : document.getElementById("QpositionError"),
+        'addNav' : document.getElementById("QaddNav"),
+        'removeNav' : document.getElementById("QremoveNav"),
+        'containsNav' : document.getElementById("QcontainsNav"),
+        'indexNav' : document.getElementById("QindexNav"),
+        'sizeNav' : document.getElementById("QsizeNav"),
+        'clearNav' : document.getElementById("QclearNav"),
+
+        'addButton': document.getElementById("QaddBtn"),
+        'add': document.getElementById("Qadd"),
+        'removeButton': document.getElementById("QremoveBtn"),
+        'peekButton' : document.getElementById("QpeekBtn"),
+        'clearButton' : document.getElementById("QclearBtn"),
+        
+        'addAction' : document.getElementById("QaddAction"),
+        'removeAction' : document.getElementById("QremoveAction"),
+        'containsAction' : document.getElementById("QcontainsAction"),
+        'sizeAction' : document.getElementById("QsizeAction"),
+        'clearAction' : document.getElementById("QclearAction"),
+        
+
+        'allElements' : document.getElementById("QElements")
+    });
+    const controller = new QueueController(queueModel, queueView);
+
+}
+
 function stackJS() {
     const stackModel = new StackModel(['node.js', 'react']);
     const stackView = new StackView(stackModel, {
@@ -143,6 +175,7 @@ window.onload = function() {
     arrayListJS();
     LLJS();
     stackJS();
+    queueJS();
     setUpDropdown();
 }
 

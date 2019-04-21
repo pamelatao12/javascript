@@ -11,6 +11,7 @@
 	<script type="text/javascript" src="js/dsArrayList.js"></script>
 	<script type="text/javascript" src="js/dsLinkedList.js"></script>
 	<script type="text/javascript" src="js/dsStack.js"></script>
+	<script type="text/javascript" src="js/dsQueue.js"></script>
 	<script type="text/javascript" src="js/sidenav.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -291,49 +292,49 @@
 		<span style="font-size:20px;color:dimgray;cursor:pointer;" onclick="openNav('SmySidenav')">&#9776; Modify Stack</span>
 		</div>
 
-		<div id="SmySidenav" class="Ssidenav">
-		  	<a href="javascript:void(0)" class="Sclosebtn" onclick="closeNav('SmySidenav')">&times;</a>
+		<div id="SmySidenav" class="Qsidenav">
+		  	<a href="javascript:void(0)" class="Qclosebtn" onclick="closeNav('SmySidenav')">&times;</a>
 
-			<button id="SaddNav" class="SactionNavs" style="background-color:snow;color:black;">Push</button>
-			<button id="SremoveNav" class="SactionNavs" style="background-color: slategray;color: white;">Pop</button>
-			<button id="ScontainsNav" class="SactionNavs" style="background-color: slategray;color: white;">Peek</button>
-			<button id="SindexNav" class="SactionNavs" style="background-color: slategray;color: white;">Search</button>
-			<button id="SsizeNav" class="SactionNavs" style="background-color: slategray;color: white;">Size</button>
-			<button id="SclearNav" class="SactionNavs" style="background-color: slategray;color: white;">Clear</button>
+			<button id="SaddNav" class="QactionNavs" style="background-color:snow;color:black;">Push</button>
+			<button id="SremoveNav" class="QactionNavs" style="background-color: slategray;color: white;">Pop</button>
+			<button id="ScontainsNav" class="QactionNavs" style="background-color: slategray;color: white;">Peek</button>
+			<button id="SindexNav" class="QactionNavs" style="background-color: slategray;color: white;">Search</button>
+			<button id="SsizeNav" class="QactionNavs" style="background-color: slategray;color: white;">Size</button>
+			<button id="SclearNav" class="QactionNavs" style="background-color: slategray;color: white;">Clear</button>
 
-			<div id="SaddAction" class="Smethods">
+			<div id="SaddAction" class="Qmethods">
 				<!-- 1. append element to end of list
 				2. insert element at position in list 
 				3. show indexes in list visual? -->
 			  	<h2>Pushes an item onto the top of this stack:</h2>
 		        <p>Push:</p>
-		        <input type="text" class="Sadd" id="Sadd" name="add" placeholder=""> <p id="SpositionError"></p>
+		        <input type="text" class="Qadd" id="Sadd" name="add" placeholder=""> <p id="SpositionError"></p>
 		        <button id="SaddBtn">Push Element</button>
 	    	</div>
 
-	    	<div id="SremoveAction" class="Smethods" style="display:none">
+	    	<div id="SremoveAction" class="Qmethods" style="display:none">
 		        <h2>Removes the object at the top of this stack:</h2>
 		        <button id="SremoveBtn">Pop Element</button>
 		    </div>
 
-		    <div id="ScontainsAction" class="Smethods" style="display:none">
+		    <div id="ScontainsAction" class="Qmethods" style="display:none">
 		        <h2>Looks at the object at the top of this stack without removing it from the stack:</h2>
 		        <button id="SpeekBtn">Peek</button>
 		    </div>
 
-		    <div id="SindexAction" class="Smethods" style="display:none">
+		    <div id="SindexAction" class="Qmethods" style="display:none">
 		        <h2>Returns the 1-based position from the top of the stack where the object is located; the return value -1 indicates that the object is not on the stack:</h2>
 		        <p>Search:</p>
-		        <input type="text" class="SindexOf" id="SindexOf" name="indexOf" placeholder=""><p id="SindexOfResult"></p>
+		        <input type="text" class="QindexOf" id="SindexOf" name="indexOf" placeholder=""><p id="SindexOfResult"></p>
 		        <button id="SindexBtn">Get Position</button>
 		    </div>
 
-		    <div id="SsizeAction" class="Smethods" style="display:none">
+		    <div id="SsizeAction" class="Qmethods" style="display:none">
 		        <h2>Total number of elements in this stack:</h2>
 		        <p id="SsizeDisplay">0</p>
 		    </div>
 
-		    <div id="SclearAction" class="Smethods" style="display:none">
+		    <div id="SclearAction" class="Qmethods" style="display:none">
 		        <h2>Removes all elements from this stack:</h2>
 		        <button id="SclearBtn">Clear Stack</button>
 		    </div>
@@ -341,10 +342,68 @@
 		</div> <!-- close mySideNav div -->
 
         <div id="SstackElements">
-        	<div id="SstackIndex" class="SstackElems">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	<div id="SstackIndex" class="QstackElems">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         </div>
 
 	</div>
+
+
+	<div id="queueContainer">
+		<h1>Data Structure: Queue</h1>
+		<div id="QcreateNew">
+			<button id="Qcreate" onclick="openNav('QmySidenav')">Create New Queue</button>
+		</div>
+
+		<div id="Qnavbtn" style="top:150px;">
+		<span style="font-size:20px;color:dimgray;cursor:pointer;" onclick="openNav('QmySidenav')">&#9776; Modify Queue</span>
+		</div>
+
+		<div id="QmySidenav" class="Qsidenav">
+		  	<a href="javascript:void(0)" class="Qclosebtn" onclick="closeNav('QmySidenav')">&times;</a>
+
+			<button id="QaddNav" class="QactionNavs" style="background-color:snow;color:black;">Add</button>
+			<button id="QremoveNav" class="QactionNavs" style="background-color: slategray;color: white;">Poll</button>
+			<button id="QcontainsNav" class="QactionNavs" style="background-color: slategray;color: white;">Peek</button>
+			<button id="QsizeNav" class="QactionNavs" style="background-color: slategray;color: white;">Size</button>
+			<button id="QclearNav" class="QactionNavs" style="background-color: slategray;color: white;">Clear</button>
+
+			<div id="QaddAction" class="Qmethods">
+				<!-- 1. append element to end of list
+				2. insert element at position in list 
+				3. show indexes in list visual? -->
+			  	<h2>Adds an element into this queue:</h2>
+		        <p>Add:</p>
+		        <input type="text" class="Qadd" id="Qadd" name="add" placeholder=""> <p id="QpositionError"></p>
+		        <button id="QaddBtn">Add Element</button>
+	    	</div>
+
+	    	<div id="QremoveAction" class="Qmethods" style="display:none">
+		        <h2>Removes the object at the head of this queue:</h2>
+		        <button id="QremoveBtn">Poll Element</button>
+		    </div>
+
+		    <div id="QcontainsAction" class="Qmethods" style="display:none">
+		        <h2>Looks at the head of this queue without removing it from the queue:</h2>
+		        <button id="QpeekBtn">Peek</button>
+		    </div>
+
+		    <div id="QsizeAction" class="Qmethods" style="display:none">
+		        <h2>Total number of elements in this queue:</h2>
+		        <p id="QsizeDisplay">0</p>
+		    </div>
+
+		    <div id="QclearAction" class="Qmethods" style="display:none">
+		        <h2>Removes all elements from this queue:</h2>
+		        <button id="QclearBtn">Clear Queue</button>
+		    </div>
+
+		</div> <!-- close mySideNav div -->
+
+        <div id="QElements">
+        	<div id="QIndex" class="QElems">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        </div>
+
+	</div> <!-- close Queue container -->
 	
 </body>
 </html>
