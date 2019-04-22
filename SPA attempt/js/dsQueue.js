@@ -146,28 +146,46 @@ class QueueView extends EventEmitter {
 
             lastElem.style.animationName = "flash";
             lastElem.style.animationDuration = "1s";
+
+            lastElem.style.position = "relative";
+            lastElem.style.left = "-100px";
+            lastElem.style.animation = "slideInFirst 1s forwards";
+            // lastElem.style.opacity = "1";
+            // lastElem.style.transition = "opacity 1s ease-in-out";
+
+
             lastElem.style.color = "black";
         } else {
             const elems = document.getElementById("QElements");
             const elements = document.getElementsByClassName("QElems");
             var newElem = elements[elements.length - 1].cloneNode(true);
             newElem.style.display = "inline-block";
-            newElem.style.borderRight = "none";
+            // newElem.style.borderRight = "none";
             newElem.innerHTML = this.getAddedElement();
             newElem.style.animationName = "none";
             newElem.style.animationDuration = "";
 
             newElem.style.animationName = "flash";
             newElem.style.animationDuration = "1s";
+
+            newElem.style.position = "relative";
+            newElem.style.left = "-100px";
+            newElem.style.animation = "slideIn 1s forwards";
+
+
             newElem.style.color = "black";
             elems.insertBefore(newElem, elements[0]);
+
+            setTimeout(function (element) {
+                element.style.borderRight = "none";
+            }, 1000, newElem);
         }
     }
 
     removeNode() {
         if (this._model.size == 0) {
             const lastElem = document.getElementById("QIndex");
-            this.resetElemStyles(lastElem);
+            this.resetElemStylesSlideIn(lastElem);
             this.setSlideAnimation(lastElem);
             
             setTimeout(function (element, view) {
@@ -176,7 +194,7 @@ class QueueView extends EventEmitter {
             }, 1000, lastElem, this);
         } else {
             const elements = document.getElementsByClassName("QElems");
-            this.resetElemStyles(elements[elements.length - 1]);
+            this.resetElemStylesSlideIn(elements[elements.length - 1]);
             this.setSlideAnimation(elements[elements.length - 1]);
             elements[elements.length - 2].style.borderRight = "1px solid #DB7093";
 
@@ -204,6 +222,7 @@ class QueueView extends EventEmitter {
 
     highlightElement() {
         const elements = document.getElementsByClassName("QElems");
+        this.resetElemStylesSlideIn(elements[elements.length - 1]);
         elements[elements.length - 1].style.animationName = "peek";
         elements[elements.length - 1].style.animationDuration = "1s";
         setTimeout(function () {
@@ -215,6 +234,14 @@ class QueueView extends EventEmitter {
     resetElemStyles(element) {
         element.style.position = "";
         element.style.right = "";
+        element.style.animation = "none";
+        element.style.opacity = "";
+        element.style.transition = "none";
+    }
+
+    resetElemStylesSlideIn(element) {
+        element.style.right = "";
+        element.style.left = "";
         element.style.animation = "none";
         element.style.opacity = "";
         element.style.transition = "none";

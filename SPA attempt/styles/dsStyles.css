@@ -253,6 +253,15 @@ h2 {
     100% { right: -800px; }
 }
 
+@keyframes slideInFirst {
+    100% { left: 0px; }
+}
+
+@keyframes slideIn {
+    100% { left: 0px; }
+    
+}
+
 /*#slide {
     position: absolute;
     right: -200px;
