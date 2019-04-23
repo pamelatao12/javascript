@@ -3,7 +3,7 @@ body {
   overflow-x: hidden;
 }
 
-#arrayContainer, #arrayListContainer, #LLContainer, #stackContainer {
+#arrayContainer, #arrayListContainer, #LLContainer, #stackContainer, #queueContainer {
   display: none;
 }
 
@@ -88,24 +88,24 @@ h2 {
   font-size: 18px;
 }
 
-.AactionNavs, .ALactionNavs, .LLactionNavs, .SactionNavs, .QactionNavs {
+.AactionNavs, .ALactionNavs, .LLactionNavs, .SactionNavs, .QactionNavs, .TactionNavs {
   display: inline-block;
   font-family: 'Open Sans', sans-serif;
   width: 100px;
   border-color: black;
 }
 
-.AactionNavs:hover, .ALactionNavs:hover, .LLactionNavs:hover, .SactionNavs:hover , .QactionNavs:hover {
+.AactionNavs:hover, .ALactionNavs:hover, .LLactionNavs:hover, .SactionNavs:hover , .QactionNavs:hover, .TactionNavs:hover {
   color: black;
 }
 
-#Anavbtn, #ALnavbtn, #LLnavbtn, #Snavbtn, #Qnavbtn {
+#Anavbtn, #ALnavbtn, #LLnavbtn, #Snavbtn, #Qnavbtn, #Tnavbtn {
   font-family: 'Open Sans', sans-serif;
   top: 280px;
     position: absolute;
 }
 
-.Asidenav, .ALsidenav, .LLsidenav, .Ssidenav, .Qsidenav {
+.Asidenav, .ALsidenav, .LLsidenav, .Ssidenav, .Qsidenav, .Tsidenav {
     height: 0;
     width: 100%;
     position: fixed;
@@ -118,7 +118,7 @@ h2 {
     /*padding-top: 50px;*/
   }
 
-  .Asidenav a, .ALsidenav a, .LLsidenav a, .Ssidenav a, .Qsidenav a {
+  .Asidenav a, .ALsidenav a, .LLsidenav a, .Ssidenav a, .Qsidenav a, .Tsidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-family: 'Quicksand', sans-serif;
@@ -128,11 +128,11 @@ h2 {
     transition: 0.3s;
   }
 
-  .Asidenav a:hover, .ALsidenav a:hover, .LLsidenav a:hover, .Ssidenav a:hover, .Qsidenav a:hover {
+  .Asidenav a:hover, .ALsidenav a:hover, .LLsidenav a:hover, .Ssidenav a:hover, .Qsidenav a:hover, .Tsidenav a:hover {
     color: black;
   }
 
-  .Asidenav .Aclosebtn, .ALsidenav .ALclosebtn, .LLsidenav .LLclosebtn, .Ssidenav .Sclosebtn, .Qsidenav .Qclosebtn {
+  .Asidenav .Aclosebtn, .ALsidenav .ALclosebtn, .LLsidenav .LLclosebtn, .Ssidenav .Sclosebtn, .Qsidenav .Qclosebtn, .Tsidenav .Tclosebtn {
     position: absolute;
     top: 0;
     right: 25px;
@@ -140,7 +140,7 @@ h2 {
     margin-left: 50px;
   }
 
-#AcreateNew, #ALcreateNew, #LLcreateNew, #ScreateNew, #QcreateNew {
+#AcreateNew, #ALcreateNew, #LLcreateNew, #ScreateNew, #QcreateNew, #TcreateNew {
   padding-bottom: 60px;
 }
 
@@ -163,10 +163,22 @@ h2 {
   height: 50%;
 
   position: absolute;
-    right: -40px;
-    top: 100px;
+  right: -40px;
+  top: 100px;
+  overflow-x: hidden;
+}
 
-    overflow-x: hidden;
+#Telements {
+  /*overflow-y: scroll;*/
+  width: 800px;
+  min-width: 800px;
+  /*height: 50%;*/
+
+  position: absolute;
+  left: 300px;
+  right: auto;
+  top: 80px;
+  /*overflow-x: hidden;*/
 }
 
 .Aelems, .ALelems, .QElems {
@@ -221,6 +233,20 @@ h2 {
     line-height: 10px;
 }
 
+.TElems {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  background-color: #f2f2f2;
+  border: 1px solid #DB7093;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 78px;
+  font-size: 10px;
+  font-family: 'Open Sans', sans-serif;
+  color: #f2f2f2;
+}
+
 @keyframes flash {
   /*0%   {background-color: red;
       border: 3px solid #800080;}*/
@@ -259,7 +285,7 @@ h2 {
 
 @keyframes slideIn {
     100% { left: 0px; }
-    
+
 }
 
 /*#slide {

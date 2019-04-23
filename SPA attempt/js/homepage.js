@@ -23,10 +23,17 @@ function showQueue() {
 	document.getElementById("queueContainer").style.display = "initial";
 }
 
+function showBST() {
+	this.reset();
+	document.getElementById("treeContainer").style.display = "initial";
+}
+
 function reset() {
 	document.getElementById("arrayContainer").style.display = "none";
 	document.getElementById("arrayListContainer").style.display = "none";
 	document.getElementById("LLContainer").style.display = "none";
 	document.getElementById("stackContainer").style.display = "none";
+	document.getElementById("queueContainer").style.display = "none";
+	document.getElementById("treeContainer").style.display = "none";
 }
 

@@ -1,3 +1,35 @@
+function treeJS() {
+    const treeModel = new TreeModel(['node.js', 'react']);
+    const treeView = new TreeView(treeModel, {
+        'size': document.getElementById("Tsize"),
+        'error' : document.getElementById("Terror"),
+        'positionError' : document.getElementById("TpositionError"),
+        'addNav' : document.getElementById("TaddNav"),
+        'removeNav' : document.getElementById("TremoveNav"),
+        'containsNav' : document.getElementById("TcontainsNav"),
+        'indexNav' : document.getElementById("TindexNav"),
+        'sizeNav' : document.getElementById("TsizeNav"),
+        'clearNav' : document.getElementById("TclearNav"),
+
+        'addButton': document.getElementById("TaddBtn"),
+        'add': document.getElementById("Tadd"),
+        'removeButton': document.getElementById("TremoveBtn"),
+        'containsButton' : document.getElementById("TcontainsBtn"),
+        'clearButton' : document.getElementById("TclearBtn"),
+        
+        'addAction' : document.getElementById("TaddAction"),
+        'removeAction' : document.getElementById("TremoveAction"),
+        'containsAction' : document.getElementById("TcontainsAction"),
+        'sizeAction' : document.getElementById("TsizeAction"),
+        'clearAction' : document.getElementById("TclearAction"),
+        
+
+        'allElements' : document.getElementById("Telements")
+    });
+    const controller = new TreeController(treeModel, treeView);
+
+}
+
 function queueJS() {
     const queueModel = new QueueModel(['node.js', 'react']);
     const queueView = new QueueView(queueModel, {
@@ -176,6 +208,7 @@ window.onload = function() {
     LLJS();
     stackJS();
     queueJS();
+    treeJS();
     setUpDropdown();
 }
 

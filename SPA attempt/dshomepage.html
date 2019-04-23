@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="js/dsLinkedList.js"></script>
 	<script type="text/javascript" src="js/dsStack.js"></script>
 	<script type="text/javascript" src="js/dsQueue.js"></script>
+	<script type="text/javascript" src="js/dsTree.js"></script>
 	<script type="text/javascript" src="js/sidenav.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -23,7 +24,7 @@
 		<button id="dsLinkedList" onclick="showLL()">LinkedList</button>
 		<button id="dsStack" onclick="showStack()">Stack</button>
 	</div> -->
-	<div class="custom-select" style="width:200px;">
+	<div class="custom-select" style="width:200px;z-index: 1;">
 	  <select>
 	    <option value="0">Select Data Structure:</option>
 	    <option value="1">Array</option>
@@ -404,6 +405,73 @@
         </div>
 
 	</div> <!-- close Queue container -->
+
+	<div id="treeContainer">
+		<h1>Data Structure: Binary Search Tree</h1>
+		<div id="TcreateNew" style="z-index: 1;">
+			<button id="Tcreate" onclick="openNav('TmySidenav')">Create New BST</button>
+		</div>
+
+		<div id="Tnavbtn" style="top:150px;z-index: 1;">
+		<span style="font-size:20px;color:dimgray;cursor:pointer;" onclick="openNav('TmySidenav')">&#9776; Modify BST</span>
+		</div>
+
+		<div id="TmySidenav" class="Tsidenav">
+		  	<a href="javascript:void(0)" class="Tclosebtn" onclick="closeNav('TmySidenav')">&times;</a>
+
+			<button id="TaddNav" class="TactionNavs" style="background-color:snow;color:black;">Insert</button>
+			<button id="TremoveNav" class="TactionNavs" style="background-color: slategray;color: white;">Remove</button>
+			<button id="TcontainsNav" class="TactionNavs" style="background-color: slategray;color: white;">Find</button>
+			<button id="TsizeNav" class="TactionNavs" style="background-color: slategray;color: white;">Size</button>
+			<button id="TclearNav" class="TactionNavs" style="background-color: slategray;color: white;">Clear</button>
+
+			<div id="TaddAction" class="Tmethods">
+				<!-- 1. append element to end of list
+				2. insert element at position in list 
+				3. show indexes in list visual? -->
+			  	<h2>Inserts the specified element into the BST at the appropriate location:</h2>
+		        <p>Insert:</p>
+		        <input type="text" class="Tadd" id="Tadd" name="add" placeholder=""> <p id="TpositionError"></p>
+		        <button id="TaddBtn">Insert Element</button>
+	    	</div>
+
+	    	<div id="TremoveAction" class="Tmethods" style="display:none">
+		        <h2>Removes the specified element from the BST:</h2>
+		        <p>Remove:</p>
+		        <input type="text" class="TremoveElem" id="TremoveElem" name="enterIndex" placeholder="">
+		        <button id="TremoveBtn">Remove Element</button>
+		    </div>
+
+		    <div id="TcontainsAction" class="Tmethods" style="display:none">
+		        <h2>Returns the node which contains the value element:</h2>
+		        <p>Element:</p>
+		        <input type="text" class="TindexOf" id="TindexOf" name="indexOf" placeholder="">
+		        <button id="TcontainsBtn">Find</button>
+		    </div>
+
+		    <div id="TsizeAction" class="Tmethods" style="display:none">
+		        <h2>Total number of elements in this BST:</h2>
+		        <p id="TsizeDisplay">0</p>
+		    </div>
+
+		    <div id="TclearAction" class="Tmethods" style="display:none">
+		        <h2>Removes all elements from this BST:</h2>
+		        <button id="TclearBtn">Clear Queue</button>
+		    </div>
+
+		</div> <!-- close mySideNav div -->
+
+        <div id="Telements">
+        	<div id="TIndex0" class="TElems" style="margin-left:380px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	
+        	<!-- <div id="TIndex1" class="TElems" style="margin-top:120px;margin-left:0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> -->
+        	<script src="js/connectElems.js"></script>
+    			<!-- <script>
+				connectDivs("TIndex0", "TIndex1", "black");
+			</script> -->
+        </div>
+
+	</div> <!-- close Tree container -->
 	
 </body>
 </html>
