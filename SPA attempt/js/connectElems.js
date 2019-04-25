@@ -1,3 +1,5 @@
+var markerInitialized;
+
 function createSVG() {
   var svg = document.getElementById("svg-canvas");
   if (null == svg) {
@@ -5,12 +7,13 @@ function createSVG() {
                                    "svg");
     svg.setAttribute('id', 'svg-canvas');
     svg.setAttribute('style', 'position:absolute;top:0px;left:0px');
-    svg.setAttribute('width', 1000);
+    svg.setAttribute('width', document.body.clientWidth);
     svg.setAttribute('height', document.documentElement.scrollHeight);
     svg.setAttributeNS("http://www.w3.org/2000/xmlns/", 
                        "xmlns:xlink", 
                        "http://www.w3.org/1999/xlink");
     document.body.appendChild(svg);
+    markerInitialized = false;
   }
   return svg;
 }
@@ -40,7 +43,7 @@ function findAbsolutePosition(htmlElement) {
   };
 }
 
-function connectDivs(leftId, rightId, color, tension) {
+function connectDivs(leftId, rightId, color, index) {
   var left = document.getElementById(leftId);
   var right = document.getElementById(rightId);
   
@@ -58,12 +61,10 @@ function connectDivs(leftId, rightId, color, tension) {
   var width=x2-x1;
   var height = y2-y1;
 
-  drawCircle(x1, y1, 3, color);
+  // drawCircle(x1, y1, 3, color);
   // drawCircle(x2, y2, 3, color);
-  drawCurvedLine(x1, y1, x2, y2, color, tension);
+  drawCurvedLine(x1, y1, x2, y2, color, index);
 }
-
-markerInitialized = false;
 
 function createTriangleMarker() {
   if (markerInitialized)
@@ -91,9 +92,9 @@ function createTriangleMarker() {
   defs.appendChild(marker);
 }
 
-function drawCurvedLine(x1, y1, x2, y2, color) {
+function drawCurvedLine(x1, y1, x2, y2, color, index) {
     var svg = createSVG();
-    createTriangleMarker();
+    // createTriangleMarker();
     var shape = document.createElementNS("http://www.w3.org/2000/svg", 
                                          "path");{
       // var delta = (x2-x1);
@@ -109,7 +110,9 @@ function drawCurvedLine(x1, y1, x2, y2, color) {
       shape.setAttributeNS(null, "fill", "none");
       shape.setAttributeNS(null, "stroke", color);
 
-      shape.setAttributeNS(null, "marker-end", "url(#triangle)");
+      shape.setAttribute('id', index);
+
+      // shape.setAttributeNS(null, "marker-end", "url(#triangle)");
 
       svg.appendChild(shape);
   }

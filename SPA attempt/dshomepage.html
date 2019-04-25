@@ -431,7 +431,7 @@
 				3. show indexes in list visual? -->
 			  	<h2>Inserts the specified element into the BST at the appropriate location:</h2>
 		        <p>Insert:</p>
-		        <input type="text" class="Tadd" id="Tadd" name="add" placeholder=""> <p id="TpositionError"></p>
+		        <input type="text" class="Tadd" id="Tadd" name="add" placeholder=""> <p id="TpositionError" style="display: none;">*Element already exists in tree</p>
 		        <button id="TaddBtn">Insert Element</button>
 	    	</div>
 
@@ -445,7 +445,7 @@
 		    <div id="TcontainsAction" class="Tmethods" style="display:none">
 		        <h2>Returns the node which contains the value element:</h2>
 		        <p>Element:</p>
-		        <input type="text" class="TindexOf" id="TindexOf" name="indexOf" placeholder="">
+		        <input type="text" class="TindexOf" id="TindexOf" name="indexOf" placeholder=""><p id="TcontainsResult" style="display: none;">*Element does not exist in tree</p>
 		        <button id="TcontainsBtn">Find</button>
 		    </div>
 
@@ -456,13 +456,13 @@
 
 		    <div id="TclearAction" class="Tmethods" style="display:none">
 		        <h2>Removes all elements from this BST:</h2>
-		        <button id="TclearBtn">Clear Queue</button>
+		        <button id="TclearBtn">Clear Tree</button>
 		    </div>
 
 		</div> <!-- close mySideNav div -->
 
         <div id="Telements">
-        	<div id="TIndex0" class="TElems" style="margin-left:380px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	<div id="TIndex0" class="TElems" style="margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         	
         	<!-- <div id="TIndex1" class="TElems" style="margin-top:120px;margin-left:0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> -->
         	<script src="js/connectElems.js"></script>

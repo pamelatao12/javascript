@@ -241,8 +241,8 @@ h2 {
   border: 1px solid #DB7093;
   border-radius: 50%;
   text-align: center;
-  line-height: 78px;
-  font-size: 10px;
+  line-height: 50px;
+  font-size: 16px;
   font-family: 'Open Sans', sans-serif;
   color: #f2f2f2;
 }
