@@ -61,8 +61,12 @@ class TreeModel extends EventEmitter {
     }
 
     remove(element) {
-        this.removeHelper(this.root, element);
-        // this.emit("elementRemoved", element);
+        if (this.root != null && this.find(element) == element) {
+            this.emit('elementRemovedError', element);
+            return;
+        }
+        this.root = this.removeHelper(this.root, element);
+        this.emit("updateSize", this.size);
     }
 
     removeHelper(root, element) {
@@ -71,7 +75,7 @@ class TreeModel extends EventEmitter {
         }
 
         if (Number(root.val) == Number(element)) {
-            this.root = this.removeElement(root);
+            root = this.removeElement(root);
             this.size--;
         } else if (Number(root.val) > Number(element)) {
             root.left = this.removeHelper(root.left, element);
@@ -215,7 +219,7 @@ class TreeView extends EventEmitter {
 
         model.on('elementAdded', object => this.drawNode(object));
         model.on('elementAddedError', () => this.addError());
-        model.on('elementReplaced', index => this.replaceLL(index));
+        model.on('elementRemovedError', () => this.removeError());
         model.on('elementRemoved', element => this.removeNode(element));
         model.on('elementGot', element => this.getResultElement(element));
         model.on('updateSize', size => this.changeSize(size));
@@ -259,6 +263,8 @@ class TreeView extends EventEmitter {
             if (Number(object) > Number(parentVal)) {
                 var left = parElem.style.marginLeft;
                 left = Number(left.substring(0, left.length - 2));
+                console.log(this._height);
+                console.log(this._reHeight);
                 left += (200 / this._height) - this._reHeight;
             } else {
                 var left = parElem.style.marginLeft;
@@ -314,7 +320,7 @@ class TreeView extends EventEmitter {
     }
 
     removeNode(element) {
-        var node = this._model.root;
+        document.getElementById("TremoveError").style.display = "none";
         this.removeHelper(this._model.root, element, element);
         // this._reHeight = 0;
         // remove in model after so removing node from tree in view is not affected yet
@@ -353,7 +359,7 @@ class TreeView extends EventEmitter {
 
 
             this._model.remove(modelRemoveElem);
-            this._reHeight = 100;
+            this._reHeight = -5;
             this.drawSubTree(root.right);
         } else if (root.right == null) {
             // root = root.left;
@@ -366,7 +372,7 @@ class TreeView extends EventEmitter {
             line.remove();
             left.remove();
             this._model.remove(modelRemoveElem);
-            this._reHeight = 100;
+            this._reHeight = -5;
             this.drawSubTree(root.left);
         } else {
             var minElement = this.minimum(root.right);
@@ -400,9 +406,11 @@ class TreeView extends EventEmitter {
         } 
         if (root.left != null && root.right != null) {
             document.getElementById("index" + root.left.val).remove();
+            document.getElementById(root.left.val).remove(); // remove connector
             this.drawNode(root.left.val);
             
             document.getElementById("index" + root.right.val).remove();
+            document.getElementById(root.right.val).remove(); // remove connector
             this.drawNode(root.right.val);
             this.drawSubTree(root.left);
             this.drawSubTree(root.right);
@@ -410,12 +418,14 @@ class TreeView extends EventEmitter {
 
         if (root.left != null) {
             document.getElementById("index" + root.left.val).remove();
+            document.getElementById(root.left.val).remove(); // remove connector
             this.drawNode(root.left.val);
             this.drawSubTree(root.left);
         }
 
         if (root.right != null) {
             document.getElementById("index" + root.right.val).remove();
+            document.getElementById(root.right.val).remove(); // remove connector
             this.drawNode(root.right.val);
             this.drawSubTree(root.right);
         }
@@ -607,10 +617,9 @@ class TreeView extends EventEmitter {
         document.getElementById("TsizeDisplay").innerHTML = size;
     }
 
-    // removeError() {
-    //     document.getElementById("TremoveError").innerHTML = "*Please enter a valid index position";
-    //     document.getElementById("TremoveError").style.display = "inline-block";
-    // }
+    removeError() {
+        document.getElementById("TremoveError").style.display = "inline-block";
+    }
 
     // hideRemoveError() {
     //     document.getElementById("TremoveError").style.display = "none";
