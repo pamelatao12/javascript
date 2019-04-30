@@ -13,6 +13,7 @@
 	<script type="text/javascript" src="js/dsStack.js"></script>
 	<script type="text/javascript" src="js/dsQueue.js"></script>
 	<script type="text/javascript" src="js/dsTree.js"></script>
+	<script type="text/javascript" src="js/dsHeap.js"></script>
 	<script type="text/javascript" src="js/dsSideNav.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -472,6 +473,79 @@
         </div>
 
 	</div> <!-- close Tree container -->
+
+	<div id="heapContainer">
+		<h1>Data Structure: Heap</h1>
+		<div id="HcreateNew" style="z-index: 1;">
+			<button id="Hcreate" onclick="openNav('HmySidenav')">Create New Heap</button>
+		</div>
+
+		<div id="Hnavbtn" style="top:150px;z-index: 1;">
+		<span style="font-size:20px;color:dimgray;cursor:pointer;" onclick="openNav('HmySidenav')">&#9776; Modify Heap</span>
+		</div>
+
+		<div id="HmySidenav" class="Hsidenav">
+		  	<a href="javascript:void(0)" class="Hclosebtn" onclick="closeNav('HmySidenav')">&times;</a>
+
+			<button id="HaddNav" class="HactionNavs" style="background-color:snow;color:black;">Add</button>
+			<button id="HremoveNav" class="HactionNavs" style="background-color: slategray;color: white;">Remove</button>
+			<button id="HcontainsNav" class="HactionNavs" style="background-color: slategray;color: white;">Contains</button>
+			<button id="HpeekNav" class="HactionNavs" style="background-color: slategray;color: white;">Peek</button>
+			<button id="HsizeNav" class="HactionNavs" style="background-color: slategray;color: white;">Size</button>
+			<button id="HclearNav" class="HactionNavs" style="background-color: slategray;color: white;">Clear</button>
+
+			<div id="HaddAction" class="Hmethods">
+				<!-- 1. append element to end of list
+				2. insert element at position in list 
+				3. show indexes in list visual? -->
+			  	<h2>Adds a new element to the heap:</h2>
+		        <p>Add:</p>
+		        <input type="text" class="Hadd" id="Hadd" name="add" placeholder=""> <p id="HpositionError" style="display: none;">*Element already exists in heap</p>
+		        <button id="HaddBtn">Add Element</button>
+	    	</div>
+
+	    	<div id="HremoveAction" class="Hmethods" style="display:none">
+		        <h2>Removes the specified element from the heap:</h2>
+		        <p>Remove:</p>
+		        <input type="text" class="HremoveElem" id="HremoveElem" name="enterIndex" placeholder=""> <p id="HremoveError" style="display: none;">*Element does not exist in heap</p>
+		        <button id="HremoveBtn">Remove Element</button>
+		    </div>
+
+		    <div id="HcontainsAction" class="Hmethods" style="display:none">
+		        <h2>Returns true if this heap contains the specified element:</h2>
+		        <p>Element:</p>
+		        <input type="text" class="HindexOf" id="HindexOf" name="indexOf" placeholder=""><p id="HcontainsResult" style="display: none;">*Element does not exist in tree</p>
+		        <button id="HcontainsBtn">Contains</button>
+		    </div>
+
+		    <div id="HpeekAction" class="Hmethods" style="display:none">
+		        <h2>Highlights the max element in this heap:</h2>
+		        <button id="HpeekBtn">Peek</button>
+		    </div>
+
+		    <div id="HsizeAction" class="Hmethods" style="display:none">
+		        <h2>Total number of elements in this heap:</h2>
+		        <p id="HsizeDisplay">0</p>
+		    </div>
+
+		    <div id="HclearAction" class="Hmethods" style="display:none">
+		        <h2>Removes all elements from this heap:</h2>
+		        <button id="HclearBtn">Clear Heap</button>
+		    </div>
+
+		</div> <!-- close mySideNav div -->
+
+        <div id="Helements">
+        	<div id="HIndex0" class="HElems" style="margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	
+        	<!-- <div id="HIndex1" class="HElems" style="margin-top:120px;margin-left:0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> -->
+        	<script src="js/connectElems.js"></script>
+    			<!-- <script>
+				connectDivs("TIndex0", "TIndex1", "black");
+			</script> -->
+        </div>
+
+	</div> <!-- close Heap container -->
 	
 </body>
 </html>

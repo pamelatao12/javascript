@@ -61,10 +61,6 @@ class TreeModel extends EventEmitter {
     }
 
     remove(element) {
-        if (this.root != null && this.find(element) == element) {
-            this.emit('elementRemovedError', element);
-            return;
-        }
         this.root = this.removeHelper(this.root, element);
         this.emit("updateSize", this.size);
     }
@@ -108,19 +104,6 @@ class TreeModel extends EventEmitter {
         return root;
     }
 
-    // remove(index) {
-    //     // arraylist animation to only shift subsequent elements over one at a time
-    //     this.elemIndex = index;
-    //     if (this.elemIndex == -1) return; //element not in list
-
-    //     for (var i = this.elemIndex; i < this.size; i++) {
-    //         this.array[i] = this.array[i + 1];
-    //     }
-    //     this.size--;
-    //     this.emit('elementRemoved', index);
-    //     this.emit('updateSize', this.size);
-    // }
-
     find(element) {
         var result = this.findHelper(this.root, element);
         return result;
@@ -150,11 +133,8 @@ class TreeController {
         this._model = model;
         this._view = view;
         view.on("addButtonClicked", () => this.addElement());
-        view.on("replaceButtonClicked", () => this.replaceElement());
         view.on("removeButtonClicked", () => this.removeElement());
         view.on("containsButtonClicked", () => this.containsElement());
-        view.on("getButtonClicked", () => this.getElement());
-        view.on("indexOfButtonClicked", () => this.indexOfElement());
         view.on("clearButtonClicked", () => this.clearTree());
     }
 
@@ -163,9 +143,7 @@ class TreeController {
 
         if (element == "") {
             this._view.showInvalidElement();
-        // } else if (this._model.getIndex(element) != -1) {
-        //     this._view.showInvalidElement();
-        // }
+        // checked if element is valid in model
         } else {
             this._view.hidePositionError();
             this._model.add(element);
@@ -174,16 +152,17 @@ class TreeController {
 
     removeElement() {
         var element = this._view.getRemovedElement();
-        // if ((removeIndex != "" && element != "")) {
-        //     this._view.removeBothError();
-        //     return;
-        // }
 
         if (element == "") {
             this._view.removeError();
             return;
         } 
-
+        if (this._model.root != null && this._model.find(element) == null) {
+            this._view.removeError();
+            return;
+        }
+        this._view.hideRemoveError();
+        // NEED TO STOP IT FROM GOING IF ELEMENT ALREADY EXISTS
         this._view.removeNode(element);
         // this._model.remove(element);
         // this._view.hideRemoveError();
@@ -219,9 +198,8 @@ class TreeView extends EventEmitter {
 
         model.on('elementAdded', object => this.drawNode(object));
         model.on('elementAddedError', () => this.addError());
-        model.on('elementRemovedError', () => this.removeError());
+        // model.on('elementRemovedError', () => this.removeError());
         model.on('elementRemoved', element => this.removeNode(element));
-        model.on('elementGot', element => this.getResultElement(element));
         model.on('updateSize', size => this.changeSize(size));
         model.on('treeCleared', () => this.clear());
 
@@ -263,8 +241,6 @@ class TreeView extends EventEmitter {
             if (Number(object) > Number(parentVal)) {
                 var left = parElem.style.marginLeft;
                 left = Number(left.substring(0, left.length - 2));
-                console.log(this._height);
-                console.log(this._reHeight);
                 left += (200 / this._height) - this._reHeight;
             } else {
                 var left = parElem.style.marginLeft;
@@ -320,7 +296,6 @@ class TreeView extends EventEmitter {
     }
 
     removeNode(element) {
-        document.getElementById("TremoveError").style.display = "none";
         this.removeHelper(this._model.root, element, element);
         // this._reHeight = 0;
         // remove in model after so removing node from tree in view is not affected yet
@@ -384,7 +359,7 @@ class TreeView extends EventEmitter {
             // root.val = minElement.val;
             // have to remove minElement so lower nodes move up
             this.removeHelper(root.right, minElement.val, modelRemoveElem);
-            console.log("index" + rootVal);
+            // console.log("index" + rootVal);
             // if (document.getElementById("index" + rootVal) != null) {
                 document.getElementById("index" + rootVal).innerHTML = minElement.val;
                 document.getElementById("index" + rootVal).id = "index" + minElement.val;
@@ -540,25 +515,9 @@ class TreeView extends EventEmitter {
         return this._elements.add.value;
     }
 
-    getAddedIndex() {
-        return document.getElementById("TenterIndex").value;
-    }
-
-    // getReplacedIndex() {
-    //     return document.getElementById("Tset").value;
-    // }
-
-    getNewElement() {
-        return document.getElementById("TreplaceWith").value;
-    }
-
     getRemovedElement() {
         return document.getElementById("TremoveElem").value;
     }
-
-    // getRemovedIndex() {
-    //     return document.getElementById("TremoveIndex").value;
-    // }
 
     getContainsElement() {
         return document.getElementById("Tcontains").value;
@@ -578,41 +537,6 @@ class TreeView extends EventEmitter {
         document.getElementById("Tresult").innerHTML = "";
     }
 
-    getGetElement() {
-        return document.getElementById("TgetIndex").value;
-    }
-
-    getResultElement(element) {
-        if (element == undefined) {
-            document.getElementById("TgetResult").innerHTML = "*No element at specified index";
-            document.getElementById("TgetResult").style.color = "red";
-        } else {
-            document.getElementById("TgetResult").style.color = "black";
-            document.getElementById("TgetResult").innerHTML = "Element: " + element;
-            document.getElementById("TgetResult").style.fontWeight = "bolder";
-        }
-    }
-
-    resetGet() {
-        document.getElementById("TgetResult").innerHTML = "";
-    }
-
-    getIndexOfElement() {
-        return document.getElementById("TindexOf").value;
-    }
-
-    returnIndexOf(index) {
-        document.getElementById("TindexOfResult").innerHTML = "Index of element: " + index;
-        document.getElementById("TindexOfResult").style.fontWeight = "bolder";
-    }
-
-    getSizeInput() {
-        if (this._elements.size.value == "") {
-            return undefined;
-        }
-        return Number(this._elements.size.value);
-    }
-
     changeSize(size) {
         document.getElementById("TsizeDisplay").innerHTML = size;
     }
@@ -621,23 +545,8 @@ class TreeView extends EventEmitter {
         document.getElementById("TremoveError").style.display = "inline-block";
     }
 
-    // hideRemoveError() {
-    //     document.getElementById("TremoveError").style.display = "none";
-    // }
-
-    removeBothError() {
-        document.getElementById("TremoveError").innerHTML = "*Only one input allowed";
-        document.getElementById("TremoveError").style.display = "inline-block";
-    }
-
-    removeInvalidElement() {
-        document.getElementById("TremoveError").innerHTML = "*Element not in list";
-        document.getElementById("TremoveError").style.display = "inline-block";
-    }
-
-    showPositionError() {
-        this._elements.positionError.innerHTML = "*Please enter a valid index position";
-        this._elements.positionError.style.display = "inline-block";
+    hideRemoveError() {
+        document.getElementById("TremoveError").style.display = "none";
     }
 
     hidePositionError() {
@@ -647,23 +556,6 @@ class TreeView extends EventEmitter {
     showInvalidElement() {
         this._elements.positionError.style.display = "inline-block";
         this._elements.positionError.innerHTML = "*Please enter a valid element";
-    }
-
-    setError() {
-        document.getElementById("TsetError").style.color = "red";
-        document.getElementById("TsetError").innerHTML = " *Please enter a valid index position";
-        document.getElementById("TsetError").style.display = "inline-block";
-    }
-
-    setElementError() {
-        document.getElementById("TsetError").style.color = "red";
-        document.getElementById("TsetError").innerHTML = " *Please enter a valid element";
-        document.getElementById("TsetError").style.display = "inline-block";
-    
-    }
-
-    hideSetError() {
-        document.getElementById("TsetError").style.display = "none";
     }
 
 }

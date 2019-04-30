@@ -28,6 +28,11 @@ function showBST() {
 	document.getElementById("treeContainer").style.display = "initial";
 }
 
+function showHeap() {
+	this.reset();
+	document.getElementById("heapContainer").style.display = "initial";
+}
+
 function reset() {
 	document.getElementById("arrayContainer").style.display = "none";
 	document.getElementById("arrayListContainer").style.display = "none";
@@ -35,5 +40,6 @@ function reset() {
 	document.getElementById("stackContainer").style.display = "none";
 	document.getElementById("queueContainer").style.display = "none";
 	document.getElementById("treeContainer").style.display = "none";
+	document.getElementById("heapContainer").style.display = "none";
 }
 

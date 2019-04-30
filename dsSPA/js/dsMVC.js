@@ -1,3 +1,37 @@
+function heapJS() {
+    const heapModel = new HeapModel(['node.js', 'react']);
+    const heapView = new HeapView(heapModel, {
+        'size': document.getElementById("Hsize"),
+        'error' : document.getElementById("Herror"),
+        'positionError' : document.getElementById("HpositionError"),
+        'addNav' : document.getElementById("HaddNav"),
+        'removeNav' : document.getElementById("HremoveNav"),
+        'containsNav' : document.getElementById("HcontainsNav"),
+        'peekNav' : document.getElementById("HpeekNav"),
+        'indexNav' : document.getElementById("HindexNav"),
+        'sizeNav' : document.getElementById("HsizeNav"),
+        'clearNav' : document.getElementById("HclearNav"),
+
+        'addButton': document.getElementById("HaddBtn"),
+        'add': document.getElementById("Hadd"),
+        'removeButton': document.getElementById("HremoveBtn"),
+        'containsButton' : document.getElementById("HcontainsBtn"),
+        'clearButton' : document.getElementById("HclearBtn"),
+        
+        'addAction' : document.getElementById("HaddAction"),
+        'removeAction' : document.getElementById("HremoveAction"),
+        'containsAction' : document.getElementById("HcontainsAction"),
+        'peekAction' : document.getElementById("HpeekAction"),
+        'sizeAction' : document.getElementById("HsizeAction"),
+        'clearAction' : document.getElementById("HclearAction"),
+        
+
+        'allElements' : document.getElementById("Telements")
+    });
+    const controller = new HeapController(heapModel, heapView);
+
+}
+
 function treeJS() {
     const treeModel = new TreeModel(['node.js', 'react']);
     const treeView = new TreeView(treeModel, {
@@ -209,6 +243,7 @@ window.onload = function() {
     stackJS();
     queueJS();
     treeJS();
+    heapJS();
     setUpDropdown();
 }
 

@@ -49,6 +49,8 @@ function setUpDropdown() {
             showQueue();
           } else if (this.innerHTML == "BST") {
             showBST();
+          } else if (this.innerHTML == "Heap") {
+            showHeap();
           }
       });
       b.appendChild(c);

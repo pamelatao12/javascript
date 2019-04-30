@@ -3,7 +3,7 @@ body {
   overflow-x: hidden;
 }
 
-#arrayContainer, #arrayListContainer, #LLContainer, #stackContainer, #queueContainer {
+#arrayContainer, #arrayListContainer, #LLContainer, #stackContainer, #queueContainer, #treeContainer {
   display: none;
 }
 
@@ -88,24 +88,24 @@ h2 {
   font-size: 18px;
 }
 
-.AactionNavs, .ALactionNavs, .LLactionNavs, .SactionNavs, .QactionNavs, .TactionNavs {
+.AactionNavs, .ALactionNavs, .LLactionNavs, .SactionNavs, .QactionNavs, .TactionNavs, .HactionNavs {
   display: inline-block;
   font-family: 'Open Sans', sans-serif;
   width: 100px;
   border-color: black;
 }
 
-.AactionNavs:hover, .ALactionNavs:hover, .LLactionNavs:hover, .SactionNavs:hover , .QactionNavs:hover, .TactionNavs:hover {
+.AactionNavs:hover, .ALactionNavs:hover, .LLactionNavs:hover, .SactionNavs:hover , .QactionNavs:hover, .TactionNavs:hover, .HactionNavs:hover {
   color: black;
 }
 
-#Anavbtn, #ALnavbtn, #LLnavbtn, #Snavbtn, #Qnavbtn, #Tnavbtn {
+#Anavbtn, #ALnavbtn, #LLnavbtn, #Snavbtn, #Qnavbtn, #Tnavbtn, #Hnavbtn {
   font-family: 'Open Sans', sans-serif;
   top: 280px;
     position: absolute;
 }
 
-.Asidenav, .ALsidenav, .LLsidenav, .Ssidenav, .Qsidenav, .Tsidenav {
+.Asidenav, .ALsidenav, .LLsidenav, .Ssidenav, .Qsidenav, .Tsidenav, .Hsidenav {
     height: 0;
     width: 100%;
     position: fixed;
@@ -118,7 +118,7 @@ h2 {
     /*padding-top: 50px;*/
   }
 
-  .Asidenav a, .ALsidenav a, .LLsidenav a, .Ssidenav a, .Qsidenav a, .Tsidenav a {
+  .Asidenav a, .ALsidenav a, .LLsidenav a, .Ssidenav a, .Qsidenav a, .Tsidenav a, .Hsidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-family: 'Quicksand', sans-serif;
@@ -128,11 +128,11 @@ h2 {
     transition: 0.3s;
   }
 
-  .Asidenav a:hover, .ALsidenav a:hover, .LLsidenav a:hover, .Ssidenav a:hover, .Qsidenav a:hover, .Tsidenav a:hover {
+  .Asidenav a:hover, .ALsidenav a:hover, .LLsidenav a:hover, .Ssidenav a:hover, .Qsidenav a:hover, .Tsidenav a:hover, .Hsidenav a:hover {
     color: black;
   }
 
-  .Asidenav .Aclosebtn, .ALsidenav .ALclosebtn, .LLsidenav .LLclosebtn, .Ssidenav .Sclosebtn, .Qsidenav .Qclosebtn, .Tsidenav .Tclosebtn {
+  .Asidenav .Aclosebtn, .ALsidenav .ALclosebtn, .LLsidenav .LLclosebtn, .Ssidenav .Sclosebtn, .Qsidenav .Qclosebtn, .Tsidenav .Tclosebtn, .Hsidenav .Hclosebtn {
     position: absolute;
     top: 0;
     right: 25px;
@@ -140,7 +140,7 @@ h2 {
     margin-left: 50px;
   }
 
-#AcreateNew, #ALcreateNew, #LLcreateNew, #ScreateNew, #QcreateNew, #TcreateNew {
+#AcreateNew, #ALcreateNew, #LLcreateNew, #ScreateNew, #QcreateNew, #TcreateNew, #HcreateNew {
   padding-bottom: 60px;
 }
 
@@ -168,7 +168,7 @@ h2 {
   overflow-x: hidden;
 }
 
-#Telements {
+#Telements, #Helements {
   /*overflow-y: scroll;*/
   width: 800px;
   min-width: 800px;
@@ -233,7 +233,7 @@ h2 {
     line-height: 10px;
 }
 
-.TElems {
+.TElems, .HElems {
   position: absolute;
   height: 50px;
   width: 50px;
@@ -331,7 +331,7 @@ h2 {
   color: red;
 }
 
-#ALsizeDisplay, #LLsizeDisplay, #SsizeDisplay, #QsizeDisplay {
+#ALsizeDisplay, #LLsizeDisplay, #SsizeDisplay, #QsizeDisplay, #TsizeDisplay, #HsizeDisplay {
   font-weight: bold;
   color: slategray;
   font-size: 50px;
