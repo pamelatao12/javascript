@@ -26,7 +26,7 @@ function heapJS() {
         'clearAction' : document.getElementById("HclearAction"),
         
 
-        'allElements' : document.getElementById("Telements")
+        'allElements' : document.getElementById("Helements")
     });
     const controller = new HeapController(heapModel, heapView);
 

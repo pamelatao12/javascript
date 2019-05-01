@@ -50,7 +50,7 @@ class HeapModel extends EventEmitter {
 
     bubbleUp(index) {
         var parent = (index - 1) / 2;
-        while (index > 0 && this.array[index] > array[parent]) {
+        while (index > 0 && this.array[index] > this.array[parent]) {
             swap(index, parent);
             index = parent;
             parent = (index - 1) / 2;
@@ -181,10 +181,10 @@ class HeapView extends EventEmitter {
         super();
         this._model = model;
         this._elements = elements;
-        this._height = 0;
+        this._height = 1;
         this._reHeight = 0;
 
-        model.on('elementAdded', object => this.drawNode(object));
+        model.on('elementAdded', () => this.drawHeap());
         model.on('elementAddedError', () => this.addError());
         model.on('elementRemovedError', () => this.removeError());
         model.on('elementRemoved', element => this.removeNode(element));
@@ -203,6 +203,43 @@ class HeapView extends EventEmitter {
         elements.sizeNav.addEventListener("click", () => this.sizeNavStyle());
         elements.clearNav.addEventListener("click", () => this.clearNavStyle());
     }
+
+    drawHeap() {
+        var heap = this._model.array;
+        for (var i = 0; i < this._model.size; i++) {
+            if (i == 0) {
+                var firstElem = document.getElementsByClassName("HElems")[0];
+                firstElem.id = "index" + heap[i];
+                firstElem.style.display = "inline-block";
+                firstElem.innerHTML = heap[i];
+                firstElem.style.color = "black";
+            } else {
+                var newElem = document.getElementsByClassName("HElems")[0].cloneNode(true);
+                newElem.id = "index" + heap[i];
+                newElem.innerHTML = heap[i];
+
+                // this._height = 0;
+
+                var parentVal = heap[(i - 1) / 2];
+                var parElem = document.getElementById("index" + parentVal);
+
+                var left = parElem.style.marginLeft;
+                left = Number(left.substring(0, left.length - 2));
+                left += 200 / this._height;
+
+                var top = parElem.style.marginTop;
+                top = Number(top.substring(0, top.length - 2));
+                top += 100;
+
+                newElem.style.marginTop = top + "px";
+                newElem.style.marginLeft = left + "px";
+                this._elements.allElements.appendChild(newElem);
+                connectDivs(parElem.id, newElem.id, "black", heap[i]);
+            }
+        }
+    }
+
+
 
     drawNode(object) {
         document.getElementById("HpositionError").style.display = "none";
