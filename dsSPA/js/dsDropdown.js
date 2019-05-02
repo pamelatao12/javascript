@@ -51,6 +51,8 @@ function setUpDropdown() {
             showBST();
           } else if (this.innerHTML == "Heap") {
             showHeap();
+          } else if (this.innerHTML == "HashMap") {
+            showHashMap();
           }
       });
       b.appendChild(c);

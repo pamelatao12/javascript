@@ -1,3 +1,38 @@
+function hashMapJS() {
+    const hashMapModel = new HashMapModel(['node.js', 'react']);
+    const hashMapView = new HashMapView(hashMapModel, {
+        'size': document.getElementById("HMsize"),
+        'error' : document.getElementById("HMerror"),
+        'positionError' : document.getElementById("HMpositionError"),
+        'addNav' : document.getElementById("HMaddNav"),
+        'removeNav' : document.getElementById("HMremoveNav"),
+        'containsNav' : document.getElementById("HMcontainsNav"),
+        'peekNav' : document.getElementById("HMpeekNav"),
+        'indexNav' : document.getElementById("HMindexNav"),
+        'sizeNav' : document.getElementById("HMsizeNav"),
+        'clearNav' : document.getElementById("HMclearNav"),
+
+        'addButton': document.getElementById("HMaddBtn"),
+        'add': document.getElementById("HMadd"),
+        'removeButton': document.getElementById("HMremoveBtn"),
+        'peekButton' : document.getElementById("HMpeekBtn"),
+        'containsButton' : document.getElementById("HMcontainsBtn"),
+        'clearButton' : document.getElementById("HMclearBtn"),
+        
+        'addAction' : document.getElementById("HMaddAction"),
+        'removeAction' : document.getElementById("HMremoveAction"),
+        'containsAction' : document.getElementById("HMcontainsAction"),
+        'peekAction' : document.getElementById("HMpeekAction"),
+        'sizeAction' : document.getElementById("HMsizeAction"),
+        'clearAction' : document.getElementById("HMclearAction"),
+        
+
+        'allElements' : document.getElementById("HMelements")
+    });
+    const controller = new HashMapController(hashMapModel, hashMapView);
+
+}
+
 function heapJS() {
     const heapModel = new HeapModel(['node.js', 'react']);
     const heapView = new HeapView(heapModel, {
@@ -15,6 +50,7 @@ function heapJS() {
         'addButton': document.getElementById("HaddBtn"),
         'add': document.getElementById("Hadd"),
         'removeButton': document.getElementById("HremoveBtn"),
+        'peekButton' : document.getElementById("HpeekBtn"),
         'containsButton' : document.getElementById("HcontainsBtn"),
         'clearButton' : document.getElementById("HclearBtn"),
         
@@ -244,6 +280,7 @@ window.onload = function() {
     queueJS();
     treeJS();
     heapJS();
+    hashMapJS();
     setUpDropdown();
 }
 

@@ -14,6 +14,7 @@
 	<script type="text/javascript" src="js/dsQueue.js"></script>
 	<script type="text/javascript" src="js/dsTree.js"></script>
 	<script type="text/javascript" src="js/dsHeap.js"></script>
+	<script type="text/javascript" src="js/dsHashMap.js"></script>
 	<script type="text/javascript" src="js/dsSideNav.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -463,7 +464,7 @@
 		</div> <!-- close mySideNav div -->
 
         <div id="Telements">
-        	<div id="TIndex0" class="TElems" style="margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	<div id="TIndex0" class="TElems" style="display:none;margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         	
         	<!-- <div id="TIndex1" class="TElems" style="margin-top:120px;margin-left:0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> -->
         	<script src="js/connectElems.js"></script>
@@ -536,7 +537,7 @@
 		</div> <!-- close mySideNav div -->
 
         <div id="Helements">
-        	<div id="HIndex0" class="HElems" style="margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	<div id="HIndex0" class="HElems" style="display:none;margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         	
         	<!-- <div id="HIndex1" class="HElems" style="margin-top:120px;margin-left:0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> -->
         	<script src="js/connectElems.js"></script>
@@ -546,6 +547,80 @@
         </div>
 
 	</div> <!-- close Heap container -->
+
+
+	<div id="hashMapContainer">
+		<h1>Data Structure: HashMap</h1>
+		<div id="HMcreateNew" style="z-index: 1;">
+			<button id="HMcreate" onclick="openNav('HMmySidenav')">Create New HashMap</button>
+		</div>
+
+		<div id="HMnavbtn" style="top:150px;z-index: 1;">
+		<span style="font-size:20px;color:dimgray;cursor:pointer;" onclick="openNav('HMmySidenav')">&#9776; Modify HashMap</span>
+		</div>
+
+		<div id="HMmySidenav" class="HMsidenav">
+		  	<a href="javascript:void(0)" class="HMclosebtn" onclick="closeNav('HMmySidenav')">&times;</a>
+
+			<button id="HMaddNav" class="HMactionNavs" style="background-color:snow;color:black;">Add</button>
+			<button id="HMremoveNav" class="HMactionNavs" style="background-color: slategray;color: white;">Remove</button>
+			<button id="HMcontainsNav" class="HMactionNavs" style="background-color: slategray;color: white;">Contains</button>
+			<button id="HMpeekNav" class="HMactionNavs" style="background-color: slategray;color: white;">Peek</button>
+			<button id="HMsizeNav" class="HMactionNavs" style="background-color: slategray;color: white;">Size</button>
+			<button id="HMclearNav" class="HMactionNavs" style="background-color: slategray;color: white;">Clear</button>
+
+			<div id="HMaddAction" class="HMmethods">
+				<!-- 1. append element to end of list
+				2. insert element at position in list 
+				3. show indexes in list visual? -->
+			  	<h2>Adds a new element to the heap:</h2>
+		        <p>Add:</p>
+		        <input type="text" class="HMadd" id="HMadd" name="add" placeholder=""> <p id="HMpositionError" style="display: none;">*Element already exists in heap</p>
+		        <button id="HMaddBtn">Add Element</button>
+	    	</div>
+
+	    	<div id="HMremoveAction" class="HMmethods" style="display:none">
+		        <h2>Removes the specified element from the heap:</h2>
+		        <p>Remove:</p>
+		        <input type="text" class="HMremoveElem" id="HMremoveElem" name="enterIndex" placeholder=""> <p id="HMremoveError" style="display: none;">*Element does not exist in heap</p>
+		        <button id="HMremoveBtn">Remove Element</button>
+		    </div>
+
+		    <div id="HMcontainsAction" class="HMmethods" style="display:none">
+		        <h2>Returns true if this heap contains the specified element:</h2>
+		        <p>Element:</p>
+		        <input type="text" class="HMindexOf" id="HMindexOf" name="indexOf" placeholder=""><p id="HMcontainsResult" style="display: none;">*Element does not exist in tree</p>
+		        <button id="HMcontainsBtn">Contains</button>
+		    </div>
+
+		    <div id="HMpeekAction" class="HMmethods" style="display:none">
+		        <h2>Highlights the max element in this heap:</h2>
+		        <button id="HMpeekBtn">Peek</button>
+		    </div>
+
+		    <div id="HMsizeAction" class="HMmethods" style="display:none">
+		        <h2>Total number of elements in this heap:</h2>
+		        <p id="HMsizeDisplay">0</p>
+		    </div>
+
+		    <div id="HMclearAction" class="HMmethods" style="display:none">
+		        <h2>Removes all elements from this heap:</h2>
+		        <button id="HMclearBtn">Clear Heap</button>
+		    </div>
+
+		</div> <!-- close mySideNav div -->
+
+        <div id="HMelements">
+        	<div id="HMIndex0" class="HMElems" style="display:none;margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	
+        	<!-- <div id="HMIndex1" class="HMElems" style="margin-top:120px;margin-left:0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> -->
+        	<script src="js/connectElems.js"></script>
+    			<!-- <script>
+				connectDivs("TIndex0", "TIndex1", "black");
+			</script> -->
+        </div>
+
+	</div> <!-- close HashMap container -->
 	
 </body>
 </html>

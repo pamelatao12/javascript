@@ -24,7 +24,7 @@
 /**
  * The Model - stores data, notifies observers about changes
  */
-class HeapModel extends EventEmitter {
+class HashMapModel extends EventEmitter {
 
     constructor() {
         super();
@@ -115,7 +115,7 @@ class HeapModel extends EventEmitter {
     }
 }
 
-class HeapController {
+class HashMapController {
     constructor(model, view) {
         this._model = model;
         this._view = view;
@@ -159,7 +159,7 @@ class HeapController {
 }
 
 
-class HeapView extends EventEmitter {
+class HashMapView extends EventEmitter {
 
     constructor(model, elements) {
         super();

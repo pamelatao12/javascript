@@ -33,6 +33,11 @@ function showHeap() {
 	document.getElementById("heapContainer").style.display = "initial";
 }
 
+function showHashMap() {
+	this.reset();
+	document.getElementById("hashMapContainer").style.display = "initial";	
+}
+
 function reset() {
 	document.getElementById("arrayContainer").style.display = "none";
 	document.getElementById("arrayListContainer").style.display = "none";
@@ -41,5 +46,6 @@ function reset() {
 	document.getElementById("queueContainer").style.display = "none";
 	document.getElementById("treeContainer").style.display = "none";
 	document.getElementById("heapContainer").style.display = "none";
+	document.getElementById("hashMapContainer").style.display = "none";
 }
 
