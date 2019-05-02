@@ -49,11 +49,11 @@ class HeapModel extends EventEmitter {
     }
 
     bubbleUp(index) {
-        var parent = (index - 1) / 2;
-        while (index > 0 && this.array[index] > this.array[parent]) {
-            swap(index, parent);
+        var parent = Math.floor((index - 1) / 2);
+        while (index > 0 && Number(this.array[index]) > Number(this.array[parent])) {
+            this.swap(index, parent);
             index = parent;
-            parent = (index - 1) / 2;
+            parent = Math.floor((index - 1) / 2);
         }
     }
 
@@ -182,6 +182,7 @@ class HeapView extends EventEmitter {
         this._model = model;
         this._elements = elements;
         this._height = 1;
+        this.isLeft = true;
         this._reHeight = 0;
 
         model.on('elementAdded', () => this.drawHeap());
@@ -205,7 +206,9 @@ class HeapView extends EventEmitter {
     }
 
     drawHeap() {
+        this.clear();
         var heap = this._model.array;
+        this.isLeft = true;
         for (var i = 0; i < this._model.size; i++) {
             if (i == 0) {
                 var firstElem = document.getElementsByClassName("HElems")[0];
@@ -219,17 +222,27 @@ class HeapView extends EventEmitter {
                 newElem.innerHTML = heap[i];
 
                 // this._height = 0;
-
-                var parentVal = heap[(i - 1) / 2];
+                // console.log((i - 1) / 2);
+                var parentVal = heap[Math.floor((i - 1) / 2)];
                 var parElem = document.getElementById("index" + parentVal);
 
                 var left = parElem.style.marginLeft;
                 left = Number(left.substring(0, left.length - 2));
-                left += 200 / this._height;
-
+                
                 var top = parElem.style.marginTop;
                 top = Number(top.substring(0, top.length - 2));
                 top += 100;
+
+                this._height = top / 100;
+                if (this.isLeft) {
+                    left -= 200 / this._height;
+                    this.isLeft = false;
+                } else {
+                    left += 200 / this._height;
+                    this.isLeft = true;
+                }
+                
+                
 
                 newElem.style.marginTop = top + "px";
                 newElem.style.marginLeft = left + "px";
@@ -481,7 +494,9 @@ class HeapView extends EventEmitter {
 
 
     clear() {
-        document.getElementById("svg-canvas").remove();
+        if (document.getElementById("svg-canvas") != null) {
+            document.getElementById("svg-canvas").remove();
+        }
         const elements = document.getElementsByClassName("HElems");
         elements[0].style.display = "none";
         while (elements.length > 1) elements[1].remove();
