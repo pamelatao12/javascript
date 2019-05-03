@@ -30,7 +30,6 @@ class TreeModel extends EventEmitter {
         super();
         this.root = null;
         this.size = 0;
-        this.elemIndex;
     }
 
     add(object) {

@@ -515,7 +515,7 @@
 		    <div id="HcontainsAction" class="Hmethods" style="display:none">
 		        <h2>Returns true if this heap contains the specified element:</h2>
 		        <p>Element:</p>
-		        <input type="text" class="HindexOf" id="HindexOf" name="indexOf" placeholder=""><p id="HcontainsResult" style="display: none;">*Element does not exist in tree</p>
+		        <input type="text" class="HindexOf" id="HindexOf" name="indexOf" placeholder=""><p id="HcontainsResult" style="display: none;">*Element does not exist in heap</p>
 		        <button id="HcontainsBtn">Contains</button>
 		    </div>
 
@@ -564,8 +564,9 @@
 
 			<button id="HMaddNav" class="HMactionNavs" style="background-color:snow;color:black;">Add</button>
 			<button id="HMremoveNav" class="HMactionNavs" style="background-color: slategray;color: white;">Remove</button>
+			<button id="HMreplaceNav" class="HMactionNavs" style="background-color: slategray;color: white;">Replace</button>
 			<button id="HMcontainsNav" class="HMactionNavs" style="background-color: slategray;color: white;">Contains</button>
-			<button id="HMpeekNav" class="HMactionNavs" style="background-color: slategray;color: white;">Peek</button>
+			<button id="HMgetNav" class="HMactionNavs" style="background-color: slategray;color: white;">Get</button>
 			<button id="HMsizeNav" class="HMactionNavs" style="background-color: slategray;color: white;">Size</button>
 			<button id="HMclearNav" class="HMactionNavs" style="background-color: slategray;color: white;">Clear</button>
 
@@ -573,45 +574,74 @@
 				<!-- 1. append element to end of list
 				2. insert element at position in list 
 				3. show indexes in list visual? -->
-			  	<h2>Adds a new element to the heap:</h2>
-		        <p>Add:</p>
-		        <input type="text" class="HMadd" id="HMadd" name="add" placeholder=""> <p id="HMpositionError" style="display: none;">*Element already exists in heap</p>
+			  	<h2>Adds a new element to the map:</h2>
+		        <p>Key:</p>
+		        <input type="text" class="HMadd" id="HMadd" name="add" placeholder=""> 
+		        <p>Value:</p>
+		        <input type="text" class="HMaddValue" id="HMaddValue" name="addValue" placeholder="">
 		        <button id="HMaddBtn">Add Element</button>
 	    	</div>
 
 	    	<div id="HMremoveAction" class="HMmethods" style="display:none">
-		        <h2>Removes the specified element from the heap:</h2>
+		        <h2>Removes the mapping for the specified key from the map, if present:</h2>
 		        <p>Remove:</p>
-		        <input type="text" class="HMremoveElem" id="HMremoveElem" name="enterIndex" placeholder=""> <p id="HMremoveError" style="display: none;">*Element does not exist in heap</p>
+		        <input type="text" class="HMremoveElem" id="HMremoveElem" name="enterIndex" placeholder=""> <p id="HMremoveError" style="display: none;">*Element does not exist in map</p>
 		        <button id="HMremoveBtn">Remove Element</button>
 		    </div>
 
+		    <div id="HMreplaceAction" class="HMmethods" style="display:none">
+		        <h2>Replaces the entry for the specified key only if it is currently mapped to some value:</h2>
+		        <p>Replace value of key:</p>
+		        <input type="text" class="HMreplace" id="HMreplace" name="replace" placeholder=""> with <input type="text" class="HMreplaceWith" id="HMreplaceWith" name="replaceWith" placeholder=""><p id="HMreplaceError" style="display:none"></p>
+		        <button id="HMreplaceBtn">Replace Value</button>
+		    </div>
+
 		    <div id="HMcontainsAction" class="HMmethods" style="display:none">
-		        <h2>Returns true if this heap contains the specified element:</h2>
-		        <p>Element:</p>
-		        <input type="text" class="HMindexOf" id="HMindexOf" name="indexOf" placeholder=""><p id="HMcontainsResult" style="display: none;">*Element does not exist in tree</p>
+		        <h2>Returns true if this map contains a mapping for the specified key:</h2>
+		        <p>Key:</p>
+		        <input type="text" class="HMindexOf" id="HMindexOf" name="indexOf" placeholder=""><p id="HMcontainsResult" style="display: none;">*Key does not exist in map</p>
 		        <button id="HMcontainsBtn">Contains</button>
 		    </div>
 
-		    <div id="HMpeekAction" class="HMmethods" style="display:none">
-		        <h2>Highlights the max element in this heap:</h2>
-		        <button id="HMpeekBtn">Peek</button>
+		    <div id="HMgetAction" class="HMmethods" style="display:none">
+		        <h2>Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key:</h2>
+		        <p>Key:</p>
+		        <input type="text" class="HMget" id="HMget" name="get" placeholder=""><p id="HMgetResult" style="display: none;">*Key does not exist in map</p>
+		        <button id="HMgetBtn">Get</button>
 		    </div>
 
 		    <div id="HMsizeAction" class="HMmethods" style="display:none">
-		        <h2>Total number of elements in this heap:</h2>
+		        <h2>Total number of elements in this map:</h2>
 		        <p id="HMsizeDisplay">0</p>
 		    </div>
 
 		    <div id="HMclearAction" class="HMmethods" style="display:none">
-		        <h2>Removes all elements from this heap:</h2>
-		        <button id="HMclearBtn">Clear Heap</button>
+		        <h2>Removes all of the mappings from this map:</h2>
+		        <button id="HMclearBtn">Clear map</button>
 		    </div>
 
 		</div> <!-- close mySideNav div -->
 
         <div id="HMelements">
-        	<div id="HMIndex0" class="HMElems" style="display:none;margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	<div id="bucket0">
+        		<div id="bucket" class="bucketElems0" style="display:none;margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	</div>
+        	<div id="bucket1">
+        		<div id="bucket" class="bucketElems1" style="display:none;margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	</div>
+        	<div id="bucket2">
+        		<div id="bucket" class="bucketElems2" style="display:none;margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	</div>
+        	<div id="bucket3">
+        		<div id="bucket" class="bucketElems3" style="display:none;margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	</div>
+        	<div id="bucket4">
+        		<div id="bucket" class="bucketElems4" style="display:none;margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	</div>
+        	<div id="bucket5">
+        		<div id="bucket" class="bucketElems5" style="display:none;margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	</div>
+
         	
         	<!-- <div id="HMIndex1" class="HMElems" style="margin-top:120px;margin-left:0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> -->
         	<script src="js/connectElems.js"></script>

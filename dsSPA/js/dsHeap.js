@@ -30,7 +30,6 @@ class HeapModel extends EventEmitter {
         super();
         this.array = [];
         this.size = 0;
-        this.elemIndex;
     }
 
     add(object) {
@@ -167,7 +166,6 @@ class HeapView extends EventEmitter {
         this._elements = elements;
         this._height = 1;
         this.isLeft = true;
-        this._reHeight = 0;
         this.version = 2;
 
         model.on('elementAdded', (element) => this.drawHeap(element));
@@ -183,7 +181,7 @@ class HeapView extends EventEmitter {
         elements.peekButton.addEventListener("click", () => this.peek());
         elements.clearButton.addEventListener("click", () => this.emit("clearButtonClicked"));
 
-        elements.addNav.addEventListener("click", () => this.addNavStyle())
+        elements.addNav.addEventListener("click", () => this.addNavStyle());
         elements.removeNav.addEventListener("click", () => this.removeNavStyle());
         elements.containsNav.addEventListener("click", () => this.containsNavStyle());
         elements.peekNav.addEventListener("click", () => this.peekNavStyle());
