@@ -118,3 +118,52 @@ function drawCurvedLine(x1, y1, x2, y2, color, index) {
   }
 }
 
+function connectDivsHM(leftId, rightId, color, index) {
+  var left = document.getElementById(leftId);
+  var right = document.getElementById(rightId);
+  
+  var leftPos = findAbsolutePosition(left);
+  var x1 = leftPos.x;
+  var y1 = leftPos.y;
+  x1 += left.offsetWidth;
+  y1 += (left.offsetHeight / 2);
+
+  var rightPos = findAbsolutePosition(right);
+  var x2 = rightPos.x;
+  var y2 = rightPos.y;
+  y2 += (right.offsetHeight / 2);
+
+  var width=x2-x1;
+  var height = y2-y1;
+
+  // drawCircle(x1, y1, 3, color);
+  // drawCircle(x2, y2, 3, color);
+  drawCurvedLineHM(x1, y1, x2, y2, color, index);
+}
+
+function drawCurvedLineHM(x1, y1, x2, y2, color, index) {
+    var svg = createSVG();
+    createTriangleMarker();
+    var shape = document.createElementNS("http://www.w3.org/2000/svg", 
+                                         "path");{
+      // var delta = (x2-x1);
+      var hx1=x1;
+      var hy1=y1;
+      var hx2=x2;
+      var hy2=y2;
+      var path = "M "  + x1 + " " + y1 + 
+                 " C " + hx1 + " " + hy1 
+                       + " "  + hx2 + " " + hy2 
+                 + " " + x2 + " " + y2;
+      shape.setAttributeNS(null, "d", path);
+      shape.setAttributeNS(null, "fill", "none");
+      shape.setAttributeNS(null, "stroke", color);
+
+      shape.setAttribute('id', index);
+
+      shape.setAttributeNS(null, "marker-end", "url(#triangle)");
+
+      svg.appendChild(shape);
+  }
+}
+

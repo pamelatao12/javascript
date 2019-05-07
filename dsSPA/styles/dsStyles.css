@@ -181,6 +181,12 @@ h2 {
   /*overflow-x: hidden;*/
 }
 
+#HMelements {
+  position: absolute;
+  top: 100px;
+  left: 400px;
+}
+
 .Aelems, .ALelems, .QElems {
   border: 1px solid #DB7093;
   /*border-bottom: 1px solid #DB7093;
@@ -219,6 +225,12 @@ h2 {
     transition: opacity 3s;
 }
 
+.HMarrow {
+  font-size: 30px;
+  position: absolute;
+  left: 120px;
+}
+
 .SstackElems {
     border: 1px solid #DB7093;
     background-color: #f2f2f2;
@@ -233,7 +245,7 @@ h2 {
     line-height: 10px;
 }
 
-.TElems, .HElems, .HMElems {
+.TElems, .HElems {
   position: absolute;
   height: 50px;
   width: 50px;
@@ -245,6 +257,34 @@ h2 {
   font-size: 16px;
   font-family: 'Open Sans', sans-serif;
   color: #f2f2f2;
+}
+
+.bucketElems {
+  border: 1px solid #DB7093;
+  background-color: #f2f2f2;
+  padding: 18px;
+  font-size: 18px;
+  width: 70px;
+  min-width: 70px;
+  height: 8px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+  line-height: 10px;
+}
+
+.bucketElemsChain {
+  border: 1px solid #DB7093;
+  background-color: #f2f2f2;
+  padding: 14px;
+  font-size: 16px;
+  width: 70px;
+  min-width: 70px;
+  height: 8px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+  line-height: 10px;
 }
 
 @keyframes flash {

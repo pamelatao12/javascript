@@ -33,29 +33,33 @@ class HashMapModel extends EventEmitter {
     }
 
     add(key, value) {
-        this.map.key = value;
+        // var key = "key";
+        this.map[key] = value;
         this.size++;
-        this.emit('elementAdded', key, value);
+        this.emit('elementAdded', key);
         this.emit('updateSize', this.size);
     }
 
     remove(key) {
-        delete this.map.key;
+        delete this.map[key];
+        this.size--;
         this.emit('elementRemoved', key);
+        this.emit('updateSize', this.size);
     }
 
     replace(key, value) {
-        if ("key" in this.map) {   
-            this.map.key = value;
+        if (key in this.map) {   
+            this.map[key] = value;
         }
+        this.emit('elementReplaced', key);
     }
 
     get(key) {
-        return this.map.key;
+        return this.map[key];
     }
 
     contains(key) {
-        return "key" in this.map;
+        return key in this.map;
     }
 
     clear() {
@@ -73,16 +77,18 @@ class HashMapController {
         view.on("addButtonClicked", () => this.addElement());
         view.on("removeButtonClicked", () => this.removeElement());
         view.on("replaceButtonClicked", () => this.replaceElement());
-        view.on("clearButtonClicked", () => this.clearHeap());
+        view.on("clearButtonClicked", () => this.clearMap());
     }
 
     addElement() {
         var key = this._view.getAddedElement();
         var value = this._view.getAddedValue();
 
-        if (element == "") {
+        if (key == "" || value == "") {
             this._view.showInvalidElement();
         // checked if element is valid in model
+        } else if (this._model.contains(Number(key))) {
+            this._model.replace(key, value);
         } else {
             this._view.hidePositionError();
             this._model.add(key, value);
@@ -97,7 +103,7 @@ class HashMapController {
             return;
         } 
 
-        if (this.root != null && this.contains(object) == false) {
+        if (this._model.contains(Number(element)) == false) {
             this._view.removeError();
             return;
         }
@@ -109,12 +115,16 @@ class HashMapController {
         var key = this._view.getReplacedKey();
         var value = this._view.getReplacedValue();
 
+        if (this._model.contains(Number(key)) == false || (key == "" || value =="")) {
+            this._view.showReplaceError();
+            return;
+        } 
         //TODO: check that replace inputs are valid
-
+        this._view.hideReplaceError();
         this._model.replace(key, value);
     }
 
-    clearHeap() {
+    clearMap() {
         this._model.clear();
     }
 
@@ -128,16 +138,18 @@ class HashMapView extends EventEmitter {
         this._model = model;
         this._elements = elements;
 
-        model.on('elementAdded', (key, value) => this.drawMap(key, value));
+        model.on('elementAdded', (key) => this.drawMap(key));
         model.on('elementAddedError', () => this.addError());
         model.on('elementRemovedError', () => this.removeError());
-        model.on('elementRemoved', () => this.drawHeap());
+        model.on('elementRemoved', (key) => this.removeKey(key));
+        model.on('elementReplaced', (key) => this.replaceValue(key));
         model.on('updateSize', size => this.changeSize(size));
-        model.on('heapCleared', () => this.clear());
+        model.on('mapCleared', () => this.clear());
 
         elements.addButton.addEventListener("click", () => this.emit("addButtonClicked"));
         elements.removeButton.addEventListener("click", () => this.emit("removeButtonClicked"));
-        elements.containsButton.addEventListener("click", () => this.find(this.getFindElement()));
+        elements.replaceButton.addEventListener("click", () => this.emit("replaceButtonClicked"));
+        elements.containsButton.addEventListener("click", () => this.containsKey());
         elements.getButton.addEventListener("click", () => this.get());
         elements.clearButton.addEventListener("click", () => this.emit("clearButtonClicked"));
 
@@ -150,130 +162,122 @@ class HashMapView extends EventEmitter {
         elements.clearNav.addEventListener("click", () => this.clearNavStyle());
     }
 
-    drawMap(key, value) {
-        // 8 hashtable rectangles
+    drawMap(key) {
         // each mapping added is arrow pointing from index rectangle to new 
         // rectangle with key value pair
-
         var map = this._model.map;
-        var num = Math.rand(0, 5);
+        var num = Math.floor(Math.random() * 6);
         var bucket = document.getElementById("bucket" + num);
-        var bucketElems = document.getElementsByClassName("bucketElems" + num);
-        if (bucketElems.length == 1) {
-            bucketElems[0].display = "inline-block";
+        var bucketElems = bucket.children;
+        if (bucketElems[0].style.display == "none") {
+
+            // block containing key:value
+            bucketElems[0].style.display = "inline-block";
+            bucketElems[0].style.position = "absolute";
+            bucketElems[0].style.top = num * 46.5 + "px";
+            bucketElems[0].style.left= "200px";
             bucketElems[0].id = key;
-            bucketElems[0].innerHTML = key + " : " + value;
+            bucketElems[0].innerHTML = key + " : " + map[Number(key)];
+            connectDivsHM(bucket.id, key, "black", "arrow" + key);
+
+            bucketElems[0].style.animationName = "flash";
+            bucketElems[0].style.animationDuration = "1s";
+            setTimeout(function () {
+                bucketElems[0].style.animationName = "none";
+            }, 1000);
         } else {
+            var prevElem = bucketElems[bucketElems.length - 1];
             var newElem = bucketElems[0].cloneNode(true);
             newElem.id = key;
-            newElem.innerHTML = key + " : " + value;
-            // TODO: position elems on page and connectDivs
+            newElem.innerHTML = key + " : " + map[Number(key)];
+            newElem.style.display = "inline-block";
+            newElem.style.position = "absolute";
+            newElem.style.top = num * 46.5 + "px";
+
+            var left = prevElem.style.left;
+            left = Number(left.substring(0, left.length - 2));
+            newElem.style.left= left + 150 + "px";
+            bucket.appendChild(newElem);
+
+            connectDivsHM(prevElem.id, key, "black", "arrow" + key);
+
+            newElem.style.animationName = "flash";
+            newElem.style.animationDuration = "1s";
+            setTimeout(function () {
+                newElem.style.animationName = "none";
+            }, 1000);
         }
-
-
-        // this.clear();
-        // var heap = this._model.array;
-        // this.isLeft = true;
-        // for (var i = 0; i < this._model.size; i++) {
-        //     if (i == 0) {
-        //         var firstElem = document.getElementsByClassName("HMElems")[0];
-        //         firstElem.id = "index" + heap[i];
-        //         firstElem.style.display = "inline-block";
-        //         firstElem.innerHTML = heap[i];
-        //         firstElem.style.color = "black";
-        //         if (heap[i] == element) {
-        //             firstElem.style.animationName = "flash";
-        //             firstElem.style.animationDuration = "1s";
-        //             setTimeout(function () {
-        //                 firstElem.style.animationName = "none";
-        //             }, 1000);
-        //         }
-
-        //     } else {
-        //         var newElem = document.getElementsByClassName("HMElems")[0].cloneNode(true);
-        //         newElem.id = "index" + heap[i] + "v" + this.version;
-        //         this.version++;
-        //         newElem.innerHTML = heap[i];
-
-        //         // this._height = 0;
-        //         // console.log((i - 1) / 2);
-        //         // var parentVal = heap[Math.floor((i - 1) / 2)];
-        //         // var parElem = document.getElementById("index" + parentVal);
-
-        //         var parElem = document.getElementsByClassName("HMElems")[Math.floor((i - 1) / 2)];
-        //         var left = parElem.style.marginLeft;
-        //         left = Number(left.substring(0, left.length - 2));
-
-        //         var top = parElem.style.marginTop;
-        //         top = Number(top.substring(0, top.length - 2));
-        //         top += 100;
-
-        //         this._height = top / 100;
-        //         if (this.isLeft) {
-        //             left -= 200 / this._height;
-        //             this.isLeft = false;
-        //         } else {
-        //             left += 200 / this._height;
-        //             this.isLeft = true;
-        //         }
-                
-                
-
-        //         newElem.style.marginTop = top + "px";
-        //         newElem.style.marginLeft = left + "px";
-        //         this._elements.allElements.appendChild(newElem);
-        //         connectDivs(parElem.id, newElem.id, "black", heap[i]);
-        //         if (heap[i] == element) {
-        //             newElem.style.animationName = "flash";
-        //             newElem.style.animationDuration = "1s";
-        //             setTimeout(function () {
-        //                 newElem.style.animationName = "none";
-        //             }, 1000);
-        //         }
-        //     }
-        // }
     }
 
-    peek() {
-        var node = document.getElementsByClassName("HMElems")[0];
-        node.style.animationName = "peek";
-        node.style.animationDuration = "1s";
-        setTimeout(function () {
-            node.style.animationName = "none";
-        }, 1000);
+    removeKey(key) {
+        var map = this._model.map;
+        var elem = document.getElementById(key);
+        var parent = elem.parentElement;
+        var bucketElems = parent.children;
+        for (var i = 0; i < bucketElems.length; i++) {
+            if (bucketElems[i].id == key) {
+                document.getElementById("arrow" + elem.id).remove();
+                for (var j = bucketElems.length - 1; j > i; j--) {
+                    bucketElems[j].style.left = bucketElems[j - 1].style.left;
+                    document.getElementById("arrow" + bucketElems[j].id).remove();
+                    var diff = j - 1;
+                    if (j - 1 < i || (j - 1 == 0 && i == 0)) {
+                        connectDivsHM(parent.id, bucketElems[j - 1].id, "black", "arrow" + bucketElems[j].id);
+                    } else {
+                        connectDivsHM(bucketElems[j - 2].id, bucketElems[j - 1].id, "black", "arrow" + bucketElems[j].id);
+                    }
+                }
+                elem.remove();
+                break;
+            }
+        }
     }
 
-    find(element) {
-        var node = document.getElementById("index" + element);
+    replaceValue(key) {
+        var elem = document.getElementById(key);
+        elem.innerHTML = key + " : " + this._model.map[Number(key)];
+    }
+
+    containsKey() {
+        var node = document.getElementById(this.getContainsElement());
         if (node != null) {
-            document.getElementById("HMcontainsResult").style.display = "none";
-            
-            //highlight node
-
             node.style.animationName = "peek";
             node.style.animationDuration = "1s";
             setTimeout(function () {
-            node.style.animationName = "none";
-        }, 1000);
-            return true;
-        } else {
-            document.getElementById("HMcontainsResult").style.display = "inline-block";
-            return false;
+                node.style.animationName = "none";
+            }, 1000);
         }
+    }
+
+    get() {
+        var key = document.getElementById("HMget").value;
+        var node = document.getElementById(key);
+        if (node != null) {
+            document.getElementById("HMgetResult").innerHTML = "Value: " + this._model.get(Number(key));
+            node.style.animationName = "peek";
+            node.style.animationDuration = "1s";
+            setTimeout(function () {
+                node.style.animationName = "none";
+            }, 1000);
+        } else {
+            document.getElementById("HMgetResult").innerHTML = "*Key does not exist in map";
+        }
+
     }
 
     addError() {
         document.getElementById("HMpositionError").style.display = "inline-block";
     }
 
-
     clear() {
         if (document.getElementById("svg-canvas") != null) {
             document.getElementById("svg-canvas").remove();
         }
-        const elements = document.getElementsByClassName("HMElems");
-        elements[0].style.display = "none";
-        while (elements.length > 1) elements[1].remove();
+        for (var i = 0; i <= 5; i++) {
+            var elements = document.getElementById("bucket" + i).children;
+            elements[0].style.display = "none";
+            while (elements.length > 1) elements[1].remove();
+        }
     }
 
     //style nav bar buttons
@@ -353,6 +357,22 @@ class HashMapView extends EventEmitter {
 
     getRemovedElement() {
         return document.getElementById("HMremoveElem").value;
+    }
+
+    getReplacedKey() {
+        return document.getElementById("HMreplace").value;
+    }
+
+    getReplacedValue() {
+        return document.getElementById("HMreplaceWith").value;
+    }
+
+    showReplaceError() {
+        document.getElementById("HMreplaceError").innerHTML = "*Please enter a valid key and value";
+    }
+
+    hideReplaceError() {
+        document.getElementById("HMreplaceError").innerHTML = "";
     }
 
     getContainsElement() {

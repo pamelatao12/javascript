@@ -578,7 +578,7 @@
 		        <p>Key:</p>
 		        <input type="text" class="HMadd" id="HMadd" name="add" placeholder=""> 
 		        <p>Value:</p>
-		        <input type="text" class="HMaddValue" id="HMaddValue" name="addValue" placeholder="">
+		        <input type="text" class="HMaddValue" id="HMaddValue" name="addValue" placeholder=""> <p id="HMpositionError" style="display:none">*Please enter a key and value</p>
 		        <button id="HMaddBtn">Add Element</button>
 	    	</div>
 
@@ -592,21 +592,21 @@
 		    <div id="HMreplaceAction" class="HMmethods" style="display:none">
 		        <h2>Replaces the entry for the specified key only if it is currently mapped to some value:</h2>
 		        <p>Replace value of key:</p>
-		        <input type="text" class="HMreplace" id="HMreplace" name="replace" placeholder=""> with <input type="text" class="HMreplaceWith" id="HMreplaceWith" name="replaceWith" placeholder=""><p id="HMreplaceError" style="display:none"></p>
+		        <input type="text" class="HMreplace" id="HMreplace" name="replace" placeholder=""> with <input type="text" class="HMreplaceWith" id="HMreplaceWith" name="replaceWith" placeholder=""><p id="HMreplaceError"></p>
 		        <button id="HMreplaceBtn">Replace Value</button>
 		    </div>
 
 		    <div id="HMcontainsAction" class="HMmethods" style="display:none">
 		        <h2>Returns true if this map contains a mapping for the specified key:</h2>
 		        <p>Key:</p>
-		        <input type="text" class="HMindexOf" id="HMindexOf" name="indexOf" placeholder=""><p id="HMcontainsResult" style="display: none;">*Key does not exist in map</p>
+		        <input type="text" class="HMcontains" id="HMcontains" name="indexOf" placeholder=""><p id="HMcontainsResult" style="display: none;">*Key does not exist in map</p>
 		        <button id="HMcontainsBtn">Contains</button>
 		    </div>
 
 		    <div id="HMgetAction" class="HMmethods" style="display:none">
 		        <h2>Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key:</h2>
 		        <p>Key:</p>
-		        <input type="text" class="HMget" id="HMget" name="get" placeholder=""><p id="HMgetResult" style="display: none;">*Key does not exist in map</p>
+		        <input type="text" class="HMget" id="HMget" name="get" placeholder=""><p id="HMgetResult"></p>
 		        <button id="HMgetBtn">Get</button>
 		    </div>
 
@@ -623,23 +623,23 @@
 		</div> <!-- close mySideNav div -->
 
         <div id="HMelements">
-        	<div id="bucket0">
-        		<div id="bucket" class="bucketElems0" style="display:none;margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	<div id="bucket0" class="bucketElems" style="border-top:1px solid #DB7093;">0
+        		<div id="bucketElems0" class="bucketElemsChain" style="display:none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         	</div>
-        	<div id="bucket1">
-        		<div id="bucket" class="bucketElems1" style="display:none;margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	<div id="bucket1" class="bucketElems" style="border-top:none;">1
+        		<div id="bucketElems1" class="bucketElemsChain" style="display:none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         	</div>
-        	<div id="bucket2">
-        		<div id="bucket" class="bucketElems2" style="display:none;margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	<div id="bucket2" class="bucketElems" style="border-top:none;">2
+        		<div id="bucketElems2" class="bucketElemsChain" style="display:none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         	</div>
-        	<div id="bucket3">
-        		<div id="bucket" class="bucketElems3" style="display:none;margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	<div id="bucket3" class="bucketElems" style="border-top:none;">3
+        		<div id="bucketElems3" class="bucketElemsChain" style="display:none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         	</div>
-        	<div id="bucket4">
-        		<div id="bucket" class="bucketElems4" style="display:none;margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	<div id="bucket4" class="bucketElems" style="border-top:none;">4
+        		<div id="bucketElem4" class="bucketElemsChain" style="display:none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         	</div>
-        	<div id="bucket5">
-        		<div id="bucket" class="bucketElems5" style="display:none;margin-left:500px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	<div id="bucket5" class="bucketElems" style="border-top:none;">5
+        		<div id="bucketElems5" class="bucketElemsChain" style="display:none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         	</div>
 
         	
