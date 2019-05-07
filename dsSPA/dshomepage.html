@@ -20,12 +20,6 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 <body>
-	<!-- <div id="dataStructuresNav">
-		<button id="dsArray" onclick="showArray()">Array</button>
-		<button id="dsArrayList" onclick="showArrayList()">ArrayList</button>
-		<button id="dsLinkedList" onclick="showLL()">LinkedList</button>
-		<button id="dsStack" onclick="showStack()">Stack</button>
-	</div> -->
 	<div class="custom-select" style="width:200px;z-index: 1;">
 	  <select>
 	    <option value="0">Select Data Structure:</option>
@@ -40,7 +34,7 @@
 	  </select>
 	</div>
 
-
+	<h1 id="heading">Select a data structure to visualize:</h1>
 	<div id="arrayContainer">
 		<h1>Data Structure: Array</h1>
 		<h2>Please enter the size of the array:</h2>
@@ -187,7 +181,7 @@
 		</div> <!-- close mySideNav div -->
 
         <div id="ALelements">
-        	<div id="ALindex0" class="ALelems">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	<div id="ALindex0" class="ALelems" style="cursor:pointer;" onmouseover="mouseOver(this.id)" onmouseout="mouseOut(this.id)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         </div>
 
 	</div> <!-- close ArrayListContainer div -->
@@ -280,7 +274,7 @@
 
         <div id="LLelements" style="top:200px;">
         	<div id="LLarrow0" class="LLarrow" style="display:none;opacity:0">&rArr;</div>
-        	<div id="LLindex0" class="LLelems">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        	<div id="LLindex0" class="LLelems" style="cursor:pointer;" onmouseover="mouseOver(this.id)" onmouseout="mouseOut(this.id)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         </div>
 
 	</div> <!-- close LLcontainer div -->
@@ -597,14 +591,14 @@
 		    </div>
 
 		    <div id="HMcontainsAction" class="HMmethods" style="display:none">
-		        <h2>Returns true if this map contains a mapping for the specified key:</h2>
+		        <h2>Check if this map contains a mapping for the specified key:</h2>
 		        <p>Key:</p>
 		        <input type="text" class="HMcontains" id="HMcontains" name="indexOf" placeholder=""><p id="HMcontainsResult" style="display: none;">*Key does not exist in map</p>
 		        <button id="HMcontainsBtn">Contains</button>
 		    </div>
 
 		    <div id="HMgetAction" class="HMmethods" style="display:none">
-		        <h2>Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key:</h2>
+		        <h2>Returns the value to which the specified key is mapped:</h2>
 		        <p>Key:</p>
 		        <input type="text" class="HMget" id="HMget" name="get" placeholder=""><p id="HMgetResult"></p>
 		        <button id="HMgetBtn">Get</button>

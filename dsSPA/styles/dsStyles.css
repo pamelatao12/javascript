@@ -3,15 +3,9 @@ body {
   overflow-x: hidden;
 }
 
-#arrayContainer, #arrayListContainer, #LLContainer, #stackContainer, #queueContainer, #treeContainer, #heapContainer {
+#arrayContainer, #arrayListContainer, #LLContainer, #stackContainer, #queueContainer, #treeContainer, #heapContainer, #hashMapContainer {
   display: none;
 }
-
-/*#dsArray, #dsArrayList, #dsLinkedList, #dsStack {
-  display: inline;
-    width: 200px;
-    margin: 0;
-}*/
 
 /* The container must be positioned relative: */
 .custom-select {
@@ -75,7 +69,6 @@ body {
 .select-items div:hover, .same-as-selected {
   background-color: rgba(0, 0, 0, 0.3);
 }
-
 
 
 h1 {
@@ -189,8 +182,6 @@ h2 {
 
 .Aelems, .ALelems, .QElems {
   border: 1px solid #DB7093;
-  /*border-bottom: 1px solid #DB7093;
-  border-right: 1px solid #DB7093;*/
   background-color: #f2f2f2;
   padding: 20px 5px;
   font-size: 20px;
@@ -200,7 +191,6 @@ h2 {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   color: #f2f2f2;
-  /*transition: color 2s ease 0s;*/
 }
 
 .LLelems {
@@ -288,27 +278,15 @@ h2 {
 }
 
 @keyframes flash {
-  /*0%   {background-color: red;
-      border: 3px solid #800080;}*/
-  /*25%  {background-color: red;*/
-      /*border: 3px solid #800080;}*/
-  50%  {/*border: 3px solid #800080;*/
-      background-color: #404040;
+  50%  { background-color: #404040;
       color: white;}
-  100% {/*border: 1px solid #DB7093;*/
-      background-color: #f2f2f2;
+  100% { background-color: #f2f2f2;
       color: black;}
 }
 
 @keyframes peek {
-  /*0%   {background-color: red;
-      border: 3px solid #800080;}*/
-  /*25%  {background-color: red;*/
-      /*border: 3px solid #800080;}*/
-  50%  {/*border: 3px solid #800080;*/
-      background-color: #DB7093;}
-  100% {/*border: 1px solid #DB7093;*/
-      background-color: #f2f2f2;}
+  50%  { background-color: #DB7093;}
+  100% { background-color: #f2f2f2;}
 }
 
 @-webkit-keyframes slide {
@@ -328,17 +306,6 @@ h2 {
 
 }
 
-/*#slide {
-    position: absolute;
-    right: -200px;
-    width: 600px;
-    height: 370px;
-    background: blue;
-    -webkit-animation: slide 0.5s forwards;
-    -webkit-animation-delay: 2s;
-    animation: slide 0.5s forwards;
-    animation-delay: 1s;
-}*/
 #Aindex0, #ALindex0, #QIndex {
   display: none;
 }
@@ -349,25 +316,14 @@ h2 {
   animation-duration: 1s;
 }
 
-/*.AhoverIndex {
-  display: none;
-}*/
-
 #SstackIndex {
-  /*position: absolute;*/
-    /*right: 200px;*/
   display: none;
-  /*border-left: 1px solid brown;*/
-  /*-webkit-animation: slide 0.5s backwards;
-    -webkit-animation-delay: 2s;*/
-    /*animation: slide 0.5s backwards;*/
-    /*animation: slide 0.5s forwards;*/
-    /*animation-delay: 1s;*/
-  /*animation-name: flash;
-  animation-duration: 1s;*/
 }
 
-#ApositionError, #ALpositionError, #LLpositionError, #SpositionError, #ALremoveError, #LLremoveError {
+#ApositionError, #ALpositionError, #LLpositionError, #SpositionError, 
+#ALremoveError, #LLremoveError, #QpositionError, #TpositionError, #TremoveError, 
+#TcontainsResult, #HpositionError, #HremoveError, #HcontainsResult, #HMpositionError, 
+#HMremoveError, #HMreplaceError, #HMcontainsResult {
   color: red;
 }
 
@@ -411,7 +367,6 @@ button {
   cursor: pointer;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
-  /*margin-left: 40px;*/
   display: block;
   margin-bottom: 40px;
   margin-top: 10px;

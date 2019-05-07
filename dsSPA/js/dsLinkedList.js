@@ -195,6 +195,7 @@ class LLView extends EventEmitter {
         super();
         this._model = model;
         this._elements = elements;
+        this.index = 1;
 
         model.on('elementAdded', size => this.drawNode(size));
         model.on('elementInserted', index => this.insertNode(index));
@@ -237,6 +238,7 @@ class LLView extends EventEmitter {
             newArrow.style = "opacity:1;display:inline-block";
             this._elements.LLallElements.appendChild(newArrow);
             var newElem = this._elements.LLarrayElem.cloneNode(true);
+            newElem.id = "LLindex" + this.index++;
             newElem.innerHTML = this.getAddedElement();
             this._elements.LLallElements.appendChild(newElem);
         }
@@ -249,6 +251,7 @@ class LLView extends EventEmitter {
         var newArrow = this._elements.LLarrow.cloneNode(true);
         newArrow.style = "opacity:1;display:inline-block";
         var newElem = this._elements.LLarrayElem.cloneNode(true);
+        newElem.id = "LLindex" + this.index++;
         newElem.innerHTML = this.getAddedElement();
         elems.insertBefore(newElem, elements[index]);
         elems.insertBefore(newArrow, elements[index + 1]);

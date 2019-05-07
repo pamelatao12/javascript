@@ -339,7 +339,7 @@ class ArrayListView extends EventEmitter {
 
     fillArray() {
     	var array = this._model.getArray();
-    	for (var i = 0; i < this._model.size; i++) {
+    	for (var i = 0; i <= this._model.size; i++) {
     		var elemId = "ALindex" + i;
     		if (array[i] == undefined) {
     			document.getElementById(elemId).innerHTML = "";
@@ -382,23 +382,6 @@ class ArrayListView extends EventEmitter {
             document.getElementById(elemId).innerHTML = array[this.getAddedIndex()];
             document.getElementById(elemId).style.color = "black";
         }
-    }
-
-    insertTimeout(i) {
-        // BB HELP HELP HELP ON SETTIMEOUT
-        if (i > this.getAddedIndex()) {
-        
-            var array = this._model.getArray();
-            var elemId = "ALindex" + i;
-            var pastElemId = "ALindex" + (i - 1);
-            
-            document.getElementById(elemId).innerHTML = array[i];
-            document.getElementById(elemId).style.color = "black";
-            document.getElementById(pastElemId).innerHTML = "";
-            i--;
-            setTimeout(this.insertTimeout(i), 5000);
-        }
-        
     }
 
     getReplacedIndex() {

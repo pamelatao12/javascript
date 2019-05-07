@@ -451,7 +451,7 @@ class TreeView extends EventEmitter {
 
 
     clear() {
-        document.getElementById("svg-canvas").remove();
+        document.getElementById("svg-canvastree").remove();
         const elements = document.getElementsByClassName("TElems");
         elements[0].style.display = "none";
         while (elements.length > 1) elements[1].remove();

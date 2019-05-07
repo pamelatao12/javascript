@@ -178,7 +178,7 @@ class HashMapView extends EventEmitter {
             bucketElems[0].style.left= "200px";
             bucketElems[0].id = key;
             bucketElems[0].innerHTML = key + " : " + map[Number(key)];
-            connectDivsHM(bucket.id, key, "black", "arrow" + key);
+            connectDivsHM(bucket.id, key, "dimgray", "arrow" + key);
 
             bucketElems[0].style.animationName = "flash";
             bucketElems[0].style.animationDuration = "1s";
@@ -199,7 +199,7 @@ class HashMapView extends EventEmitter {
             newElem.style.left= left + 150 + "px";
             bucket.appendChild(newElem);
 
-            connectDivsHM(prevElem.id, key, "black", "arrow" + key);
+            connectDivsHM(prevElem.id, key, "dimgray", "arrow" + key);
 
             newElem.style.animationName = "flash";
             newElem.style.animationDuration = "1s";
@@ -222,9 +222,9 @@ class HashMapView extends EventEmitter {
                     document.getElementById("arrow" + bucketElems[j].id).remove();
                     var diff = j - 1;
                     if (j - 1 < i || (j - 1 == 0 && i == 0)) {
-                        connectDivsHM(parent.id, bucketElems[j - 1].id, "black", "arrow" + bucketElems[j].id);
+                        connectDivsHM(parent.id, bucketElems[j - 1].id, "dimgray", "arrow" + bucketElems[j].id);
                     } else {
-                        connectDivsHM(bucketElems[j - 2].id, bucketElems[j - 1].id, "black", "arrow" + bucketElems[j].id);
+                        connectDivsHM(bucketElems[j - 2].id, bucketElems[j - 1].id, "dimgray", "arrow" + bucketElems[j].id);
                     }
                 }
                 elem.remove();
@@ -270,8 +270,8 @@ class HashMapView extends EventEmitter {
     }
 
     clear() {
-        if (document.getElementById("svg-canvas") != null) {
-            document.getElementById("svg-canvas").remove();
+        if (document.getElementById("svg-canvashashMap") != null) {
+            document.getElementById("svg-canvashashMap").remove();
         }
         for (var i = 0; i <= 5; i++) {
             var elements = document.getElementById("bucket" + i).children;

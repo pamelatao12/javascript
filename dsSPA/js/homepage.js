@@ -39,6 +39,7 @@ function showHashMap() {
 }
 
 function reset() {
+	document.getElementById("heading").style.display = "none";
 	document.getElementById("arrayContainer").style.display = "none";
 	document.getElementById("arrayListContainer").style.display = "none";
 	document.getElementById("LLContainer").style.display = "none";
@@ -47,5 +48,6 @@ function reset() {
 	document.getElementById("treeContainer").style.display = "none";
 	document.getElementById("heapContainer").style.display = "none";
 	document.getElementById("hashMapContainer").style.display = "none";
+
 }
 

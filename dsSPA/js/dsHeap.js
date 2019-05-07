@@ -241,7 +241,7 @@ class HeapView extends EventEmitter {
                 newElem.style.marginTop = top + "px";
                 newElem.style.marginLeft = left + "px";
                 this._elements.allElements.appendChild(newElem);
-                connectDivs(parElem.id, newElem.id, "black", heap[i]);
+                connectDivs(parElem.id, newElem.id, "dimgray", heap[i]);
                 if (heap[i] == element) {
                     newElem.style.animationName = "flash";
                     newElem.style.animationDuration = "1s";
@@ -287,8 +287,8 @@ class HeapView extends EventEmitter {
 
 
     clear() {
-        if (document.getElementById("svg-canvas") != null) {
-            document.getElementById("svg-canvas").remove();
+        if (document.getElementById("svg-canvasheap") != null) {
+            document.getElementById("svg-canvasheap").remove();
         }
         const elements = document.getElementsByClassName("HElems");
         elements[0].style.display = "none";

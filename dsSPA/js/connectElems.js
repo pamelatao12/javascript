@@ -1,18 +1,22 @@
 var markerInitialized;
 
-function createSVG() {
-  var svg = document.getElementById("svg-canvas");
+function createSVG(ds) {
+  var svg = document.getElementById("svg-canvas" + ds);
   if (null == svg) {
     svg = document.createElementNS("http://www.w3.org/2000/svg", 
                                    "svg");
-    svg.setAttribute('id', 'svg-canvas');
+    svg.setAttribute('id', 'svg-canvas' + ds);
     svg.setAttribute('style', 'position:absolute;top:0px;left:0px');
     svg.setAttribute('width', document.body.clientWidth);
     svg.setAttribute('height', document.documentElement.scrollHeight);
     svg.setAttributeNS("http://www.w3.org/2000/xmlns/", 
                        "xmlns:xlink", 
                        "http://www.w3.org/1999/xlink");
-    document.body.appendChild(svg);
+    
+
+    var dsContainer = document.getElementById(ds + "Container");
+
+    dsContainer.appendChild(svg);
     markerInitialized = false;
   }
   return svg;
@@ -66,11 +70,11 @@ function connectDivs(leftId, rightId, color, index) {
   drawCurvedLine(x1, y1, x2, y2, color, index);
 }
 
-function createTriangleMarker() {
+function createTriangleMarker(ds) {
   if (markerInitialized)
     return;
   markerInitialized = true;
-  var svg = createSVG();
+  var svg = createSVG(ds);
   var defs = document.createElementNS('http://www.w3.org/2000/svg',
     'defs');
   svg.appendChild(defs);
@@ -93,7 +97,13 @@ function createTriangleMarker() {
 }
 
 function drawCurvedLine(x1, y1, x2, y2, color, index) {
-    var svg = createSVG();
+    if (document.getElementById("heapContainer").style.display == "none") {
+      var ds = "tree";
+    } else {
+      var ds = "heap";
+    }
+
+    var svg = createSVG(ds);
     // createTriangleMarker();
     var shape = document.createElementNS("http://www.w3.org/2000/svg", 
                                          "path");{
@@ -142,8 +152,9 @@ function connectDivsHM(leftId, rightId, color, index) {
 }
 
 function drawCurvedLineHM(x1, y1, x2, y2, color, index) {
-    var svg = createSVG();
-    createTriangleMarker();
+    var ds = "hashMap";
+    var svg = createSVG(ds);
+    createTriangleMarker(ds);
     var shape = document.createElementNS("http://www.w3.org/2000/svg", 
                                          "path");{
       // var delta = (x2-x1);
