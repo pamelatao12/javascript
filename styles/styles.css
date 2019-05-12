@@ -189,7 +189,7 @@ li.dropdown {
   overflow: hidden;
   position: relative;
   border-radius: 50%;
-  margin-top: 100px;
+  margin-top: 120px;
   margin-left: 4%;
   max-width: 485px;
   max-height: 485px;
@@ -207,7 +207,7 @@ li.dropdown {
 
 #about-content {
   position: absolute;
-  top: 120px;
+  top: 100px;
   margin-left: 570px;
   margin-right: auto;
   width: 40vw;
@@ -460,6 +460,7 @@ input[type=submit]:hover {
     height: 20px;
     position: absolute;
     z-index: -1;
+
   }
 
   #blog-page {
@@ -824,6 +825,42 @@ h2 {
       margin-right: auto;
   }
 
+}
+@media only screen and (min-width:1001px) and (max-width:1270px) {
+  #bio-page {
+    height: calc(100vh - 50px);
+  }
+}
+
+@media only screen and (min-width:1125px) and (max-width:1270px) {
+  #about-content {
+    margin-left: 650px;
+  }
+
+  .circle-crop {
+    margin-left: 8%;
+  }
+} 
+@media only screen and (min-width:1270px) {
+  #bio-page {
+    height: calc(100vh - 50px);
+  }
+
+  .circle-crop {
+    float: left;
+  }
+
+  #about-content {
+    float: right;
+  }
+
+  #about-content {
+    margin-left: 700px;
+  }
+
+  .circle-crop {
+    margin-left: 10%;
+  }
 }
 
 @media only screen and (min-width: 1700px) {
