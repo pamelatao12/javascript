@@ -16,6 +16,10 @@ This repository is a collection of my personal projects built using primarily Ja
 4. Tip Calculator Tool
 
    * A web-based tool to calculate the desired tip amount.
+   
+5. Portfolio Website
+
+   * My personal website showcasing my projects and travel blogs.
 
 ## Prerequisites
 All projects are web applications to be viewed on a browser with a minimum window width of 1440 pixels. 
