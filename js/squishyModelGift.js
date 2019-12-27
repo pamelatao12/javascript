@@ -334,6 +334,7 @@ class Controller {
 		view.on("startButtonClicked", () => this.startGame());
 		view.on("autoButtonClicked", () => this.automateGame());
 		view.on("pauseButtonClicked", () => this.restartGame());
+		view.on("openGiftBox", () => this.openGift());
 	}
 
 	changeDirection(key) {
@@ -362,7 +363,7 @@ class Controller {
 			return;
 		}
 
-		if (this._model.getScore() == 20) {
+		if (this._model.getScore() == 2) {
 			this._model.wonPrizeAlert();
 			return;
 		}
@@ -385,7 +386,10 @@ class Controller {
 		if (this.gameStarted == false) {
 			this.startGame();
 		}
-		
+	}
+
+	openGift() {
+		this._view.openGiftBox();
 	}
 }
 
@@ -410,6 +414,8 @@ class View extends EventEmitter {
 		elements.startButton.addEventListener("click", () => this.emit("startButtonClicked"));
 		elements.autoButton.addEventListener("click", () => this.emit("autoButtonClicked"));
 		elements.gameCanvas.addEventListener("click", () => this.emit("pauseButtonClicked"));
+		elements.giftbox.addEventListener("click", () => this.emit("openGiftBox"));
+
 
 		document.addEventListener("keydown", key => this.emit('keyPressed', key));
 
@@ -474,6 +480,12 @@ class View extends EventEmitter {
 		this._elements.container.style.opacity = "0.7";
 		this._elements.gift.style.display = "block";
 	}
+
+	openGiftBox() {
+		this._elements.giftbox.style.display = "none";
+		this._elements.shoe.style.display = "block";
+		this._elements.gift.style.left = "30.5%";
+	}
 }
 
 window.addEventListener('load', () => {
@@ -488,7 +500,9 @@ window.addEventListener('load', () => {
       'img' : document.getElementById("squishyImg"),
       'acorn' : document.getElementById("acornImg"),
       'container' : document.getElementById("container"),
-      'gift' : document.getElementById("gift")
+      'gift' : document.getElementById("gift"),
+      'giftbox' : document.getElementById("giftbox"),
+      'shoe' : document.getElementById("shoe")
     }),
     controller = new Controller(model, view);
 
