@@ -363,7 +363,7 @@ class Controller {
 			return;
 		}
 
-		if (this._model.getScore() == 2) {
+		if (this._model.getScore() == 20) {
 			this._model.wonPrizeAlert();
 			return;
 		}
