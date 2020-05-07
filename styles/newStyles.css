@@ -302,9 +302,9 @@ footer {
   margin-top: 100px;
 }
 
-.blogpost {
+/*.blogpost {
   position: relative;
-}
+}*/
 
 .blogpost > img:hover {
   opacity: 1;
@@ -325,8 +325,8 @@ h2.blogtext {
   font-weight: lighter;
   color: #404040;
   line-height: 1;
-  bottom: 35%;
-  left: 25%;
+  /*bottom: 35%;
+  left: 25%;*/
 }
 
 .blogpost > img {
@@ -340,6 +340,22 @@ h2.blogtext {
 
 .blogheadtitle {
   text-align: center;
+}
+
+.projectCardWrapper {
+  height: 50vh;
+  width: 27%;
+  /*background-color: white;*/
+  box-shadow: 0 2px 5px -0.2px rgba(0, 0, 0, 0.2),
+    0 -2px 5px -0.2px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.2s ease-in-out;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 50px;
+  margin-right: 25px;
+  margin-left: 25px;
+  position: relative;
+  max-height: 370px;
 }
 
 /***********/
@@ -588,7 +604,18 @@ input[type=submit]:hover {
   }
 
   #blog-content {
-    position: relative;
+    min-height: 100vh;
+  width: 100vw;
+  margin-left: 50px;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+    /*position: relative;
     margin-left: auto;
     margin-right: auto;
     top: 20px;
@@ -596,7 +623,7 @@ input[type=submit]:hover {
     width: auto;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: wrap;*/
   }
 
 
@@ -677,10 +704,21 @@ input[type=submit]:hover {
 }
 
 #blog-content {
-  text-align: center;
+  /*text-align: center;
   display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: wrap;*/
+    min-height: 100vh;
+  width: 100vw;
+  margin-left: 50px;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
 }
 
 
@@ -783,17 +821,17 @@ h2 {
     min-width: 380px;
     max-width: 380px;
     height: auto;
-    margin-left: 40px;
+    /*margin-left: 40px;
     margin-right: 40px;
-    margin-top: 70px;
+    margin-top: 70px;*/
   }
 
-  #blog-content {
+/*  #blog-content {
     text-align: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-  }
+  }*/
 
   .blogtext {
     max-width: 137px;

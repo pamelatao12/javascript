@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Pamela</title>
-    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/untitled.css">
     <script src="js/sidenav.js"></script>
+    <script src="js/preventClickOverlap.js"></script>
     <script type="text/javascript" src="js/date.js"></script>
     <style>
        @import url('https://fonts.googleapis.com/css?family=Quicksand');
@@ -59,46 +60,154 @@
 			<div class="cornerlogo">
 				<img src="images/pamelalogo.svg" alt="text">
 			</div>
-			<h1 id="blogheadtitle" style="margin-bottom: 0px;margin-top: 120px;">My Projects</h1>
 		</div>
 
 		<div id="about-topbar">
 		</div>
 
 	
-
+		<h1 id="blogheadtitle" style="margin-bottom: 0px;margin-left: 80px;margin-bottom: 20px;text-align: initial;">My Projects</h1>
 		<div id="blog-content"> <!-- main body of page -->
-			<a href="dsSPA/dshomepage.html" class="blogpost">
-				<img src="images/dsSS.png" alt="post">
-				<h2 class="blogtext">Data Structures
-					</h2>
-			</a>
 
+			<div onclick="window.open('dsSPA/dshomepage.html', 'data structures');" class="blogpost">
+					<div class="projectCardWrapper" style="background-image: url(images/food6.jpg)">
+					<!-- <img src="images/dsSS1.png" alt="post"> -->
+						<div class="projectLanguage" style="background-color: lightsteelblue">React</div>
+						<div class="blogtext">Food App</div>
+						<div class="projectDescription">
+							<h1 class="descriptionH1">Description</h1>
+							<p class="descriptionP">update description of project</p>
+						</div>
+						<div class="projectContributors">
+							<h1 class="descriptionH1">Contributors</h1>
+							<div class="contributorWrapper">
+								<div class="contributor" onclick="window.open('www.pamelatao.com','website');cancelBubble(event)">
+									<img class="contributorPic" src="images/pamelaPic2.jpg" alt="pamela">
+									<p class="contributorName">Pamela Tao</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			<div onclick="window.open('dsSPA/dshomepage.html', 'data structures');" class="blogpost">
+					<div class="projectCardWrapper" style="background-image: url(images/dsSS2.png)">
+					<!-- <img src="images/dsSS1.png" alt="post"> -->
+						<div class="projectLanguage" style="background-color: lightsteelblue">React</div>
+						<div class="blogtext">Poker</div>
+						<div class="projectDescription">
+							<h1 class="descriptionH1">Description</h1>
+							<p class="descriptionP">update description of project</p>
+						</div>
+						<div class="projectContributors">
+							<h1 class="descriptionH1">Contributors</h1>
+							<div class="contributorWrapper">
+								<div class="contributor" onclick="window.open('www.pamelatao.com','website');cancelBubble(event)">
+									<img class="contributorPic" src="images/pamelaPic2.jpg" alt="pamela">
+									<p class="contributorName">Pamela Tao</p>
+								</div>
+								<div class="contributor" onclick="window.open('www.dcho.dev','website');cancelBubble(event)">
+									<img class="contributorPic" src="images/david.jpg" alt="pamela">
+									<p class="contributorName">David Cho</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			
-			<a href="squishy.html" class="blogpost">
-				<img src="images/squishySS.png" alt="post">
-				<h2 class="blogtext">Squishy</h2>
-			</a>
-
+				<div onclick="window.open('dsSPA/dshomepage.html')" class="blogpost">
+					<div class="projectCardWrapper" style="background-image: url(images/dsSS2.png)">
+					<!-- <img src="images/dsSS1.png" alt="post"> -->
+						<div class="projectLanguage">HTML/Javascript</div>
+						<div class="blogtext">Data Structures</div>
+						<div class="projectDescription">
+							<h1 class="descriptionH1">Description</h1>
+							<p class="descriptionP">update description of project</p>
+						</div>
+						<div class="projectContributors">
+							<h1 class="descriptionH1">Contributors</h1>
+							<div class="contributorWrapper">
+								<div class="contributor" onclick="window.open('www.pamelatao.com','website');cancelBubble(event)">
+									<img class="contributorPic" src="images/pamelaPic2.jpg" alt="pamela">
+									<p class="contributorName">Pamela Tao</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+				<div onclick="window.open('squishy.html')" class="blogpost">
+					<div class="projectCardWrapper" style="background-image: url(images/squishySS1.png)">
+					<!-- <img src="images/squishySS1.png" alt="post"> -->
+						<div class="projectLanguage">HTML/Javascript</div>
+						<div class="blogtext">Squishy</div>
+						<div class="projectDescription">
+							<h1 class="descriptionH1">Description</h1>
+							<p class="descriptionP">update descipriton of project</p>
+						</div>
+						<div class="projectContributors">
+							<h1 class="descriptionH1">Contributors</h1>
+							<div class="contributorWrapper">
+								<div class="contributor" onclick="window.open('www.pamelatao.com','website');cancelBubble(event)">
+									<img class="contributorPic" src="images/pamelaPic2.jpg" alt="pamela">
+									<p class="contributorName">Pamela Tao</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			
 		
-			<a href="tip.html" class="blogpost">
-				<img src="images/tipCalcSS.png" alt="post">
-				<h2 class="blogtext">Tip Calculator</h2>
-			</a>
-			
-			<a href="billsplit.html" class="blogpost">
-				<img src="images/billSplitSS.png" alt="post">
-				<h2 class="blogtext">Bill Splitter</h2>
-			</a>
+				<div onclick="window.open('tip.html')" class="blogpost">
+					<div class="projectCardWrapper" style="background-image: url(images/tipCalcSS1.png)">
+
+					<!-- <img src="images/tipCalcSS1.png" alt="post"> -->
+						<div class="projectLanguage">HTML/Javascript</div>
+						<div class="blogtext">Tip Calculator</div>
+						<div class="projectDescription">
+							<h1 class="descriptionH1">Description</h1>
+							<p class="descriptionP">update descipriton of project</p>
+						</div>
+						<div class="projectContributors">
+							<h1 class="descriptionH1">Contributors</h1>
+							<div class="contributorWrapper">
+								<div class="contributor" onclick="window.open('www.pamelatao.com','website');cancelBubble(event)">
+									<img class="contributorPic" src="images/pamelaPic2.jpg" alt="pamela">
+									<p class="contributorName">Pamela Tao</p>
+								</div>
+							</div>
+						</div>
+				</div>
+				</div>
+
+				<div onclick="window.open('billsplit.html')" class="blogpost">
+					<div class="projectCardWrapper" style="background-image: url(images/billSplitSS1.png)">			
+					<!-- <img src="images/billSplitSS1.png" alt="post"> -->
+						<div class="projectLanguage">HTML/Javascript</div>
+						<div class="blogtext">Bill Splitter</div>
+						<div class="projectDescription">
+							<h1 class="descriptionH1">Description</h1>
+							<p class="descriptionP">update descipriton of project</p>
+						</div>
+						<div class="projectContributors">
+							<h1 class="descriptionH1">Contributors</h1>
+							<div class="contributorWrapper">
+								<div class="contributor" onclick="window.open('www.pamelatao.com','website');cancelBubble(event)">
+									<img class="contributorPic" src="images/pamelaPic2.jpg" alt="pamela">
+									<p class="contributorName">Pamela Tao</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 	   	  
-			<img id="marblefooter" alt="marble" src="images/marble.jpg">
+			<!-- <img id="marblefooter" alt="marble" src="images/marble.jpg"> -->
 			<div id="datebox-mobile">  
     			<span class="footertext-mobile">
     			<script>getDate()</script> | Pamela Tao &#169;</span>
 			</div><!-- end of datebox div -->
 		</div> <!-- close content div tag -->
 	</div>	<!-- close bio-page div tag -->
-</div>
 	<footer>
 		<div id="iconbox">
     <ul>
@@ -112,6 +221,8 @@
     	<script>getDate()</script> | Pamela Tao &#169;</span>
 	</div><!-- end of datebox div -->
 	</footer>
+</div>
+	
 </body>
 
 </html>
