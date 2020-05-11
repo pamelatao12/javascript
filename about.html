@@ -1,117 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>Pamela</title>
-    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css" />
     <script src="js/sidenav.js"></script>
     <script type="text/javascript" src="js/date.js"></script>
     <style>
-       @import url('https://fonts.googleapis.com/css?family=Quicksand');
+      @import url("https://fonts.googleapis.com/css?family=Quicksand");
     </style>
-</head>
+  </head>
 
-<body>
-	<div id="container">
-		<div id="about-nav_bar"> <!--navigation bar link to projects and posts -->
-			<div class="cornerlogo">
-				<img src="images/pamelalogo.svg" alt="text">
-			</div>
+  <body>
+    <div id="container">
+      <div id="about-nav_bar">
+        <!--navigation bar link to projects and posts -->
+        <div class="cornerlogo">
+          <img src="images/pamelalogo.svg" alt="text" />
+        </div>
+        <ul>
+          <li class="nav">
+            <a href="index.html">HOME</a>
+          </li>
+          <li class="nav">
+            <a href="about.html">ABOUT</a>
+          </li>
+          <li class="nav">
+            <a href="projects.html">PROJECTS</a>
+          </li>
+          <li class="nav">
+            <a href="blog.html">BLOG</a>
+          </li>
+          <li class="nav">
+            <a href="contact.html">CONTACT</a>
+          </li>
+        </ul>
+      </div>
+      <!-- closing nav_bar div -->
+      <div id="navbtn">
+        <span
+          style="font-size:30px;color:dimgray;cursor:pointer;padding-left: 20px;"
+          onclick="openNav()"
+          >&#9776;</span
+        >
+      </div>
 
-			<ul>
-				<li class="nav">
-					<a href="index.html">HOME</a>
-				</li>
-				<li class="nav">
-					<a href="about.html">ABOUT</a>
-				</li>
-				<li class="nav">
-					<a href="blog.html">BLOG</a>
-				</li>
-				<li class="nav">
-					<a href="projects.html">PROJECTS</a>
-				</li>
-				<li class="nav">
-					<a href="contact.html">CONTACT</a>
-				</li>
-			</ul>
-		</div> <!-- closing nav_bar div -->
-	<div id="navbtn">
-		<span style="font-size:30px;color:dimgray;cursor:pointer;padding-left: 20px;" onclick="openNav()">&#9776;</span>
-	</div>
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="blog.html">BLOG</a>
+        <a href="projects.html">PROJECT</a>
+        <a href="contact.html">CONTACT</a>
+        <a href="https://www.linkedin.com/in/pamela-tao/" class="icon-side"
+          ><img src="images/linkedin.svg" alt="li"
+        /></a>
+        <a href="https://github.com/pamelatao12" class="icon-side"
+          ><img src="images/github.svg" alt="gh"
+        /></a>
+        <a href="mailto:pamelatao12@gmail.com" class="icon-side"
+          ><img src="images/mail.svg" alt="m"
+        /></a>
+      </div>
 
-	<div id="mySidenav" class="sidenav">
-	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-	  <a href="index.html">HOME</a>
-	  <a href="about.html">ABOUT</a>
-	  <a href="blog.html">BLOG</a>
-	  <a href="projects.html">PROJECT</a>
-	  <a href="contact.html">CONTACT</a>
-	  <a href="https://www.linkedin.com/in/pamela-tao/" class="icon-side"><img src="images/linkedin.svg" alt="li"></a>
-	  <a href="https://github.com/pamelatao12" class="icon-side"><img src="images/github.svg" alt="gh"></a>
-	  <a href="mailto:pamelatao12@gmail.com" class="icon-side"><img src="images/mail.svg" alt="m"></a>
+      <div id="bio-page">
+        <div class="bio">
+          <div class="circle-crop">
+            <img src="images/pamelabio.jpg" alt="text" />
+          </div>
+          <div class="cornerlogo">
+            <img src="images/pamelalogo.svg" alt="text" />
+          </div>
+        </div>
 
-	</div>
+        <div id="about-topbar"></div>
 
-	<div id="bio-page">
-		<div class="bio">
-			<div class="circle-crop">
-			<img src="images/pamelabio.jpg" alt="text">
-			</div>
-			<div class="cornerlogo">
-				<img src="images/pamelalogo.svg" alt="text">
-			</div>
-		</div>
+        <div id="about-content">
+          <!-- main body of page -->
+          <h1 id="contentHead">Hello, my name is Pamela Tao.</h1>
+          <p>
+            Welcome to my website! I was born and raised in the San Francisco
+            Bay Area in California, and am currently based out of New York City.
+            I graduated Cornell University in the Fall of 2017 with a degree in
+            Business.
+          </p>
+          <p>
+            Currently I am a consultant in the tech and healthcare industry,
+            with a passion for web design and development. From strategy
+            consulting to product management, I work with Fortune 500 companies
+            to deploy and integrate digital technologies, as well as manage
+            consumer-facing product launches that touch millions of users a day.
+          </p>
+          <p>
+            Now let me speak a little more to my passion for technology. A
+            couple months ago I pulled up my college curriculum materials for an
+            object-oriented programming course. From there, I found myself
+            spending multiple hours a day diving head-first into data
+            structures, algorithms, and personal projects. So welcome, to the
+            entry point of my journey! This site is 100% original - and please
+            check out my projects page for more!
+          </p>
+          <p>
+            Now for anyone who knows me, they know I definitely prefer to not
+            spend all day in front of a computer or at a desk. Three years ago,
+            I was introduced to weight-lifting - and now it has become an
+            essential part of my daily life. But of course, no matter how much I
+            love the gym, there is one thing I love more: food! Hence when I'm
+            not at the gym, you can probably find me exploring the many
+            restaurants NYC has to offer.
+          </p>
+          <p>
+            p.s. the cute dog in the picture is the love of my life &hearts;
+            <img id="marblefooter" alt="marble" src="images/marble.jpg" />
+          </p>
 
-		<div id="about-topbar">
-		</div>
-
-	
-
-		<div id="about-content"> <!-- main body of page -->
-			<h1 id="contentHead">Hello, my name is Pamela Tao.</h1>
-			<p>
-				Welcome to my website! I was born and raised in the San Francisco Bay Area in California, and am currently based out of New York City. I graduated Cornell University in the Fall of 2017 with a degree in Business.
-			</p>
-			<p>
-				Currently I am a consultant in the tech and healthcare industry, with a passion for web design and development. From strategy consulting to product management, I work with Fortune 500 companies to deploy and integrate digital technologies, as well as manage consumer-facing product launches that touch millions of users a day.
-			</p>
-			<p>
-				Now let me speak a little more to my passion for technology. A couple months ago I pulled up my college curriculum materials for an object-oriented programming course. From there, I found myself spending multiple hours a day diving head-first into data structures, algorithms, and personal projects. So welcome, to the entry point of my journey! This site is 100% original - and please check out my projects page for more!
-			</p>
-			<p>
-				Now for anyone who knows me, they know I definitely prefer to not spend all day in front of a computer or at a desk. Three years ago, I was introduced to weight-lifting - and now it has become an essential part of my daily life. But of course, no matter how much I love the gym, there is one thing I love more: food! Hence when I'm not at the gym, you can probably find me exploring the many restaurants NYC has to offer.
-			</p>
-			<p>
-				p.s. the cute dog in the picture is the love of my life &hearts;
-			<img id="marblefooter" alt="marble" src="images/marble.jpg">
-			<div id="datebox-mobile">  
-    			<span class="footertext-mobile">
-    			<script>getDate()</script> | Pamela Tao &#169;</span>
-			</div><!-- end of datebox div -->
-		</div> <!-- close content div tag -->
-	</div>	<!-- close bio-page div tag -->
-</div>
-	<footer>
-		<div id="iconbox">
-    <ul>
-        <li class="icon"><a href="https://www.linkedin.com/in/pamela-tao/"><img src="images/linkedin.svg" alt="li"></a></li>
-        <li class="icon"><a href="https://github.com/pamelatao12"><img src="images/github.svg" alt="gh"></a></li>
-        <li class="icon"><a href="mailto:pamelatao12@gmail.com"><img src="images/mail.svg" alt="m"></a></li>
-    </ul>
-    </div><!-- end of iconbox div -->
-    <div id="datebox">  
-    	<span class="footertext">
-    	<script>getDate()</script> | Pamela Tao &#169;</span>
-	</div><!-- end of datebox div -->
-	</footer>
-</body>
-
+          <div id="datebox-mobile">
+            <span class="footertext-mobile">
+              <script>
+                getDate();
+              </script>
+              | Pamela Tao &#169;</span
+            >
+          </div>
+          <!-- end of datebox div -->
+        </div>
+        <!-- close content div tag -->
+      </div>
+      <!-- close bio-page div tag -->
+    </div>
+    <footer>
+      <div id="iconbox">
+        <ul>
+          <li class="icon">
+            <a href="https://www.linkedin.com/in/pamela-tao/"
+              ><img src="images/linkedin.svg" alt="li"
+            /></a>
+          </li>
+          <li class="icon">
+            <a href="https://github.com/pamelatao12"
+              ><img src="images/github.svg" alt="gh"
+            /></a>
+          </li>
+          <li class="icon">
+            <a href="mailto:pamelatao12@gmail.com"
+              ><img src="images/mail.svg" alt="m"
+            /></a>
+          </li>
+        </ul>
+      </div>
+      <!-- end of iconbox div -->
+      <div id="datebox">
+        <span class="footertext">
+          <script>
+            getDate();
+          </script>
+          | Pamela Tao &#169;</span
+        >
+      </div>
+      <!-- end of datebox div -->
+    </footer>
+  </body>
 </html>
-
-
-
-
-
-

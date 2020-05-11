@@ -1,94 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>Pamela</title>
-    <link rel="stylesheet" type="text/css" href="styles/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Pinyon+Script" rel="stylesheet">
-    <script type="text/javascript"src="js/sidenav.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/untitled.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Pinyon+Script"
+      rel="stylesheet"
+    />
+    <script type="text/javascript" src="js/sidenav.js"></script>
     <script type="text/javascript" src="js/date.js"></script>
+    <script type="text/javascript">
+      var submitted = false;
+    </script>
     <style>
-       @import url('https://fonts.googleapis.com/css?family=Quicksand');
-
+      @import url("https://fonts.googleapis.com/css?family=Quicksand");
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
+    <div id="leftHalf">
+      <div id="navbtn">
+        <span
+          style="font-size:30px;color:dimgray;cursor:pointer;padding-left: 20px;"
+          onclick="openNav()"
+          >&#9776;</span
+        >
+      </div>
 
-	<div id="leftHalf">
-		<div id="navbtn">
-		<span style="font-size:30px;color:dimgray;cursor:pointer;padding-left: 20px;" onclick="openNav()">&#9776;</span>
-	</div>
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="blog.html">BLOG</a>
+        <a href="projects.html">PROJECT</a>
+        <a href="contact.html">CONTACT</a>
+        <a href="https://www.linkedin.com/in/pamela-tao/" class="icon-side"
+          ><img src="images/linkedin.svg" alt="li"
+        /></a>
+        <a href="https://github.com/pamelatao12" class="icon-side"
+          ><img src="images/github.svg" alt="gh"
+        /></a>
+        <a href="mailto:pamelatao12@gmail.com" class="icon-side"
+          ><img src="images/mail.svg" alt="m"
+        /></a>
+      </div>
 
-	<div id="mySidenav" class="sidenav">
-	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-	  <a href="index.html">HOME</a>
-	  <a href="about.html">ABOUT</a>
-	  <a href="blog.html">BLOG</a>
-	  <a href="projects.html">PROJECT</a>
-	  <a href="contact.html">CONTACT</a>
-	  <a href="https://www.linkedin.com/in/pamela-tao/" class="icon-side"><img src="images/linkedin.svg" alt="li"></a>
-	  <a href="https://github.com/pamelatao12" class="icon-side"><img src="images/github.svg" alt="gh"></a>
-	  <a href="mailto:pamelatao12@gmail.com" class="icon-side"><img src="images/mail.svg" alt="m"></a>
+      <div id="contact_nav_bar">
+        <!--navigation bar link to projects and posts -->
+        <ul>
+          <li class="nav">
+            <a href="index.html">HOME</a>
+          </li>
+          <li class="nav">
+            <a href="about.html">ABOUT</a>
+          </li>
+          <li class="nav">
+            <a href="projects.html">PROJECTS</a>
+          </li>
+          <li class="nav">
+            <a href="blog.html">BLOG</a>
+          </li>
+          <li class="nav">
+            <a href="contact.html">CONTACT</a>
+          </li>
+        </ul>
+      </div>
+      <!-- closing nav_bar div -->
+      <div class="logo">
+        <img src="images/pamelalogo.svg" alt="text" />
+      </div>
+      <!-- closing logo div -->
 
-	</div>
+      <div class="heading">
+        <h1 class="name">CONTACT ME</h1>
+      </div>
 
+      <div id="iconbox">
+        <ul>
+          <li class="icon">
+            <a href="https://www.linkedin.com/in/pamela-tao/"
+              ><img src="images/linkedin.svg" alt="li"
+            /></a>
+          </li>
+          <li class="icon">
+            <a href="https://github.com/pamelatao12"
+              ><img src="images/github.svg" alt="gh"
+            /></a>
+          </li>
+          <li class="icon">
+            <a href="mailto:pamelatao12@gmail.com"
+              ><img src="images/mail.svg" alt="m"
+            /></a>
+          </li>
+        </ul>
+      </div>
+      <!-- end of iconbox div -->
 
-		<div id="contact_nav_bar"> <!--navigation bar link to projects and posts -->
-			<ul>
-				<li class="nav">
-					<a href="index.html">HOME</a>
-				</li>
-				<li class="nav">
-					<a href="about.html">ABOUT</a>
-				</li>
-				<li class="nav">
-					<a href="blog.html">BLOG</a>
-				</li>
-				<li class="nav">
-					<a href="projects.html">PROJECTS</a>
-				</li>
-				<li class="nav">
-					<a href="contact.html">CONTACT</a>
-				</li>
-			</ul>
-		</div> <!-- closing nav_bar div -->
-		<div class="logo">
-			<img src="images/pamelalogo.svg" alt="text">
-		</div> <!-- closing logo div -->
+      <!-- https://docs.google.com/forms/d/e/1FAIpQLSeW6V9noc7zfkX9rEAN-jbTpPJ8ghs91K7pSKWvOAaV1jFikg/viewform?usp=pp_url&entry.1256272138=Pamela+Tao&entry.2016049979=emailaddress@gmail.com&entry.592674898=pt&entry.1717737184=hi+there! -->
+      <div class="contactform">
+        <div id="formConfirmationDialog" style="display: none;">
+          <p id="confirmationHeader">Your message has been sent!</p>
+          <p>
+            Thank you for your message! I will be in touch with you shortly.
+          </p>
+        </div>
 
-		<div class="heading">
-			<h1 class="name">CONTACT ME</h1>
-		</div>
-		
-		<div id="iconbox">
-    <ul>
-        <li class="icon"><a href="https://www.linkedin.com/in/pamela-tao/"><img src="images/linkedin.svg" alt="li"></a></li>
-        <li class="icon"><a href="https://github.com/pamelatao12"><img src="images/github.svg" alt="gh"></a></li>
-        <li class="icon"><a href="mailto:pamelatao12@gmail.com"><img src="images/mail.svg" alt="m"></a></li>
-    </ul>
-    </div><!-- end of iconbox div -->
+        <form
+          action="https://docs.google.com/forms/d/e/1FAIpQLSeW6V9noc7zfkX9rEAN-jbTpPJ8ghs91K7pSKWvOAaV1jFikg/formResponse?"
+          target="hidden_iframe"
+          onsubmit="submitted=true;"
+          name="gform"
+          id="gform"
+        >
+          <!-- <label for="fname">First Name</label> -->
+          <input
+            type="text"
+            name="entry.1256272138"
+            id="entry.1256272138"
+            placeholder="Name"
+          />
 
-		<div class="contactform">
-			<form action="contactform.php" target="_self">
-			    <!-- <label for="fname">First Name</label> -->
-			    <input type="text" id="name" name="name" placeholder="Name">
+          <!-- <label for="lname">Last Name</label> -->
+          <input
+            type="text"
+            name="entry.2016049979"
+            id="entry.2016049979"
+            placeholder="Email Address"
+          />
 
-			    <!-- <label for="lname">Last Name</label> -->
-			    <input type="text" id="email" name="email" placeholder="Email Address">
+          <!-- <label for="company">Company</label> -->
+          <input
+            type="text"
+            name="entry.592674898"
+            id="entry.592674898"
+            placeholder="Company"
+          />
 
-			    <!-- <label for="company">Company</label> -->
-			    <input type="text" id="company" name="company" placeholder="Company">
+          <!-- <label for="subject">Subject</label> -->
+          <textarea
+            name="entry.1717737184"
+            id="entry.1717737184"
+            placeholder="Write message here.."
+            style="height:200px"
+          ></textarea>
 
-			    <!-- <label for="subject">Subject</label> -->
-			    <textarea id="message" name="message" placeholder="Write message here.." style="height:200px"></textarea>
-
-			    <input type="submit" value="Submit">
-		  </form>
-		</div>
-		
-	</div>
-	
-</body>
+          <input type="submit" value="Submit" />
+        </form>
+        <iframe
+          name="hidden_iframe"
+          id="hidden_iframe"
+          style="display:none;"
+          onload="if(submitted) {}"
+        ></iframe>
+        <script type="text/javascript" src="js/form.js"></script>
+      </div>
+    </div>
+  </body>
 </html>
