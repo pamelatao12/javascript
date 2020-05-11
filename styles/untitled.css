@@ -540,6 +540,11 @@ h2:hover {
   font-weight: bolder;
 }
 
+input,
+textarea {
+  outline: none;
+}
+
 /* Style inputs with type="text", select elements and textareas */
 input[type="text"],
 select,
