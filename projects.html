@@ -1,236 +1,382 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>Pamela</title>
-    <link rel="stylesheet" type="text/css" href="styles/untitled.css">
+    <link rel="stylesheet" type="text/css" href="styles/untitled.css" />
     <script src="js/sidenav.js"></script>
     <script src="js/preventClickOverlap.js"></script>
     <script type="text/javascript" src="js/date.js"></script>
     <style>
-       @import url('https://fonts.googleapis.com/css?family=Quicksand');
+      @import url("https://fonts.googleapis.com/css?family=Quicksand");
     </style>
-</head>
+  </head>
 
-<body>
-	<div id="container">
-		<div id="about-nav_bar"> <!--navigation bar link to projects and posts -->
-			<div class="cornerlogo">
-				<img src="images/pamelalogo.svg" alt="text">
-			</div>
+  <body>
+    <div id="container">
+      <div id="about-nav_bar">
+        <!--navigation bar link to projects and posts -->
+        <div class="cornerlogo">
+          <img src="images/pamelalogo.svg" alt="text" />
+        </div>
 
-			<ul>
-				<li class="nav">
-					<a href="index.html">HOME</a>
-				</li>
-				<li class="nav">
-					<a href="about.html">ABOUT</a>
-				</li>
-				<li class="nav">
-					<a href="projects.html">PROJECTS</a>
-				</li>
-				<li class="nav">
-					<a href="blog.html">BLOG</a>
-				</li>
-				<li class="nav">
-					<a href="contact.html">CONTACT</a>
-				</li>
-			</ul>
-		</div> <!-- closing nav_bar div -->
-	<div id="navbtn">
-		<span style="font-size:30px;color:dimgray;cursor:pointer;padding-left: 20px;" onclick="openNav()">&#9776;</span>
-	</div>
+        <ul>
+          <li class="nav">
+            <a href="index.html">HOME</a>
+          </li>
+          <li class="nav">
+            <a href="about.html">ABOUT</a>
+          </li>
+          <li class="nav">
+            <a href="projects.html">PROJECTS</a>
+          </li>
+          <li class="nav">
+            <a href="blog.html">BLOG</a>
+          </li>
+          <li class="nav">
+            <a href="contact.html">CONTACT</a>
+          </li>
+        </ul>
+      </div>
+      <!-- closing nav_bar div -->
+      <div id="navbtn">
+        <span
+          style="font-size:30px;color:dimgray;cursor:pointer;padding-left: 20px;"
+          onclick="openNav()"
+          >&#9776;</span
+        >
+      </div>
 
-	<div id="mySidenav" class="sidenav">
-	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-	  <a href="index.html">HOME</a>
-	  <a href="about.html">ABOUT</a>
-	  <a href="blog.html">BLOG</a>
-	  <a href="projects.html">PROJECT</a>
-	  <a href="contact.html">CONTACT</a>
-	  <a href="https://www.linkedin.com/in/pamela-tao/" class="icon-side"><img src="images/linkedin.svg" alt="li"></a>
-	  <a href="https://github.com/pamelatao12" class="icon-side"><img src="images/github.svg" alt="gh"></a>
-	  <a href="mailto:pamelatao12@gmail.com" class="icon-side"><img src="images/mail.svg" alt="m"></a>
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="blog.html">BLOG</a>
+        <a href="projects.html">PROJECT</a>
+        <a href="contact.html">CONTACT</a>
+        <a href="https://www.linkedin.com/in/pamela-tao/" class="icon-side"
+          ><img src="images/linkedin.svg" alt="li"
+        /></a>
+        <a href="https://github.com/pamelatao12" class="icon-side"
+          ><img src="images/github.svg" alt="gh"
+        /></a>
+        <a href="mailto:pamelatao12@gmail.com" class="icon-side"
+          ><img src="images/mail.svg" alt="m"
+        /></a>
+      </div>
 
-	</div>
+      <div id="blog-page">
+        <div class="bloghead">
+          <div class="cornerlogo">
+            <img src="images/pamelalogo.svg" alt="text" />
+          </div>
+        </div>
 
-	<div id="blog-page">
-		<div class="bloghead">
-			<div class="cornerlogo">
-				<img src="images/pamelalogo.svg" alt="text">
-			</div>
-		</div>
+        <div id="about-topbar"></div>
 
-		<div id="about-topbar">
-		</div>
+        <h1
+          id="blogheadtitle"
+          style="margin-bottom: 0px;margin-left: 80px;margin-bottom: 20px;text-align: initial;"
+        >
+          My Projects
+        </h1>
+        <div id="blog-content">
+          <!-- main body of page -->
 
-	
-		<h1 id="blogheadtitle" style="margin-bottom: 0px;margin-left: 80px;margin-bottom: 20px;text-align: initial;">My Projects</h1>
-		<div id="blog-content"> <!-- main body of page -->
+          <div
+            onclick="window.open('http://www.pamelatao.com/react-foodapp/', 'React food app project');"
+            class="projectpost"
+          >
+            <div
+              class="projectCardWrapper"
+              style="background-image: url(images/food6.jpg)"
+            >
+              <!-- <img src="images/dsSS1.png" alt="post"> -->
+              <div
+                class="projectLanguage"
+                style="background-color: lightsteelblue"
+              >
+                React
+              </div>
+              <div class="blogtext">Food App</div>
+              <div class="projectDescription">
+                <h1 class="descriptionH1">Description</h1>
+                <p class="descriptionP">
+                  👩‍💻 React, Node.js, Yelp Fusion API, Firebase
+                </p>
+                <p class="descriptionP">
+                  Interactive web app to search and save your favorite
+                  restaurants. Manage events with friends and let the group vote
+                  where to have lunch!
+                </p>
+              </div>
+              <div class="projectContributors">
+                <h1 class="descriptionH1">Contributors</h1>
+                <div class="contributorWrapper">
+                  <div
+                    class="contributor"
+                    onclick="window.open('www.pamelatao.com','website');cancelBubble(event)"
+                  >
+                    <img
+                      class="contributorPic"
+                      src="images/pamelaPic2.jpg"
+                      alt="pamela"
+                    />
+                    <p class="contributorName">Pamela Tao</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-			<div onclick="window.open('http://www.pamelatao.com/react-foodapp/', 'React food app project');" class="projectpost">
-					<div class="projectCardWrapper" style="background-image: url(images/food6.jpg)">
-					<!-- <img src="images/dsSS1.png" alt="post"> -->
-						<div class="projectLanguage" style="background-color: lightsteelblue">React</div>
-						<div class="blogtext">Food App</div>
-						<div class="projectDescription">
-							<h1 class="descriptionH1">Description</h1>
-							<p class="descriptionP">👩‍💻 React, Node.js, Yelp Fusion API</p>
-							<p class="descriptionP">Interactive web app to search and save your favorite restaurants. Manage events with friends and let the group vote where to have lunch!</p>
-						</div>
-						<div class="projectContributors">
-							<h1 class="descriptionH1">Contributors</h1>
-							<div class="contributorWrapper">
-								<div class="contributor" onclick="window.open('www.pamelatao.com','website');cancelBubble(event)">
-									<img class="contributorPic" src="images/pamelaPic2.jpg" alt="pamela">
-									<p class="contributorName">Pamela Tao</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+          <div
+            onclick="window.open('', 'React project pending');"
+            class="projectpost"
+          >
+            <div
+              class="projectCardWrapper"
+              style="background-image: url(images/poker.png)"
+            >
+              <!-- <img src="images/dsSS1.png" alt="post"> -->
+              <div
+                class="projectLanguage"
+                style="background-color: lightsteelblue"
+              >
+                React
+              </div>
+              <div class="blogtext">Poker</div>
+              <div class="projectDescription">
+                <h1 class="descriptionH1">Description</h1>
+                <p class="descriptionP">
+                  👩‍💻 React, Node.js, Socket.IO, Firebase
+                </p>
+                <p class="descriptionP">
+                  Create an account and host multi-player poker games with your
+                  friends!
+                </p>
+              </div>
+              <div class="projectContributors">
+                <h1 class="descriptionH1">Contributors</h1>
+                <div class="contributorWrapper">
+                  <div
+                    class="contributor"
+                    onclick="window.open('www.pamelatao.com','website');cancelBubble(event)"
+                  >
+                    <img
+                      class="contributorPic"
+                      src="images/pamelaPic2.jpg"
+                      alt="pamela"
+                    />
+                    <p class="contributorName">Pamela Tao</p>
+                  </div>
+                  <div
+                    class="contributor"
+                    onclick="window.open('https://www.dcho.dev','website');cancelBubble(event)"
+                  >
+                    <img
+                      class="contributorPic"
+                      src="images/david.jpg"
+                      alt="pamela"
+                    />
+                    <p class="contributorName">David Cho</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-			<div onclick="window.open('', 'React project pending');" class="projectpost">
-					<div class="projectCardWrapper" style="background-image: url(images/dsSS2.png)">
-					<!-- <img src="images/dsSS1.png" alt="post"> -->
-						<div class="projectLanguage" style="background-color: lightsteelblue">React</div>
-						<div class="blogtext">Poker</div>
-						<div class="projectDescription">
-							<h1 class="descriptionH1">Description</h1>
-							<p class="descriptionP">👩‍💻 React, Node.js, Socket.IO</p>
-							<p class="descriptionP">Host multi-player poker games.</p>
-						</div>
-						<div class="projectContributors">
-							<h1 class="descriptionH1">Contributors</h1>
-							<div class="contributorWrapper">
-								<div class="contributor" onclick="window.open('www.pamelatao.com','website');cancelBubble(event)">
-									<img class="contributorPic" src="images/pamelaPic2.jpg" alt="pamela">
-									<p class="contributorName">Pamela Tao</p>
-								</div>
-								<div class="contributor" onclick="window.open('https://www.dcho.dev','website');cancelBubble(event)">
-									<img class="contributorPic" src="images/david.jpg" alt="pamela">
-									<p class="contributorName">David Cho</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			
-				<div onclick="window.open('dsSPA/dshomepage.html')" class="projectpost">
-					<div class="projectCardWrapper" style="background-image: url(images/dsSS2.png)">
-					<!-- <img src="images/dsSS1.png" alt="post"> -->
-						<div class="projectLanguage">HTML/Javascript</div>
-						<div class="blogtext">Data Structures</div>
-						<div class="projectDescription">
-							<h1 class="descriptionH1">Description</h1>
-							<p class="descriptionP">👩‍💻 HTML/Javascript</p>
-							<p class="descriptionP">Interactive data structure visualizer to help users easily build and understand standard data structures through animations</p>
-						</div>
-						<div class="projectContributors">
-							<h1 class="descriptionH1">Contributors</h1>
-							<div class="contributorWrapper">
-								<div class="contributor" onclick="window.open('www.pamelatao.com','website');cancelBubble(event)">
-									<img class="contributorPic" src="images/pamelaPic2.jpg" alt="pamela">
-									<p class="contributorName">Pamela Tao</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			
-				<div onclick="window.open('squishy.html')" class="projectpost">
-					<div class="projectCardWrapper" style="background-image: url(images/squishySS1.png)">
-					<!-- <img src="images/squishySS1.png" alt="post"> -->
-						<div class="projectLanguage">HTML/Javascript</div>
-						<div class="blogtext">Squishy</div>
-						<div class="projectDescription">
-							<h1 class="descriptionH1">Description</h1>
-							<p class="descriptionP">👩‍💻 HTML/Javascript</p>
-							<p class="descriptionP">Single-player web application game with an autoplay mode</p>
-						</div>
-						<div class="projectContributors">
-							<h1 class="descriptionH1">Contributors</h1>
-							<div class="contributorWrapper">
-								<div class="contributor" onclick="window.open('www.pamelatao.com','website');cancelBubble(event)">
-									<img class="contributorPic" src="images/pamelaPic2.jpg" alt="pamela">
-									<p class="contributorName">Pamela Tao</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			
-		
-				<div onclick="window.open('tip.html')" class="projectpost">
-					<div class="projectCardWrapper" style="background-image: url(images/tipCalcSS1.png)">
+          <div
+            onclick="window.open('dsSPA/dshomepage.html')"
+            class="projectpost"
+          >
+            <div
+              class="projectCardWrapper"
+              style="background-image: url(images/dsSS2.png)"
+            >
+              <!-- <img src="images/dsSS1.png" alt="post"> -->
+              <div class="projectLanguage">HTML/Javascript</div>
+              <div class="blogtext">Data Structures</div>
+              <div class="projectDescription">
+                <h1 class="descriptionH1">Description</h1>
+                <p class="descriptionP">👩‍💻 HTML/Javascript</p>
+                <p class="descriptionP">
+                  Interactive data structure visualizer to help users easily
+                  build and understand standard data structures through
+                  animations
+                </p>
+              </div>
+              <div class="projectContributors">
+                <h1 class="descriptionH1">Contributors</h1>
+                <div class="contributorWrapper">
+                  <div
+                    class="contributor"
+                    onclick="window.open('www.pamelatao.com','website');cancelBubble(event)"
+                  >
+                    <img
+                      class="contributorPic"
+                      src="images/pamelaPic2.jpg"
+                      alt="pamela"
+                    />
+                    <p class="contributorName">Pamela Tao</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-					<!-- <img src="images/tipCalcSS1.png" alt="post"> -->
-						<div class="projectLanguage">HTML/Javascript</div>
-						<div class="blogtext">Tip Calculator</div>
-						<div class="projectDescription">
-							<h1 class="descriptionH1">Description</h1>
-							<p class="descriptionP">👩‍💻 HTML/Javascript</p>
-							<p class="descriptionP">Having trouble deciding how much to tip? This tip calculator takes care of all calculations based on the service you received!</p>
-						</div>
-						<div class="projectContributors">
-							<h1 class="descriptionH1">Contributors</h1>
-							<div class="contributorWrapper">
-								<div class="contributor" onclick="window.open('www.pamelatao.com','website');cancelBubble(event)">
-									<img class="contributorPic" src="images/pamelaPic2.jpg" alt="pamela">
-									<p class="contributorName">Pamela Tao</p>
-								</div>
-							</div>
-						</div>
-				</div>
-				</div>
+          <div onclick="window.open('squishy.html')" class="projectpost">
+            <div
+              class="projectCardWrapper"
+              style="background-image: url(images/squishySS1.png)"
+            >
+              <!-- <img src="images/squishySS1.png" alt="post"> -->
+              <div class="projectLanguage">HTML/Javascript</div>
+              <div class="blogtext">Squishy</div>
+              <div class="projectDescription">
+                <h1 class="descriptionH1">Description</h1>
+                <p class="descriptionP">👩‍💻 HTML/Javascript</p>
+                <p class="descriptionP">
+                  Single-player web application game with an autoplay mode
+                </p>
+              </div>
+              <div class="projectContributors">
+                <h1 class="descriptionH1">Contributors</h1>
+                <div class="contributorWrapper">
+                  <div
+                    class="contributor"
+                    onclick="window.open('www.pamelatao.com','website');cancelBubble(event)"
+                  >
+                    <img
+                      class="contributorPic"
+                      src="images/pamelaPic2.jpg"
+                      alt="pamela"
+                    />
+                    <p class="contributorName">Pamela Tao</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-				<div onclick="window.open('billsplit.html')" class="projectpost">
-					<div class="projectCardWrapper" style="background-image: url(images/billSplitSS1.png)">			
-					<!-- <img src="images/billSplitSS1.png" alt="post"> -->
-						<div class="projectLanguage">HTML/Javascript</div>
-						<div class="blogtext">Bill Splitter</div>
-						<div class="projectDescription">
-							<h1 class="descriptionH1">Description</h1>
-							<p class="descriptionP">👩‍💻 HTML/Javascript</p>
-							<p class="descriptionP">Easily split the bill (including tax and tip!) whichever way you want with this customizable tool.</p>
-						</div>
-						<div class="projectContributors">
-							<h1 class="descriptionH1">Contributors</h1>
-							<div class="contributorWrapper">
-								<div class="contributor" onclick="window.open('www.pamelatao.com','website');cancelBubble(event)">
-									<img class="contributorPic" src="images/pamelaPic2.jpg" alt="pamela">
-									<p class="contributorName">Pamela Tao</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-	   	  
-			<!-- <img id="marblefooter" alt="marble" src="images/marble.jpg"> -->
-			<div id="datebox-mobile">  
-    			<span class="footertext-mobile">
-    			<script>getDate()</script> | Pamela Tao &#169;</span>
-			</div><!-- end of datebox div -->
-		</div> <!-- close content div tag -->
-	</div>	<!-- close bio-page div tag -->
-	<footer>
-		<div id="iconbox">
-    <ul>
-        <li class="icon"><a href="https://www.linkedin.com/in/pamela-tao/"><img src="images/linkedin.svg" alt="li"></a></li>
-        <li class="icon"><a href="https://github.com/pamelatao12"><img src="images/github.svg" alt="gh"></a></li>
-        <li class="icon"><a href="mailto:pamelatao12@gmail.com"><img src="images/mail.svg" alt="m"></a></li>
-    </ul>
-    </div><!-- end of iconbox div -->
-    <div id="datebox">  
-    	<span class="footertext">
-    	<script>getDate()</script> | &#169; Pamela Tao. All Rights Reserved.</span>
-	</div><!-- end of datebox div -->
-	</footer>
-</div>
-	
-</body>
+          <div onclick="window.open('tip.html')" class="projectpost">
+            <div
+              class="projectCardWrapper"
+              style="background-image: url(images/tipCalcSS1.png)"
+            >
+              <!-- <img src="images/tipCalcSS1.png" alt="post"> -->
+              <div class="projectLanguage">HTML/Javascript</div>
+              <div class="blogtext">Tip Calculator</div>
+              <div class="projectDescription">
+                <h1 class="descriptionH1">Description</h1>
+                <p class="descriptionP">👩‍💻 HTML/Javascript</p>
+                <p class="descriptionP">
+                  Having trouble deciding how much to tip? This tip calculator
+                  takes care of all calculations based on the service you
+                  received!
+                </p>
+              </div>
+              <div class="projectContributors">
+                <h1 class="descriptionH1">Contributors</h1>
+                <div class="contributorWrapper">
+                  <div
+                    class="contributor"
+                    onclick="window.open('www.pamelatao.com','website');cancelBubble(event)"
+                  >
+                    <img
+                      class="contributorPic"
+                      src="images/pamelaPic2.jpg"
+                      alt="pamela"
+                    />
+                    <p class="contributorName">Pamela Tao</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
+          <div onclick="window.open('billsplit.html')" class="projectpost">
+            <div
+              class="projectCardWrapper"
+              style="background-image: url(images/billSplitSS1.png)"
+            >
+              <!-- <img src="images/billSplitSS1.png" alt="post"> -->
+              <div class="projectLanguage">HTML/Javascript</div>
+              <div class="blogtext">Bill Splitter</div>
+              <div class="projectDescription">
+                <h1 class="descriptionH1">Description</h1>
+                <p class="descriptionP">👩‍💻 HTML/Javascript</p>
+                <p class="descriptionP">
+                  Easily split the bill (including tax and tip!) whichever way
+                  you want with this customizable tool.
+                </p>
+              </div>
+              <div class="projectContributors">
+                <h1 class="descriptionH1">Contributors</h1>
+                <div class="contributorWrapper">
+                  <div
+                    class="contributor"
+                    onclick="window.open('www.pamelatao.com','website');cancelBubble(event)"
+                  >
+                    <img
+                      class="contributorPic"
+                      src="images/pamelaPic2.jpg"
+                      alt="pamela"
+                    />
+                    <p class="contributorName">Pamela Tao</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <img id="marblefooter" alt="marble" src="images/marble.jpg"> -->
+          <div id="datebox-mobile">
+            <span class="footertext-mobile">
+              <script>
+                getDate();
+              </script>
+              | Pamela Tao &#169;</span
+            >
+          </div>
+          <!-- end of datebox div -->
+        </div>
+        <!-- close content div tag -->
+      </div>
+      <!-- close bio-page div tag -->
+      <footer>
+        <div id="iconbox">
+          <ul>
+            <li class="icon">
+              <a href="https://www.linkedin.com/in/pamela-tao/"
+                ><img src="images/linkedin.svg" alt="li"
+              /></a>
+            </li>
+            <li class="icon">
+              <a href="https://github.com/pamelatao12"
+                ><img src="images/github.svg" alt="gh"
+              /></a>
+            </li>
+            <li class="icon">
+              <a href="mailto:pamelatao12@gmail.com"
+                ><img src="images/mail.svg" alt="m"
+              /></a>
+            </li>
+          </ul>
+        </div>
+        <!-- end of iconbox div -->
+        <div id="datebox">
+          <span class="footertext">
+            <script>
+              getDate();
+            </script>
+            | &#169; Pamela Tao. All Rights Reserved.</span
+          >
+        </div>
+        <!-- end of datebox div -->
+      </footer>
+    </div>
+  </body>
 </html>
-
-
