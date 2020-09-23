@@ -14,6 +14,12 @@
     <script type="text/javascript">
       var submitted = false;
     </script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+      function onSubmit(token) {
+        document.getElementById("gform").submit();
+      }
+    </script>
     <style>
       @import url("https://fonts.googleapis.com/css?family=Quicksand");
     </style>
@@ -148,7 +154,14 @@
             style="height:200px"
           ></textarea>
 
-          <input type="submit" value="Submit" />
+          <input
+            class="g-recaptcha"
+            data-sitekey="6Lc28s4ZAAAAAAPdIkMifq_MdUV5yNgZ-heYv9Es"
+            data-callback="onSubmit"
+            data-action="submit"
+            type="submit"
+            value="Submit"
+          />
         </form>
         <iframe
           name="hidden_iframe"
