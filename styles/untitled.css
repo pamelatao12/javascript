@@ -566,12 +566,21 @@ input[type="submit"] {
   padding: 12px 20px;
   border-radius: 4px;
   cursor: pointer;
+  height: 40px;
+  margin-right: 50px;
+  /* margin-top: 10px; */
 }
 
 /* When moving the mouse over the submit button, add a darker green color */
 input[type="submit"]:hover {
   background-color: dimgray;
   color: white;
+}
+
+.submitDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 #taiwan-page {
