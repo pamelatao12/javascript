@@ -1,125 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>Pamela</title>
-    <link rel="stylesheet" type="text/css" href="styles/untitled.css">
-    <script type="text/javascript"src="js/sidenav.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/untitled.css" />
+    <script type="text/javascript" src="js/sidenav.js"></script>
     <script type="text/javascript" src="js/date.js"></script>
     <style>
-       @import url('https://fonts.googleapis.com/css?family=Quicksand');
+      @import url("https://fonts.googleapis.com/css?family=Quicksand");
     </style>
-</head>
+  </head>
 
-<body>
-	<div id="container">
-		<div id="about-nav_bar"> <!--navigation bar link to projects and posts -->
-			<div class="cornerlogo">
-				<img src="images/pamelalogo.svg" alt="text">
-			</div>
-			<ul>
-				<li class="nav">
-					<a href="index.html">HOME</a>
-				</li>
-				<li class="nav">
-					<a href="about.html">ABOUT</a>
-				</li>
-				<li class="nav">
-					<a href="projects.html">PROJECTS</a>
-				</li>
-				<li class="nav">
-					<a href="blog.html">BLOG</a>
-				</li>
-				<li class="nav">
-					<a href="contact.html">CONTACT</a>
-				</li>
-			</ul>
-		</div> <!-- closing nav_bar div -->
-	<div id="navbtn">
-		<span style="font-size:30px;color:dimgray;cursor:pointer;padding-left: 20px;" onclick="openNav()">&#9776;</span>
-	</div>
+  <body>
+    <div id="container">
+      <div id="about-nav_bar">
+        <!--navigation bar link to projects and posts -->
+        <div class="cornerlogo">
+          <img src="images/pamelalogo.svg" alt="text" />
+        </div>
+        <ul>
+          <li class="nav">
+            <a href="index.html">HOME</a>
+          </li>
+          <li class="nav">
+            <a href="about.html">ABOUT</a>
+          </li>
+          <li class="nav">
+            <a href="projects.html">PROJECTS</a>
+          </li>
+          <li class="nav">
+            <a href="blog.html">BLOG</a>
+          </li>
+          <li class="nav">
+            <a href="contact.html">CONTACT</a>
+          </li>
+        </ul>
+      </div>
+      <!-- closing nav_bar div -->
+      <div id="navbtn">
+        <span
+          style="font-size:30px;color:dimgray;cursor:pointer;padding-left: 20px;"
+          onclick="openNav()"
+          >&#9776;</span
+        >
+      </div>
 
-	<div id="mySidenav" class="sidenav">
-	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-	  <a href="index.html">HOME</a>
-	  <a href="about.html">ABOUT</a>
-	  <a href="blog.html">BLOG</a>
-	  <a href="projects.html">PROJECT</a>
-	  <a href="contact.html">CONTACT</a>
-	  <a href="https://www.linkedin.com/in/pamela-tao/" class="icon-side"><img src="images/linkedin.svg" alt="li"></a>
-	  <a href="https://github.com/pamelatao12" class="icon-side"><img src="images/github.svg" alt="gh"></a>
-	  <a href="mailto:pamelatao12@gmail.com" class="icon-side"><img src="images/mail.svg" alt="m"></a>
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="blog.html">BLOG</a>
+        <a href="projects.html">PROJECT</a>
+        <a href="contact.html">CONTACT</a>
+        <a
+          href="https://www.linkedin.com/in/pamela-tao/"
+          class="icon-side"
+          target="_blank"
+          ><img src="images/linkedin.svg" alt="li"
+        /></a>
+        <a
+          href="https://github.com/pamelatao12"
+          class="icon-side"
+          target="_blank"
+          ><img src="images/github.svg" alt="gh"
+        /></a>
+        <a href="mailto:pamelatao12@gmail.com" class="icon-side"
+          ><img src="images/mail.svg" alt="m"
+        /></a>
+      </div>
 
-	</div>
+      <div id="blog-page">
+        <div class="bloghead">
+          <div class="cornerlogo">
+            <img src="images/pamelalogo.svg" alt="text" />
+          </div>
+        </div>
 
-	<div id="blog-page">
-		<div class="bloghead">
-			<div class="cornerlogo">
-				<img src="images/pamelalogo.svg" alt="text">
-			</div>
-		</div>
+        <div id="about-topbar"></div>
 
-		<div id="about-topbar">
-		</div>
+        <h1
+          id="blogheadtitle"
+          style="margin-bottom: 0px;margin-left: 80px;margin-bottom: 20px;text-align: initial;"
+        >
+          My Blog
+        </h1>
+        <div id="blog-content">
+          <!-- main body of page -->
 
-	
-		<h1 id="blogheadtitle" style="margin-bottom: 0px;margin-left: 80px;margin-bottom: 20px;text-align: initial;">My Blog</h1>
-		<div id="blog-content"> <!-- main body of page -->
-			
-				<div onclick="window.open('taiwan.html')" class="blogpost">
-					<div class="blogCardWrapper" style="background-image: url(images/taiwan.jpg)">
-					<!-- <img src="images/dsSS1.png" alt="post"> -->
-						<div class="projectLanguage">Travel</div>
-						<div class="blogtext">Taiwan: Spring 2018</div>
-					</div>
-				</div>
-			
-				<div onclick="window.open('singapore.html')" class="blogpost">
-					<div class="blogCardWrapper" style="background-image: url(images/singapore.jpg)">
-					<!-- <img src="images/squishySS1.png" alt="post"> -->
-						<div class="projectLanguage">Travel</div>
-						<div class="blogtext">Singapore: Spring 2018</div>
-					</div>
-				</div>
-			
-		
-				<div onclick="window.open('bali.html')" class="blogpost">
-					<div class="blogCardWrapper" style="background-image: url(images/bali.jpg)">
+          <div onclick="window.open('taiwan.html')" class="blogpost">
+            <div
+              class="blogCardWrapper"
+              style="background-image: url(images/taiwan.jpg)"
+            >
+              <!-- <img src="images/dsSS1.png" alt="post"> -->
+              <div class="projectLanguage">Travel</div>
+              <div class="blogtext">Taiwan: Spring 2018</div>
+            </div>
+          </div>
 
-					<!-- <img src="images/tipCalcSS1.png" alt="post"> -->
-						<div class="projectLanguage">Travel</div>
-						<div class="blogtext">Bali: Spring 2018</div>
-					</div>
-				</div>
-	   	  
-			<!-- <img id="marblefooter" alt="marble" src="images/marble.jpg"> -->
-			<div id="datebox-mobile">  
-    			<span class="footertext-mobile">
-    			<script>getDate()</script> | Pamela Tao &#169;</span>
-			</div><!-- end of datebox div -->
-		</div> <!-- close content div tag -->
-	</div>	<!-- close bio-page div tag -->
-	<footer>
-		<div id="iconbox">
-		    <ul>
-		        <li class="icon"><a href="https://www.linkedin.com/in/pamela-tao/"><img src="images/linkedin.svg" alt="li"></a></li>
-		        <li class="icon"><a href="https://github.com/pamelatao12"><img src="images/github.svg" alt="gh"></a></li>
-		        <li class="icon"><a href="mailto:pamelatao12@gmail.com"><img src="images/mail.svg" alt="m"></a></li>
-		    </ul>
-    	</div><!-- end of iconbox div -->
-	    <div id="datebox">  
-	    	<span class="footertext">
-	    	<script>getDate()</script> | Pamela Tao &#169;</span>
-		</div><!-- end of datebox div -->
-	</footer>
+          <div onclick="window.open('singapore.html')" class="blogpost">
+            <div
+              class="blogCardWrapper"
+              style="background-image: url(images/singapore.jpg)"
+            >
+              <!-- <img src="images/squishySS1.png" alt="post"> -->
+              <div class="projectLanguage">Travel</div>
+              <div class="blogtext">Singapore: Spring 2018</div>
+            </div>
+          </div>
 
-</body>
+          <div onclick="window.open('bali.html')" class="blogpost">
+            <div
+              class="blogCardWrapper"
+              style="background-image: url(images/bali.jpg)"
+            >
+              <!-- <img src="images/tipCalcSS1.png" alt="post"> -->
+              <div class="projectLanguage">Travel</div>
+              <div class="blogtext">Bali: Spring 2018</div>
+            </div>
+          </div>
 
+          <!-- <img id="marblefooter" alt="marble" src="images/marble.jpg"> -->
+          <div id="datebox-mobile">
+            <span class="footertext-mobile">
+              <script>
+                getDate();
+              </script>
+              | Pamela Tao &#169;</span
+            >
+          </div>
+          <!-- end of datebox div -->
+        </div>
+        <!-- close content div tag -->
+      </div>
+      <!-- close bio-page div tag -->
+      <footer>
+        <div id="iconbox">
+          <ul>
+            <li class="icon">
+              <a href="https://www.linkedin.com/in/pamela-tao/" target="_blank"
+                ><img src="images/linkedin.svg" alt="li"
+              /></a>
+            </li>
+            <li class="icon">
+              <a href="https://github.com/pamelatao12" target="_blank"
+                ><img src="images/github.svg" alt="gh"
+              /></a>
+            </li>
+            <li class="icon">
+              <a href="mailto:pamelatao12@gmail.com"
+                ><img src="images/mail.svg" alt="m"
+              /></a>
+            </li>
+          </ul>
+        </div>
+        <!-- end of iconbox div -->
+        <div id="datebox">
+          <span class="footertext">
+            <script>
+              getDate();
+            </script>
+            | Pamela Tao &#169;</span
+          >
+        </div>
+        <!-- end of datebox div -->
+      </footer>
+    </div>
+  </body>
 </html>
-
-
-
-
-
-
